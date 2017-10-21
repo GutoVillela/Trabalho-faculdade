@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group name="NetBeans">
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/DAL/Conexao.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/BLL/EquipamentoDaLojaBLL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/BLL/AcessorioBLL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/BLL/PessoaJuridicaBLL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/DAL/AcessorioDAL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/DAL/TituloDAL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/UI/frmCadFuncionario.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/BLL/EquipamentoManutencaoBLL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/UI/frmCadPlataforma.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/BLL/CredencialDeAcessoBLL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/DAL/EquipamentoManutencaoDAL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/DAL/ClienteDAL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/UI/frmTelaPrincipal.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/DAL/EquipamentoDaLojaDAL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/BLL/CopiaParaVenderBLL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/BLL/ClienteBLL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/DAL/CredencialDeAcessoDAL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/UI/frmCadProduto.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/DAL/PermissaoDAL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/DAL/CopiaParaVenderDAL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/UI/frmCadTipoEquipamento.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/UI/frmCadEquipamento.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/BLL/PermissaoBLL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/BLL/ProdutoBLL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/BLL/TipoEquipamentoBLL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/UI/frmCadJogo.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/UI/frmCadCargo.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/UI/frmLogin.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/UI/frmCadCodCadastro.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/SistemaLojaDeJogos_CCMOD2/src/DAL/TipoEquipamentoDAL.java</file>
+        </group>
+    </open-files>
+</project-private>
