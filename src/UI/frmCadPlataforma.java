@@ -64,6 +64,7 @@ public class frmCadPlataforma extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadPlataformaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadPlataformaActionPerformed

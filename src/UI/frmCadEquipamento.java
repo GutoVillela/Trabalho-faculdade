@@ -26,7 +26,7 @@ public class frmCadEquipamento extends javax.swing.JFrame {
 
     private List<TipoEquipamentoBLL> tiposDeEquipamentos;
     private TipoEquipamentoBLL teBLL = new TipoEquipamentoBLL();
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -132,50 +132,55 @@ public class frmCadEquipamento extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadTipoEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadTipoEquipamentoActionPerformed
         // TODO add your handling code here:
-        
+
         frmCadTipoEquipamento cadTipo = new frmCadTipoEquipamento();
         cadTipo.setDefaultCloseOperation(HIDE_ON_CLOSE);
         cadTipo.setVisible(true);
-            
+        
+        AtualizarTiposDeEquipamento();
+
     }//GEN-LAST:event_btnCadTipoEquipamentoActionPerformed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
+    private void AtualizarTiposDeEquipamento() {
         tiposDeEquipamentos = teBLL.Consultar(); // CONSULTAR TODOS OS TIPOS DE EQUIPAMENTOS DISPONÍVEIS
-        
+
         cmbTipoEquipamento.removeAllItems();
-        
+
         for (int i = 0; i < tiposDeEquipamentos.size(); i++) {
             cmbTipoEquipamento.addItem(tiposDeEquipamentos.get(i).getTipo());
         }
+    }
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        AtualizarTiposDeEquipamento();
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
-        
-        if(rdbDoCliente.isSelected()){
-            
+
+        if (rdbDoCliente.isSelected()) {
+
             // INSTÂNCIA E PREENCHIMENTO DAS INFORMAÇÕES DO EQUIPAMENTO DO CLIENTE
             EquipamentoManutencaoBLL emBLL = new EquipamentoDaManutencaoBLL();
             emBLL.setNome(txtNome.getText());
             emBLL.setTipo(tiposDeEquipamentos.get(cmbTipoEquipamento.getSelectedIndex()));
             emBLL.setAtivo(true);
-            
-            if(emBLL.Cadastrar()){
+
+            if (emBLL.Cadastrar()) {
                 JOptionPane.showMessageDialog(null, "DEU CERTO!");
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "NÃO DEU CERTO! D:");
             }
+        } else {
+
         }
-        else{
-            
-        }
-        
+
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**

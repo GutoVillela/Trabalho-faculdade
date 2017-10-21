@@ -281,13 +281,5 @@ public class PermissaoDAL {
             return 0;
         }
     }
-    
-    /**
-     * @param codigoDoCargo O código do cargo atrelado à permissão da qual deseja
-     * @return A PermissaoBLL referente ao cargo.
-     */
-    public PermissaoBLL Consultar(int codigoDoCargo){
-        return null;
-    }
 
 }

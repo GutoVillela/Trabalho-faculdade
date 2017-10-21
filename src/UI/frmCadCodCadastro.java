@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package UI;
 
-/**
- *
- * @author Guto
- */
+import BLL.CargoBLL; // IMPORTAÇÃO DA CLASSE BLL NECESSÁRIA
+import java.util.List;
+
 public class frmCadCodCadastro extends javax.swing.JFrame {
 
     /**
@@ -18,6 +13,8 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         initComponents();
     }
 
+    private CargoBLL cBLL = new CargoBLL();// INSTÂNCIA DA CLASSE DE CARGO
+    private List<CargoBLL> listaDeCargos;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,6 +29,11 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         btnCadCargo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setText("GERAR CÓDIGO PARA O CARGO: ");
 
@@ -64,7 +66,24 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AtualizarCargos(){
+        listaDeCargos = cBLL.Consultar();
+        
+        cmbCargos.removeAllItems();
+        
+        for (int i = 0; i < listaDeCargos.size(); i++) {
+            cmbCargos.addItem(listaDeCargos.get(i).getCargo());
+        }
+    }
+    
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        
+        AtualizarCargos();// ATUALIZAR A LISTA DE CARGOS ASSIM QUE O FORMULÁRIO ABRIR
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

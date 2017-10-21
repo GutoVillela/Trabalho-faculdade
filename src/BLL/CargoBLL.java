@@ -1,6 +1,7 @@
 package BLL;
 
 import DAL.CargoDAL;
+import java.util.List;
 
 public class CargoBLL {
     
@@ -85,13 +86,19 @@ public class CargoBLL {
     // MÉTODOS
     public boolean Cadastrar(){
         
-        if (cDAL.Cadastrar(this)) {
-            return true;
-        }
-        else{
-            return false;
-        }
+        return cDAL.Cadastrar(this);
         
+    }
+    
+    public List<CargoBLL> Consultar(){
+        return cDAL.Consultar();
+    }
+    
+    /**
+     * @return A PermissaoBLL referente ao cargo desta instância (pelo código).
+     */
+    public PermissaoBLL ConsultarPermissao(){
+        return null;
     }
     
 }

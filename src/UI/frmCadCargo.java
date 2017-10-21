@@ -469,6 +469,11 @@ public class frmCadCargo extends javax.swing.JFrame {
         });
 
         btnCancelarCadPermissao.setText("CANCELAR");
+        btnCancelarCadPermissao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarCadPermissaoActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("SALÁRIO: ");
 
@@ -579,17 +584,96 @@ public class frmCadCargo extends javax.swing.JFrame {
 
     private void btnCadCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadCargoActionPerformed
         // TODO add your handling code here:
-        
+
         //DEFINIR ATRIBUTOS DO CARGO
         cBLL.setCargo(txtNomeCargo.getText());
         cBLL.setSalario(Float.valueOf(txtSalario.getText()));
-        
+        cBLL.setPermissao(listaPermissoes.get(cmbPermissoes.getSelectedIndex()));
+
+        //CADASTRAR CARGO
+        if (cBLL.Cadastrar()) {
+            JOptionPane.showMessageDialog(null, "CADASTROU O CARGO");
+        } else {
+            JOptionPane.showMessageDialog(null, "NÃO DEU CERTO :(");
+        }
+
 
     }//GEN-LAST:event_btnCadCargoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
 
+        DesabilitarPermissoes();
+
+        AtualizarPermissoes();
+    }//GEN-LAST:event_formWindowOpened
+    public void HabilitarPermissoes() {
+        ckbPodeCadFornecedor.setEnabled(true);
+        ckbPodeConFornecedor.setEnabled(true);
+        ckbPodeAltFornecedor.setEnabled(true);
+        ckbPodeDesFornecedor.setEnabled(true);
+
+        ckbPodeCadCliente.setEnabled(true);
+        ckbPodeConCliente.setEnabled(true);
+        ckbPodeAltCliente.setEnabled(true);
+        ckbPodeDesCliente.setEnabled(true);
+
+        ckbPodeCadCodCad.setEnabled(true);
+        ckbPodeConCodCad.setEnabled(true);
+        ckbPodeAltCodCad.setEnabled(true);
+        ckbPodeDesCodCad.setEnabled(true);
+
+        ckbPodeCadVenda.setEnabled(true);
+        ckbPodeConVenda.setEnabled(true);
+        ckbPodeAltVenda.setEnabled(true);
+        ckbPodeDesVenda.setEnabled(true);
+
+        ckbPodeCadPromocao.setEnabled(true);
+        ckbPodeConPromocao.setEnabled(true);
+        ckbPodeAltPromocao.setEnabled(true);
+        ckbPodeDesPromocao.setEnabled(true);
+
+        ckbPodeCadAluguel.setEnabled(true);
+        ckbPodeConAluguel.setEnabled(true);
+        ckbPodeAltAluguel.setEnabled(true);
+        ckbPodeDesAluguel.setEnabled(true);
+
+        ckbPodeCadProduto.setEnabled(true);
+        ckbPodeConProduto.setEnabled(true);
+        ckbPodeAltProduto.setEnabled(true);
+        ckbPodeDesProduto.setEnabled(true);
+
+        ckbPodeCadEquipamento.setEnabled(true);
+        ckbPodeConEquipamento.setEnabled(true);
+        ckbPodeAltEquipamento.setEnabled(true);
+        ckbPodeDesEquipamento.setEnabled(true);
+
+        ckbPodeCadManutencao.setEnabled(true);
+        ckbPodeConManutencao.setEnabled(true);
+        ckbPodeAltManutencao.setEnabled(true);
+        ckbPodeDesManutencao.setEnabled(true);
+
+        ckbPodeCadCargo.setEnabled(true);
+        ckbPodeConCargo.setEnabled(true);
+        ckbPodeAltCargo.setEnabled(true);
+        ckbPodeDesCargo.setEnabled(true);
+
+        ckbPodeCadFuncionario.setEnabled(true);
+        ckbPodeConFuncionario.setEnabled(true);
+        ckbPodeAltFuncionario.setEnabled(true);
+        ckbPodeDesFuncionario.setEnabled(true);
+
+        ckbPodeGerarBackup.setEnabled(true);
+        ckbPodeRestaurarBackup.setEnabled(true);
+
+        ckbPodeGerarRelatorio.setEnabled(true);
+
+        cadastrarPermissao = true; //AGORA HABILITAR CADASTRAR PERMISSÃO
+        btnCadPermissao.setText("CADASTRAR PERMISSÃO");
+        btnCancelarCadPermissao.setVisible(true);
+    }
+
+    public void DesabilitarPermissoes() {
         ckbPodeCadFornecedor.setEnabled(false);
         ckbPodeConFornecedor.setEnabled(false);
         ckbPodeAltFornecedor.setEnabled(false);
@@ -651,85 +735,16 @@ public class frmCadCargo extends javax.swing.JFrame {
         ckbPodeGerarRelatorio.setEnabled(false);
 
         btnCancelarCadPermissao.setVisible(false);
-
-        // LIMPAR E CARREGAR LISTA COM AS PERMISSOES ENCONTRADAS
-        cmbPermissoes.removeAllItems();
-        listaPermissoes = pBLL.Consultar();
-
-        for (int i = 0; i < listaPermissoes.size(); i++) {
-            cmbPermissoes.addItem(String.valueOf(listaPermissoes.get(i).getCodigo()));
-
-        }
-
-        carregouPermissoes = true;
-    }//GEN-LAST:event_formWindowOpened
+        
+        cadastrarPermissao = false; //AGORA DESABILITAR CADASTRAR PERMISSÃO
+        btnCadPermissao.setText("OUTRA PERMISSÃO");
+        btnCancelarCadPermissao.setVisible(false);
+    }
 
     private void btnCadPermissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadPermissaoActionPerformed
         // TODO add your handling code here:
         if (!cadastrarPermissao) {
-            ckbPodeCadFornecedor.setEnabled(true);
-            ckbPodeConFornecedor.setEnabled(true);
-            ckbPodeAltFornecedor.setEnabled(true);
-            ckbPodeDesFornecedor.setEnabled(true);
-
-            ckbPodeCadCliente.setEnabled(true);
-            ckbPodeConCliente.setEnabled(true);
-            ckbPodeAltCliente.setEnabled(true);
-            ckbPodeDesCliente.setEnabled(true);
-
-            ckbPodeCadCodCad.setEnabled(true);
-            ckbPodeConCodCad.setEnabled(true);
-            ckbPodeAltCodCad.setEnabled(true);
-            ckbPodeDesCodCad.setEnabled(true);
-
-            ckbPodeCadVenda.setEnabled(true);
-            ckbPodeConVenda.setEnabled(true);
-            ckbPodeAltVenda.setEnabled(true);
-            ckbPodeDesVenda.setEnabled(true);
-
-            ckbPodeCadPromocao.setEnabled(true);
-            ckbPodeConPromocao.setEnabled(true);
-            ckbPodeAltPromocao.setEnabled(true);
-            ckbPodeDesPromocao.setEnabled(true);
-
-            ckbPodeCadAluguel.setEnabled(true);
-            ckbPodeConAluguel.setEnabled(true);
-            ckbPodeAltAluguel.setEnabled(true);
-            ckbPodeDesAluguel.setEnabled(true);
-
-            ckbPodeCadProduto.setEnabled(true);
-            ckbPodeConProduto.setEnabled(true);
-            ckbPodeAltProduto.setEnabled(true);
-            ckbPodeDesProduto.setEnabled(true);
-
-            ckbPodeCadEquipamento.setEnabled(true);
-            ckbPodeConEquipamento.setEnabled(true);
-            ckbPodeAltEquipamento.setEnabled(true);
-            ckbPodeDesEquipamento.setEnabled(true);
-
-            ckbPodeCadManutencao.setEnabled(true);
-            ckbPodeConManutencao.setEnabled(true);
-            ckbPodeAltManutencao.setEnabled(true);
-            ckbPodeDesManutencao.setEnabled(true);
-
-            ckbPodeCadCargo.setEnabled(true);
-            ckbPodeConCargo.setEnabled(true);
-            ckbPodeAltCargo.setEnabled(true);
-            ckbPodeDesCargo.setEnabled(true);
-
-            ckbPodeCadFuncionario.setEnabled(true);
-            ckbPodeConFuncionario.setEnabled(true);
-            ckbPodeAltFuncionario.setEnabled(true);
-            ckbPodeDesFuncionario.setEnabled(true);
-
-            ckbPodeGerarBackup.setEnabled(true);
-            ckbPodeRestaurarBackup.setEnabled(true);
-
-            ckbPodeGerarRelatorio.setEnabled(true);
-
-            cadastrarPermissao = true; //AGORA HABILITAR CADASTRAR PERMISSÃO
-            btnCadPermissao.setText("CADASTRAR PERMISSÃO");
-            btnCancelarCadPermissao.setVisible(true);
+            HabilitarPermissoes();
         } else {
             //SETAR ATRIBUTOS DAS PERMISSÕES
             pBLL.setPode_cadastrar_FORNECEDOR(ckbPodeCadFornecedor.isSelected());
@@ -800,10 +815,28 @@ public class frmCadCargo extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "NÃO DEU CERTO T-T");
             }
+
+            DesabilitarPermissoes();
+            AtualizarPermissoes();
+            cmbPermissoes.setSelectedIndex(cmbPermissoes.getItemCount() - 1);
         }
 
     }//GEN-LAST:event_btnCadPermissaoActionPerformed
 
+    private void AtualizarPermissoes() {
+        // LIMPAR E CARREGAR LISTA COM AS PERMISSOES ENCONTRADAS
+        carregouPermissoes = false;
+        cmbPermissoes.removeAllItems();
+        listaPermissoes = pBLL.Consultar();
+
+        for (int i = 0; i < listaPermissoes.size(); i++) {
+            cmbPermissoes.addItem(String.valueOf(listaPermissoes.get(i).getCodigo()));
+
+        }
+
+        carregouPermissoes = true;
+
+    }
     private void cmbPermissoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPermissoesActionPerformed
 
         // TODO add your handling code here:
@@ -870,6 +903,11 @@ public class frmCadCargo extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_cmbPermissoesActionPerformed
+
+    private void btnCancelarCadPermissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCadPermissaoActionPerformed
+        // TODO add your handling code here:
+        DesabilitarPermissoes();
+    }//GEN-LAST:event_btnCancelarCadPermissaoActionPerformed
 
     /**
      * @param args the command line arguments
