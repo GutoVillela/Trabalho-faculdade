@@ -61,6 +61,11 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         jMenu1.add(btnFuncionario);
 
         btnCadCodCadastro.setText("CÓDIGO DE CADASTRO");
+        btnCadCodCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadCodCadastroActionPerformed(evt);
+            }
+        });
         jMenu1.add(btnCadCodCadastro);
 
         btnCadCargo.setText("CARGO");
@@ -115,6 +120,12 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         cadCargpo.setDefaultCloseOperation(HIDE_ON_CLOSE);
         cadCargpo.setVisible(true);
     }//GEN-LAST:event_btnCadCargoActionPerformed
+
+    private void btnCadCodCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadCodCadastroActionPerformed
+        // TODO add your handling code here:
+        frmCadCodCadastro nome= new  frmCadCodCadastro();
+        nome.setVisible(true);
+    }//GEN-LAST:event_btnCadCodCadastroActionPerformed
 
     /**
      * @param args the command line arguments

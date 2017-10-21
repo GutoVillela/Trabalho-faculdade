@@ -34,6 +34,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="C&#xd3;DIGO DE CADASTRO"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadCodCadastroActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="btnCadCargo">
               <Properties>
