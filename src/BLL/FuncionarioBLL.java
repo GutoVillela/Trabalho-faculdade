@@ -1,6 +1,7 @@
 
 package BLL;
 
+import DAL.FuncionarioDAL;
 import java.util.List;
 
 public class FuncionarioBLL {
@@ -13,6 +14,8 @@ public class FuncionarioBLL {
     private CargoBLL cargo;
     private CredencialDeAcessoBLL login;
     private List<TelefoneBLL> telefones;
+    
+    private FuncionarioDAL fDAL = new FuncionarioDAL();
     
     private boolean ativo;
 
@@ -140,5 +143,11 @@ public class FuncionarioBLL {
      */
     public void setTelefones(List<TelefoneBLL> telefones) {
         this.telefones = telefones;
+    }
+    
+    // MÉTODOS
+    public boolean Cadastrar(){
+        login.Cadastrar();
+        return fDAL.Cadastrar(this);
     }
 }

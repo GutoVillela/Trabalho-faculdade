@@ -5,6 +5,7 @@
  */
 package UI;
 
+import BLL.EquipamentoDaLojaBLL;
 import BLL.EquipamentoDaManutencaoBLL;
 import BLL.EquipamentoManutencaoBLL;
 import BLL.TipoEquipamentoBLL;
@@ -46,6 +47,8 @@ public class frmCadEquipamento extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         btnCadastrar = new javax.swing.JButton();
         btnCadTipoEquipamento = new javax.swing.JButton();
+        lblValorPorHora = new javax.swing.JLabel();
+        txtValorPorHora = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -58,10 +61,20 @@ public class frmCadEquipamento extends javax.swing.JFrame {
 
         btgDaLojaOuNao.add(rdbDaLoja);
         rdbDaLoja.setText("DA LOJA");
+        rdbDaLoja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbDaLojaActionPerformed(evt);
+            }
+        });
 
         btgDaLojaOuNao.add(rdbDoCliente);
         rdbDoCliente.setSelected(true);
         rdbDoCliente.setText("DO CLIENTE");
+        rdbDoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbDoClienteActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("TIPO: ");
 
@@ -83,6 +96,8 @@ public class frmCadEquipamento extends javax.swing.JFrame {
             }
         });
 
+        lblValorPorHora.setText("VALOR POR HORA: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,11 +115,13 @@ public class frmCadEquipamento extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(lblValorPorHora))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cmbTipoEquipamento, 0, 184, Short.MAX_VALUE)
-                            .addComponent(txtNome))))
+                            .addComponent(txtNome)
+                            .addComponent(txtValorPorHora))))
                 .addGap(18, 18, 18)
                 .addComponent(btnCadTipoEquipamento)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -126,9 +143,13 @@ public class frmCadEquipamento extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblValorPorHora)
+                    .addComponent(txtValorPorHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -173,15 +194,50 @@ public class frmCadEquipamento extends javax.swing.JFrame {
             emBLL.setAtivo(true);
 
             if (emBLL.Cadastrar()) {
-                JOptionPane.showMessageDialog(null, "DEU CERTO!");
+                JOptionPane.showMessageDialog(null, "Equipamento do cliente cadastrado com sucesso.", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(null, "NÃO DEU CERTO! D:");
+                JOptionPane.showMessageDialog(null, "Aconteceu um erro ao cadastrar o equipamento do cliente.", "ERRO", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-
+            // INSTÂNCIA E PREENCHIMENTO DAS INFORMAÇÕES DO EQUIPAMENTO DA LOJA
+            EquipamentoDaLojaBLL elBLL = new EquipamentoDaLojaBLL();
+            elBLL.setNome(txtNome.getText());
+            elBLL.setValorPorHora(Float.valueOf(txtValorPorHora.getText()));
+            elBLL.setTipo(tiposDeEquipamentos.get(cmbTipoEquipamento.getSelectedIndex()));
+            elBLL.setAtivo(true);
+            
+            if (elBLL.Cadastrar()) {
+                JOptionPane.showMessageDialog(null, "Equipamento da loja cadastrado com sucesso.", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Aconteceu um erro ao cadastrar o equipamento da loja.", "ERRO", JOptionPane.ERROR_MESSAGE);
+            }
         }
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void rdbDaLojaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbDaLojaActionPerformed
+        // TODO add your handling code here:
+        if (rdbDaLoja.isSelected()) {
+            lblValorPorHora.setVisible(true);
+            txtValorPorHora.setVisible(true);
+        }
+        else{
+            lblValorPorHora.setVisible(false);
+            txtValorPorHora.setVisible(false);
+        }
+    }//GEN-LAST:event_rdbDaLojaActionPerformed
+
+    private void rdbDoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbDoClienteActionPerformed
+        // TODO add your handling code here:
+        if (rdbDaLoja.isSelected()) {
+            lblValorPorHora.setVisible(true);
+            txtValorPorHora.setVisible(true);
+        }
+        else{
+            lblValorPorHora.setVisible(false);
+            txtValorPorHora.setVisible(false);
+        }
+    }//GEN-LAST:event_rdbDoClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,8 +282,10 @@ public class frmCadEquipamento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblValorPorHora;
     private javax.swing.JRadioButton rdbDaLoja;
     private javax.swing.JRadioButton rdbDoCliente;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtValorPorHora;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,7 +11,7 @@ public class EquipamentoDaLojaDAL {
     
     public boolean Cadastrar(EquipamentoDaLojaBLL elBLL){
         // CRIANDO COMANDO SQL
-        String comandoSQL = "INSERT INTO equipamentos_da_loja (TIPO, NOME, ATIVO) VALUES (?,?,?);";
+        String comandoSQL = "INSERT INTO equipamentos_da_loja (TIPO, NOME, VALOR_POR_HORA, ATIVO) VALUES (?, ?, ?, ?);";
         
         // TRATAMENTO DE ERRO
         try {
@@ -20,7 +20,8 @@ public class EquipamentoDaLojaDAL {
             PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
             query.setInt(1, elBLL.getTipo().getCodigo());
             query.setString(2, elBLL.getNome());
-            query.setBoolean(3, elBLL.isAtivo());
+            query.setFloat(3, elBLL.getValorPorHora());
+            query.setBoolean(4, elBLL.isAtivo());
             
             // EXECUTAR COMANDO
             query.executeUpdate();

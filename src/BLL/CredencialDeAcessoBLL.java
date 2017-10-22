@@ -67,4 +67,8 @@ public class CredencialDeAcessoBLL {
         
     }
     
+    public boolean Cadastrar(){
+        return cDAL.Cadastrar(this);
+    }
+    
 }

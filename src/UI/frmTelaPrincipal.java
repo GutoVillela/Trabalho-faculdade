@@ -34,6 +34,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         btnFuncionario = new javax.swing.JMenuItem();
         btnCadCodCadastro = new javax.swing.JMenuItem();
         btnCadCargo = new javax.swing.JMenuItem();
+        btnCadAluguel = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,6 +77,9 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(btnCadCargo);
 
+        btnCadAluguel.setText("ALUGUEL DE EQUIPAMENTO");
+        jMenu1.add(btnCadAluguel);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("CONSULTAR");
@@ -95,6 +99,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadJogoActionPerformed
@@ -163,6 +168,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnCadAluguel;
     private javax.swing.JMenuItem btnCadCargo;
     private javax.swing.JMenuItem btnCadCodCadastro;
     private javax.swing.JMenuItem btnCadEquipamento;

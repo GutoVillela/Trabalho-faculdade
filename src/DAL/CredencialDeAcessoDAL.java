@@ -40,4 +40,29 @@ public class CredencialDeAcessoDAL {
         
     }
     
+    public boolean Cadastrar(CredencialDeAcessoBLL fBLL){
+        // CRIANDO COMANDO SQL
+        String comandoSQL = "INSERT INTO Credenciais_de_acesso (usuario, senha, cod_cadastro) VALUES (?, ?, ?);";
+        
+        // TRATAMENTO DE ERRO
+        try {
+            
+            // PREPARANDO QUERY PARA EXECUÇÃO
+            PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
+            query.setString(1, fBLL.getUsuario());
+            query.setString(2, fBLL.getSenha());
+            query.setString(3, fBLL.getCodCadastro().getCodigoDeCadastro());
+            
+            // EXECUTAR COMANDO
+            query.executeUpdate();
+            
+            return true;
+            
+        } catch (SQLException ex) {
+            
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + ex);
+            return false;
+        }
+    }
+    
 }

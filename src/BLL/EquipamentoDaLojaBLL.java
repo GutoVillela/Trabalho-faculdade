@@ -1,6 +1,8 @@
 
 package BLL;
 
+import DAL.EquipamentoDaLojaDAL; // IMPORTAÇÃO DA RESPECTIVA CLASSE DAL
+
 public class EquipamentoDaLojaBLL {
     
     private int codigo;
@@ -8,6 +10,8 @@ public class EquipamentoDaLojaBLL {
     private String nome;
     private float valorPorHora;
     private boolean ativo;
+    
+    private EquipamentoDaLojaDAL elDAL = new EquipamentoDaLojaDAL();
 
     /**
      * @return the codigo
@@ -79,6 +83,9 @@ public class EquipamentoDaLojaBLL {
         this.ativo = ativo;
     }
 
-    
+    // MÉTODOS
+    public boolean Cadastrar(){
+        return elDAL.Cadastrar(this);
+    }
     
 }
