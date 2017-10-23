@@ -52,6 +52,10 @@ public class frmCadFuncionario extends javax.swing.JFrame {
         txtCep = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
         txtCidade = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtEstado = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtPais = new javax.swing.JTextField();
         btnCadFuncionario = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         cmbCargos = new javax.swing.JComboBox<>();
@@ -95,6 +99,10 @@ public class frmCadFuncionario extends javax.swing.JFrame {
 
         jLabel7.setText("Cidade:");
 
+        jLabel13.setText("ESTADO: ");
+
+        jLabel14.setText("PAÍS: ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -118,17 +126,25 @@ public class frmCadFuncionario extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 13, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel6)
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtCep, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                            .addComponent(txtEstado))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel7)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel14))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                            .addComponent(txtPais))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -151,7 +167,13 @@ public class frmCadFuncionario extends javax.swing.JFrame {
                     .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14)
+                    .addComponent(txtPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnCadFuncionario.setText("CADASTRAR FUNCIONÁRIO");
@@ -218,7 +240,7 @@ public class frmCadFuncionario extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(7, 7, 7)
                                         .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,15 +303,17 @@ public class frmCadFuncionario extends javax.swing.JFrame {
         fBLL.setCpf(txtCpf.getText().replace(".", "").replace("-", ""));
         fBLL.setEmail(txtEmail.getText());
         
-        //System.out.println(cmbLogradouro.getSelectedItem().toString() + txtLogradouro.getText());
-        fBLL.getEndereco().setLogradouro("");
-        fBLL.getEndereco().getBairro().setCodigo(1); // ESTE BAIRRO AQUI É MUITO FICTÍCIO
+        fBLL.getEndereco().setLogradouro(cmbLogradouro.getSelectedItem().toString() + txtLogradouro.getText());
         fBLL.getEndereco().setNumero(txtNumero.getText());
         fBLL.getEndereco().setCep(txtCep.getText());
+        fBLL.getEndereco().getBairro().setNome(txtBairro.getText());
+        fBLL.getEndereco().getBairro().getCidade().setNome(txtCidade.getText());
+        fBLL.getEndereco().getBairro().getCidade().getEstado().setNome(txtEstado.getText());
+        fBLL.getEndereco().getBairro().getCidade().getEstado().getPais().setPaisPt(txtPais.getText());
         
         fBLL.getCargo().setCodigo(listaDeCargos.get(cmbCargos.getSelectedIndex()).getCodigo());
         
-        fBLL.getLogin().getCodCadastro().setCodigoDeCadastro("12345");
+        fBLL.getLogin().getCodCadastro().setCodigoDeCadastro(txtCodCadastro.getText());
         fBLL.getLogin().setUsuario(txtUsuario.getText());
         fBLL.getLogin().setSenha(String.valueOf(txtSenha.getPassword()));
         
@@ -347,6 +371,8 @@ public class frmCadFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -362,9 +388,11 @@ public class frmCadFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField txtCodCadastro;
     private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtLogradouro;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
+    private javax.swing.JTextField txtPais;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

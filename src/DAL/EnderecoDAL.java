@@ -13,7 +13,7 @@ public class EnderecoDAL {
     public boolean Cadastrar(EnderecoBLL eBLL){
         
         //CRIANDO COMANDO SQL
-        String comandoSQL = "INSERT INTO ENDERECOS (logradouro, numero, cep, bairro, ativo) VALUES (?, ?,?, ?, ?);";
+        String comandoSQL = "INSERT INTO ENDERECOS (logradouro, numero, cep, bairro, CIDADE, ESTADO, PAIS, ativo) VALUES (?, ?,?, ?, ?, ?, ?, ?);";
         
         // TRATAMENTO DE ERRO
         try{
@@ -22,8 +22,11 @@ public class EnderecoDAL {
             query.setString(1,eBLL.getLogradouro());
             query.setString(2,eBLL.getNumero());
             query.setString(3,eBLL.getCep());
-            query.setInt(4,eBLL.getBairro().getCodigo());
-            query.setBoolean(5,eBLL.isAtivo());
+            query.setString(4,eBLL.getBairro().getNome());
+            query.setString(5,eBLL.getBairro().getCidade().getNome());
+            query.setString(6,eBLL.getBairro().getCidade().getEstado().getNome());
+            query.setString(7,eBLL.getBairro().getCidade().getEstado().getPais().getPaisPt());
+            query.setBoolean(8,eBLL.isAtivo());
             
             // EXECUTAR COMANDO
             query.executeUpdate();
