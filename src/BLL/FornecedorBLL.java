@@ -1,6 +1,7 @@
 
 package BLL;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class FornecedorBLL {
@@ -12,6 +13,11 @@ public class FornecedorBLL {
     private String email;
     private boolean ativo;
     private List<TelefoneBLL> telefones;
+
+    public FornecedorBLL() {
+        this.telefones = new LinkedList<>();
+        this.endereco = new EnderecoBLL();
+    }
 
     /**
      * @return the codigo

@@ -1,6 +1,7 @@
 
 package BLL;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class AluguelBLL {
@@ -12,6 +13,13 @@ public class AluguelBLL {
     private ClienteBLL cliente;
     private List<CopiaParaAlugarBLL> copiasDoAluguel;
     private List<EquipamentoDaLojaBLL> equipamentosDoAluguel;
+
+    public AluguelBLL() {
+        //INICIALIZAR TODOS OS OBJETOS
+        this.equipamentosDoAluguel = new LinkedList<>();
+        this.copiasDoAluguel = new LinkedList<>();
+        this.cliente = new ClienteBLL();
+    }
 
     /**
      * @return the codigo

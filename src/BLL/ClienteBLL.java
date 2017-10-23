@@ -1,6 +1,7 @@
 package BLL;
 
 import DAL.ClienteDAL;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ClienteBLL {
@@ -10,6 +11,11 @@ public class ClienteBLL {
     protected String email;
     protected EnderecoBLL endereco;
     protected List<TelefoneBLL> telefones;
+
+    public ClienteBLL() {
+        this.telefones = new LinkedList<>();
+        this.endereco = new EnderecoBLL();
+    }
 
     /**
      * @return the codigo

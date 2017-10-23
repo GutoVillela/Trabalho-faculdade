@@ -13,6 +13,10 @@ public class EquipamentoDaLojaBLL {
     
     private EquipamentoDaLojaDAL elDAL = new EquipamentoDaLojaDAL();
 
+    public EquipamentoDaLojaBLL() {
+        this.tipo = new TipoEquipamentoBLL();
+    }
+
     /**
      * @return the codigo
      */

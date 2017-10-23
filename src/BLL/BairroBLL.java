@@ -7,6 +7,10 @@ public class BairroBLL {
     private String nome;
     private CidadeBLL cidade;
 
+    public BairroBLL() {
+        this.cidade = new CidadeBLL();
+    }
+
     /**
      * @return the codigo
      */

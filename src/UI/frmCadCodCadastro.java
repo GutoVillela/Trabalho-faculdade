@@ -40,6 +40,11 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         cmbCargos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnCadCargo.setText("OUTRO");
+        btnCadCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadCargoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,6 +89,14 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         
         AtualizarCargos();// ATUALIZAR A LISTA DE CARGOS ASSIM QUE O FORMULÁRIO ABRIR
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnCadCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadCargoActionPerformed
+        // TODO add your handling code here:
+        
+        frmCadCargo cadCargo = new frmCadCargo();
+        cadCargo.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        cadCargo.setVisible(true);
+    }//GEN-LAST:event_btnCadCargoActionPerformed
 
     /**
      * @param args the command line arguments

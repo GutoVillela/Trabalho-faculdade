@@ -11,6 +11,10 @@ public class CredencialDeAcessoBLL {
     private CodigoDeCadastroBLL codCadastro;
     
     private CredencialDeAcessoDAL cDAL = new CredencialDeAcessoDAL();
+
+    public CredencialDeAcessoBLL() {
+        this.codCadastro = new CodigoDeCadastroBLL();
+    }
     
     /**
      * @return the usuario

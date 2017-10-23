@@ -8,5 +8,10 @@ public class CopiaParaAlugarBLL {
     private PlataformaBLL plataforma;
     private int quantidade;
     private boolean ativo;
+
+    public CopiaParaAlugarBLL() {
+        this.plataforma = new PlataformaBLL();
+        this.titulo = new TituloBLL();
+    }
     
 }

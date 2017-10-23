@@ -8,6 +8,10 @@ public class CopiaParaVenderBLL extends ProdutoBLL{
     private TituloBLL titulo;
     private PlataformaBLL plataforma;
 
+    public CopiaParaVenderBLL() {
+        this.plataforma = new PlataformaBLL();
+    }
+
     /**
      * @return the codigo
      */

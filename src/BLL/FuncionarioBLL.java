@@ -2,6 +2,7 @@
 package BLL;
 
 import DAL.FuncionarioDAL;
+import java.util.LinkedList;
 import java.util.List;
 
 public class FuncionarioBLL {
@@ -18,6 +19,14 @@ public class FuncionarioBLL {
     private FuncionarioDAL fDAL = new FuncionarioDAL();
     
     private boolean ativo;
+
+    public FuncionarioBLL() {
+        //INICIALIZAR TODOS OS OBJETOS
+        endereco = new EnderecoBLL();
+        cargo = new CargoBLL();
+        login = new CredencialDeAcessoBLL();
+        this.telefones = new LinkedList<>();
+    }
 
     /**
      * @return the codigo
@@ -147,7 +156,6 @@ public class FuncionarioBLL {
     
     // MÉTODOS
     public boolean Cadastrar(){
-        login.Cadastrar();
-        return fDAL.Cadastrar(this);
+        return endereco.Cadastrar() && login.Cadastrar() && fDAL.Cadastrar(this); // O IDEAL É CADASTRAR O ENDEREÇO, AS CREDENCIAIS DE ACESSO E DEPOIS ELE MESMO
     }
 }

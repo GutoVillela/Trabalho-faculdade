@@ -1,5 +1,6 @@
 package BLL;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class VendaBLL {
@@ -9,6 +10,11 @@ public class VendaBLL {
     private String dataDaVenda;
     private boolean ativo;
     private List<ProdutoBLL> itensDaVenda;
+
+    public VendaBLL() {
+        this.itensDaVenda = new LinkedList<>();
+        this.cliente = new ClienteBLL();
+    }
 
     /**
      * @return the codigo

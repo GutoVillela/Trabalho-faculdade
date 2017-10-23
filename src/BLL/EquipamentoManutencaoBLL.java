@@ -12,6 +12,10 @@ public class EquipamentoManutencaoBLL {
     
     private EquipamentoManutencaoDAL emDAL = new EquipamentoManutencaoDAL();
 
+    public EquipamentoManutencaoBLL() {
+        this.tipo = new TipoEquipamentoBLL();
+    }
+
     /**
      * @return the codigo
      */

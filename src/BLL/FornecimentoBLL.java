@@ -9,6 +9,11 @@ public class FornecimentoBLL {
     private float preco;
     private int quantidadeFornecida;
 
+    public FornecimentoBLL() {
+        this.produto = new ProdutoBLL();
+        this.fornecedor = new FornecedorBLL();
+    }
+
     /**
      * @return the fornecedor
      */

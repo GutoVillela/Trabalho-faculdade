@@ -9,7 +9,7 @@ public class FuncionarioDAL {
     
     public boolean Cadastrar(FuncionarioBLL fBLL){
         // CRIANDO COMANDO SQL
-        String comandoSQL = "INSERT INTO Funcionarios (nome, cpf, email, endereco, cargo, login, ativo) VALUES (?, ?, ?, ?, ?, ?);";
+        String comandoSQL = "INSERT INTO Funcionarios (nome, cpf, email, endereco, cargo, login, ativo) VALUES (?, ?, ?, ?, ?, ?, ?);";
         
         // TRATAMENTO DE ERRO
         try {
@@ -19,9 +19,10 @@ public class FuncionarioDAL {
             query.setString(1, fBLL.getNome());
             query.setString(2, fBLL.getCpf());
             query.setString(3, fBLL.getEmail());
-            query.setInt(4, fBLL.getCargo().getCodigo());
-            query.setString(5, fBLL.getLogin().getUsuario());
-            query.setBoolean(6, fBLL.isAtivo());
+            query.setInt(4, 0);
+            query.setInt(5, fBLL.getCargo().getCodigo());
+            query.setString(6, fBLL.getLogin().getUsuario());
+            query.setBoolean(7, fBLL.isAtivo());
             
             // EXECUTAR COMANDO
             query.executeUpdate();

@@ -10,6 +10,10 @@ public class CidadeBLL {
     private String nome;
     private EstadoBLL estado;
 
+    public CidadeBLL() {
+        this.estado = new EstadoBLL();
+    }
+
     /**
      * @return the codigo
      */

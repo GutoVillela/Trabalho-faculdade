@@ -1,6 +1,8 @@
 
 package BLL;
 
+import DAL.EnderecoDAL; // IMPORTAÇÃO DA RESPECTIVA CLASSE DAL
+
 public class EnderecoBLL {
     
     private int codigo;
@@ -9,6 +11,12 @@ public class EnderecoBLL {
     private String cep;
     private BairroBLL bairro;
     private boolean ativo;
+    
+    private EnderecoDAL eDAL = new EnderecoDAL();
+
+    public EnderecoBLL() {
+        this.bairro = new BairroBLL();
+    }
 
     /**
      * @return the codigo
@@ -94,5 +102,9 @@ public class EnderecoBLL {
         this.ativo = ativo;
     }
     
+    // MÉTODOS
+    public boolean Cadastrar(){
+        return eDAL.Cadastrar(this);
+    }
     
 }

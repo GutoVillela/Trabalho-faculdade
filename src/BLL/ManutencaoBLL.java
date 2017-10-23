@@ -1,6 +1,7 @@
 
 package BLL;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class ManutencaoBLL {
@@ -14,6 +15,12 @@ public class ManutencaoBLL {
     private boolean ativo;
     private List<TipoManutencaoBLL> tipos;
     private List<EquipamentoDaManutencaoBLL> equipamentosDaManutencao;
+
+    public ManutencaoBLL() {
+        this.equipamentosDaManutencao = new LinkedList<>();
+        this.tipos = new LinkedList<>();
+        this.tecnicoResponsavel = new FuncionarioBLL();
+    }
 
     /**
      * @return the codigo

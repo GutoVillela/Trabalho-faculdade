@@ -8,6 +8,10 @@ public class EstadoBLL {
     private String uf;
     private PaisBLL pais;
 
+    public EstadoBLL() {
+        this.pais = new PaisBLL();
+    }
+
     /**
      * @return the codigo
      */

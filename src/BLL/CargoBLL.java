@@ -11,6 +11,10 @@ public class CargoBLL {
     private PermissaoBLL permissao;
     private boolean ativo;
 
+    public CargoBLL() {
+        this.permissao = new PermissaoBLL();
+    }
+
     /**
      * @return the codigo
      */
