@@ -23,6 +23,7 @@ public class frmLogin extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btnGerarBanco = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,6 +49,8 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("GABRIEL VIADINHO");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -67,7 +70,8 @@ public class frmLogin extends javax.swing.JFrame {
                             .addComponent(btnGerarBanco)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtUsuario)
-                                .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))))
+                                .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
+                            .addComponent(jLabel4)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(177, 177, 177)
                         .addComponent(jLabel3)))
@@ -80,7 +84,9 @@ public class frmLogin extends javax.swing.JFrame {
                 .addComponent(btnGerarBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -189,6 +195,7 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
