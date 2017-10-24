@@ -5,6 +5,9 @@
  */
 package UI;
 
+import BLL.PessoaFisicaBLL;
+import BLL.TelefoneBLL;
+
 /**
  *
  * @author 8939641
@@ -230,6 +233,11 @@ public class frmCadCliente extends javax.swing.JFrame {
         jLabel16.setText("-");
 
         btncadastro.setText("CADASTRAR");
+        btncadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncadastroActionPerformed(evt);
+            }
+        });
 
         btnlimpar.setText("LIMPAR");
 
@@ -606,6 +614,35 @@ public class frmCadCliente extends javax.swing.JFrame {
     private void btncancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelar1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btncancelar1ActionPerformed
+
+    private void btncadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncadastroActionPerformed
+        PessoaFisicaBLL pbll = new PessoaFisicaBLL();
+        pbll.setNome(txtnome.getText());
+        pbll.setCpf(txtcpf.getText().replace(".", "").replace("-", ""));
+        pbll.getEndereco().setLogradouro(cmbLogradouro.getSelectedItem()+" "+txtLogradouro.getText());
+        pbll.getEndereco().getBairro().setNome(txtBairro.getText());
+        pbll.getEndereco().setNumero(txtNumero.getText());
+        pbll.getEndereco().getBairro().getCidade().setNome(txtCidade.getText());
+        pbll.getEndereco().getBairro().getCidade().getEstado().setNome(txtEstado.getText());
+        pbll.getEndereco().getBairro().getCidade().getEstado().getPais().setPaisPt(txtPais.getText());
+        
+        TelefoneBLL telefone1 = new TelefoneBLL();
+        telefone1.setDdd(txtddd.getText());
+        telefone1.setNumero(txttelefone.getText());
+        telefone1.setAtivo(true);
+        
+        TelefoneBLL celular1 = new TelefoneBLL();
+        celular1.setDdd(txtddd2.getText());
+        celular1.setNumero(txtcelular.getText());
+        celular1.setAtivo(true);
+        
+        pbll.getTelefones().add(celular1);
+        pbll.getTelefones().add(telefone1);
+        pbll.setEmail(txtemail.getText());
+        
+        pbll.Cadastrar();
+        
+    }//GEN-LAST:event_btncadastroActionPerformed
 
     /**
      * @param args the command line arguments
