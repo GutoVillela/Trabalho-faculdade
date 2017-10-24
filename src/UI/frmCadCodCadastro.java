@@ -2,19 +2,28 @@
 package UI;
 
 import BLL.CargoBLL; // IMPORTAÇÃO DA CLASSE BLL NECESSÁRIA
+import BLL.CodigoDeCadastroBLL;
+import java.util.LinkedList;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public class frmCadCodCadastro extends javax.swing.JFrame {
 
+    private CargoBLL cBLL = new CargoBLL();// INSTÂNCIA DA CLASSE DE CARGO
+    private List<CargoBLL> listaDeCargos;
+    private CodigoDeCadastroBLL ccBLL = new CodigoDeCadastroBLL();
+    private List<CodigoDeCadastroBLL> listaDeCodigos = new LinkedList<>();
+    DefaultTableModel tableModel; // MODEL DA TABELA
+    
     /**
      * Creates new form frmCadCodCadastro
      */
     public frmCadCodCadastro() {
         initComponents();
+        tableModel = (DefaultTableModel) tblCodigosGerados.getModel(); // ASSOCIAR MODEL DA TABELA 
     }
 
-    private CargoBLL cBLL = new CargoBLL();// INSTÂNCIA DA CLASSE DE CARGO
-    private List<CargoBLL> listaDeCargos;
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,6 +36,12 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         cmbCargos = new javax.swing.JComboBox<>();
         btnCadCargo = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtQtdCodigos = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblCodigosGerados = new javax.swing.JTable();
+        btnCadCodigos = new javax.swing.JButton();
+        btnGerarCodigos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -46,18 +61,52 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("QUANTOS CÓDIGOS:");
+
+        tblCodigosGerados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Cargo"
+            }
+        ));
+        jScrollPane1.setViewportView(tblCodigosGerados);
+
+        btnCadCodigos.setText("CADASTRAR CÓDIGOS GERADOS");
+
+        btnGerarCodigos.setText("GERAR");
+        btnGerarCodigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerarCodigosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbCargos, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCadCargo)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnCadCodigos, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(20, 20, 20)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel1))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cmbCargos, 0, 225, Short.MAX_VALUE)
+                                .addComponent(txtQtdCodigos))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnCadCargo)
+                                .addComponent(btnGerarCodigos)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(56, 56, 56)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -67,7 +116,16 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(cmbCargos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCadCargo))
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtQtdCodigos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGerarCodigos))
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCadCodigos, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -97,6 +155,29 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         cadCargo.setDefaultCloseOperation(HIDE_ON_CLOSE);
         cadCargo.setVisible(true);
     }//GEN-LAST:event_btnCadCargoActionPerformed
+
+    private void btnGerarCodigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarCodigosActionPerformed
+        // TODO add your handling code here:
+        int qtdCodigos = Integer.valueOf(txtQtdCodigos.getText());
+        
+        int qtdCodigosJaGeradosParaCargo = 0;
+        
+        for (int i = 0; i < tableModel.getRowCount(); i++) {
+            
+            if(tableModel.getValueAt(i + 1, 2) == cmbCargos.getSelectedItem().toString()){
+                qtdCodigosJaGeradosParaCargo++;
+            }
+            
+        }
+        
+        for(int i = 0; i < qtdCodigos; i++){
+            int codigoDoCargo = listaDeCargos.get(cmbCargos.getSelectedIndex()).getCodigo();
+            tableModel.insertRow(tableModel.getRowCount(), new Object[] { ccBLL.GerarProximo(codigoDoCargo), cmbCargos.getSelectedItem().toString()});
+        }
+        
+        ccBLL.ResetarCodigos();
+        
+    }//GEN-LAST:event_btnGerarCodigosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,7 +216,13 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadCargo;
+    private javax.swing.JButton btnCadCodigos;
+    private javax.swing.JButton btnGerarCodigos;
     private javax.swing.JComboBox<String> cmbCargos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblCodigosGerados;
+    private javax.swing.JTextField txtQtdCodigos;
     // End of variables declaration//GEN-END:variables
 }
