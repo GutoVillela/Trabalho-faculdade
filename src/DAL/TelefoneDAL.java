@@ -1,33 +1,26 @@
 
 package DAL;
 
-import BLL.EnderecoBLL;
+import BLL.TelefoneBLL; // IMPORTAÇÃO DA RESPECTIVA CLASSE BLL
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
-public class EnderecoDAL {
+public class TelefoneDAL {
+    private Conexao con = new Conexao(); // INSTÂNCIA DA CLASSE DE CONEXÃO
     
-     private Conexao con = new Conexao(); // INSTÂNCIA DA CLASSE DE CONEXÃO
-    
-    public boolean Cadastrar(EnderecoBLL eBLL){
+    public boolean Cadastrar(TelefoneBLL tBLL){
         
         //CRIANDO COMANDO SQL
-        String comandoSQL = "INSERT INTO ENDERECOS (logradouro, numero, cep, bairro, CIDADE, ESTADO, PAIS, ativo) VALUES (?, ?,?, ?, ?, ?, ?, ?);";
+        String comandoSQL = "INSERT INTO Telefones (ddd, numero, ativo) VALUES (?, ?, ?);";
         
         // TRATAMENTO DE ERRO
         try{
             //PREPARANDO COMANDO PARA SER EXECUTADO
             PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
-            query.setString(1,eBLL.getLogradouro());
-            query.setString(2,eBLL.getNumero());
-            query.setString(3,eBLL.getCep());
-            query.setString(4,eBLL.getBairro().getNome());
-            query.setString(5,eBLL.getBairro().getCidade().getNome());
-            query.setString(6,eBLL.getBairro().getCidade().getEstado().getNome());
-            query.setString(7,eBLL.getBairro().getCidade().getEstado().getPais().getPaisPt());
-            query.setBoolean(8,eBLL.isAtivo());
+            query.setString(1, tBLL.getDdd());
+            query.setString(2, tBLL.getNumero());
+            query.setBoolean(3, tBLL.isAtivo());
             
             // EXECUTAR COMANDO
             query.executeUpdate();
@@ -44,7 +37,7 @@ public class EnderecoDAL {
     
     public int RecuperarUltimaChavePrimaria(){
         //CRIANDO COMANDO SQL
-        String comandoSQL = "select count(codigo) as 'ID' from enderecos;";
+        String comandoSQL = "select count(codigo) as 'ID' from telefones;";
         
         //CRIANDO VARIÁVEL QUE VAI RECEBER O RESULTADO DA CONSULTA
         int ultimaChavePrimaria;

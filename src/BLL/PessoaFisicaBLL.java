@@ -1,10 +1,14 @@
 
 package BLL;
 
+import DAL.PessoaFisicaDAL;
+
 public class PessoaFisicaBLL extends ClienteBLL{
     
     private String nome;
     private String cpf;
+    
+    private PessoaFisicaDAL pfDAL = new PessoaFisicaDAL();
 
     /**
      * @return the nome
@@ -34,4 +38,9 @@ public class PessoaFisicaBLL extends ClienteBLL{
         this.cpf = cpf;
     }
     
+    // MÉTODOS
+    @Override
+    public boolean Cadastrar(){
+        return pfDAL.Cadastrar(this);
+    }
 }

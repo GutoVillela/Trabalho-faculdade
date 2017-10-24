@@ -17,6 +17,7 @@ public class ClienteBLL {
         this.endereco = new EnderecoBLL();
     }
 
+    private ClienteDAL cDAL = new ClienteDAL();
     /**
      * @return the codigo
      */
@@ -87,11 +88,15 @@ public class ClienteBLL {
         this.telefones = telefones;
     }
     
-    public void Cadastrar(){
+    public boolean Cadastrar(){
     
-        DAL.ClienteDAL cadastro = new ClienteDAL();
-        cadastro.CadastrarCliente(this);
         
+        return cDAL.Cadastrar(this);
+        
+    }
+    
+    public int RecuperarUltimaChavePrimaria(){
+        return cDAL.RecuperarUltimaChavePrimaria();
     }
     
     
