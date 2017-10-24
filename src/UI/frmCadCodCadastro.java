@@ -74,6 +74,11 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblCodigosGerados);
 
         btnCadCodigos.setText("CADASTRAR CÓDIGOS GERADOS");
+        btnCadCodigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadCodigosActionPerformed(evt);
+            }
+        });
 
         btnGerarCodigos.setText("GERAR");
         btnGerarCodigos.addActionListener(new java.awt.event.ActionListener() {
@@ -178,6 +183,10 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         ccBLL.ResetarCodigos();
         
     }//GEN-LAST:event_btnGerarCodigosActionPerformed
+
+    private void btnCadCodigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadCodigosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCadCodigosActionPerformed
 
     /**
      * @param args the command line arguments

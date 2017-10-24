@@ -140,6 +140,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="CADASTRAR C&#xd3;DIGOS GERADOS"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadCodigosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnGerarCodigos">
       <Properties>
