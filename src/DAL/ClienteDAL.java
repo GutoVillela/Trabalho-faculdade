@@ -2,6 +2,7 @@ package DAL;
 
 import BLL.ClienteBLL;
 import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
 
 public class ClienteDAL {
 
@@ -21,6 +22,7 @@ public class ClienteDAL {
             
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro");
         }
 
     }
