@@ -593,9 +593,9 @@ public class frmCadCargo extends javax.swing.JFrame {
 
         //CADASTRAR CARGO
         if (cBLL.Cadastrar()) {
-            JOptionPane.showMessageDialog(null, "CADASTROU O CARGO");
+            JOptionPane.showMessageDialog(null, "CADASTROU O CARGO", "Cadastro efetuado com sucesso", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "NÃO DEU CERTO :(");
+            JOptionPane.showMessageDialog(null, "NÃO DEU CERTO :(", "Erro", JOptionPane.ERROR_MESSAGE);
         }
 
 

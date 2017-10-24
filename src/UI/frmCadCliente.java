@@ -7,6 +7,7 @@ package UI;
 
 import BLL.PessoaFisicaBLL;
 import BLL.TelefoneBLL;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -639,8 +640,13 @@ public class frmCadCliente extends javax.swing.JFrame {
         pbll.getTelefones().add(celular1);
         pbll.getTelefones().add(telefone1);
         pbll.setEmail(txtemail.getText());
+        pbll.setAtivo(true);
         
-        pbll.Cadastrar();
+        if(pbll.Cadastrar()){
+            JOptionPane.showMessageDialog(null, "CADASTROU O CLIENTE", "Cadastro efetuado com sucesso", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "NÃO DEU CERTO :(", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
         
     }//GEN-LAST:event_btncadastroActionPerformed
 

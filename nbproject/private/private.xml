@@ -4,26 +4,20 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="NetBeans">
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/EnderecoDAL.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/EquipamentoDaLojaDAL.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/CidadeDAL.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/AcessorioDAL.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/PlataformaDAL.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/ClienteDAL.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/CredencialDeAcessoDAL.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/BairroDAL.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/FuncionarioDAL.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/Conexao.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/TituloDAL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmTelaPrincipal.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmLogin.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmCadCargo.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmCadFuncionario.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/CopiaParaVenderDAL.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/BLL/CodigoDeCadastroBLL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/PessoaFisicaDAL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmCadCliente.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/BLL/ClienteBLL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/BLL/PessoaFisicaBLL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/BLL/EnderecoBLL.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/PermissaoDAL.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/CodigoDeCadastroDAL.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/CargoDAL.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/TipoEquipamentoDAL.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmCadCodCadastro.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmCadAluguel.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/EquipamentoManutencaoDAL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/TelefoneDAL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/PessoaJuridicaDAL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/BLL/BairroBLL.java</file>
         </group>
     </open-files>
 </project-private>

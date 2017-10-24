@@ -107,4 +107,8 @@ public class EnderecoBLL {
         return eDAL.Cadastrar(this);
     }
     
+    public int RecuperarUltimaChavePrimaria(){
+        return eDAL.RecuperarUltimaChavePrimaria();
+    }
+    
 }

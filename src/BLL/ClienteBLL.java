@@ -90,7 +90,8 @@ public class ClienteBLL {
     
     public boolean Cadastrar(){
     
-        
+        this.endereco.Cadastrar();
+        this.endereco.setCodigo(endereco.RecuperarUltimaChavePrimaria());
         return cDAL.Cadastrar(this);
         
     }

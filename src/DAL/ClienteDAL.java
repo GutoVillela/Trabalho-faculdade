@@ -19,7 +19,7 @@ public class ClienteDAL {
             //PREPARANDO COMANDO PARA SER EXECUTADO
             PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
             query.setBoolean(1, cBLL.isAtivo());
-            query.setInt(1, cBLL.getEndereco().getCodigo());
+            query.setInt(2, cBLL.getEndereco().getCodigo());
             query.setString(3, cBLL.getEmail());
             
             // EXECUTAR COMANDO

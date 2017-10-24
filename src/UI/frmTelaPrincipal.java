@@ -36,6 +36,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         btnCadCodCadastro = new javax.swing.JMenuItem();
         btnCadCargo = new javax.swing.JMenuItem();
         btnCadAluguel = new javax.swing.JMenuItem();
+        btnCadCliente = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -87,6 +88,14 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
 
         btnCadAluguel.setText("ALUGUEL DE EQUIPAMENTO");
         jMenu1.add(btnCadAluguel);
+
+        btnCadCliente.setText("CLIENTE");
+        btnCadCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadClienteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnCadCliente);
 
         jMenuBar1.add(jMenu1);
 
@@ -155,6 +164,13 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         cadFuncionario.setVisible(true);
     }//GEN-LAST:event_btnFuncionarioActionPerformed
 
+    private void btnCadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadClienteActionPerformed
+        // TODO add your handling code here:
+        frmCadCliente cadCliente = new frmCadCliente();
+        cadCliente.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        cadCliente.setVisible(true);
+    }//GEN-LAST:event_btnCadClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -193,6 +209,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnCadAluguel;
     private javax.swing.JMenuItem btnCadCargo;
+    private javax.swing.JMenuItem btnCadCliente;
     private javax.swing.JMenuItem btnCadCodCadastro;
     private javax.swing.JMenuItem btnCadEquipamento;
     private javax.swing.JMenuItem btnCadJogo;

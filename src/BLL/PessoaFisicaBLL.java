@@ -42,7 +42,7 @@ public class PessoaFisicaBLL extends ClienteBLL{
     @Override
     public boolean Cadastrar(){
         super.Cadastrar();
-        this.codigo=super.RecuperarUltimaChavePrimaria();
+        this.codigo = super.RecuperarUltimaChavePrimaria();
         return pfDAL.Cadastrar(this);
     }
 }
