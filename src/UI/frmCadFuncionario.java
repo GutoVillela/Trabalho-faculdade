@@ -7,8 +7,11 @@ package UI;
 
 import BLL.BairroBLL;
 import BLL.CargoBLL;
+import BLL.CodigoDeCadastroBLL;
 import BLL.EnderecoBLL;
 import BLL.FuncionarioBLL;
+import DAL.CodigoDeCadastroDAL;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -67,6 +70,8 @@ public class frmCadFuncionario extends javax.swing.JFrame {
         txtSenha = new javax.swing.JPasswordField();
         jLabel12 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
+        btnValidarCodCadastro = new javax.swing.JButton();
+        lblValidarCodigo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -126,7 +131,7 @@ public class frmCadFuncionario extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 13, Short.MAX_VALUE)))
+                                .addGap(0, 151, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
@@ -195,6 +200,16 @@ public class frmCadFuncionario extends javax.swing.JFrame {
 
         jLabel12.setText("EMAIL: ");
 
+        btnValidarCodCadastro.setText("VALIDAR");
+        btnValidarCodCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValidarCodCadastroActionPerformed(evt);
+            }
+        });
+
+        lblValidarCodigo.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblValidarCodigo.setText("INSIRA O CÓDIGO DE CADASTRO PARA CONTINUAR");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -202,10 +217,7 @@ public class frmCadFuncionario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(316, 316, 316)
-                        .addComponent(btnCadFuncionario))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -218,13 +230,7 @@ public class frmCadFuncionario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmbCargos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCodCadastro))
+                                .addComponent(cmbCargos, 0, 354, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(76, 76, 76)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -239,13 +245,35 @@ public class frmCadFuncionario extends javax.swing.JFrame {
                                             .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(7, 7, 7)
-                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblValidarCodigo)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCodCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnValidarCodCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(451, Short.MAX_VALUE)
+                        .addComponent(btnCadFuncionario)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtCodCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnValidarCodCadastro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblValidarCodigo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -255,17 +283,13 @@ public class frmCadFuncionario extends javax.swing.JFrame {
                     .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(cmbCargos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtCodCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -292,17 +316,39 @@ public class frmCadFuncionario extends javax.swing.JFrame {
         for (int i = 0; i < listaDeCargos.size(); i++) {
             cmbCargos.addItem(listaDeCargos.get(i).getCargo());
         }
+
+        this.setSize(this.getSize().width, 100);
+
+        BloquearOuDesbloquearCampos(false);
     }//GEN-LAST:event_formWindowOpened
+
+    private void BloquearOuDesbloquearCampos(boolean liberado) {
+        txtNome.setEnabled(liberado);
+        txtCpf.setEnabled(liberado);
+        cmbCargos.setEnabled(liberado);
+        cmbLogradouro.setEnabled(liberado);
+        txtLogradouro.setEnabled(liberado);
+        txtBairro.setEnabled(liberado);
+        txtNumero.setEnabled(liberado);
+        txtCep.setEnabled(liberado);
+        txtCidade.setEnabled(liberado);
+        txtEstado.setEnabled(liberado);
+        txtPais.setEnabled(liberado);
+        txtEmail.setEnabled(liberado);
+        txtUsuario.setEnabled(liberado);
+        txtSenha.setEnabled(liberado);
+        btnCadFuncionario.setEnabled(liberado);
+    }
 
     private void btnCadFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadFuncionarioActionPerformed
         // TODO add your handling code here:
-        
+
         //INSTANCIANDO E DEFININDO ATRIBUTOS PARA FUNCIONÁRIO
         FuncionarioBLL fBLL = new FuncionarioBLL();
         fBLL.setNome(txtNome.getText());
         fBLL.setCpf(txtCpf.getText().replace(".", "").replace("-", ""));
         fBLL.setEmail(txtEmail.getText());
-        
+
         fBLL.getEndereco().setLogradouro(cmbLogradouro.getSelectedItem().toString() + txtLogradouro.getText());
         fBLL.getEndereco().setNumero(txtNumero.getText());
         fBLL.getEndereco().setCep(txtCep.getText());
@@ -310,24 +356,47 @@ public class frmCadFuncionario extends javax.swing.JFrame {
         fBLL.getEndereco().getBairro().getCidade().setNome(txtCidade.getText());
         fBLL.getEndereco().getBairro().getCidade().getEstado().setNome(txtEstado.getText());
         fBLL.getEndereco().getBairro().getCidade().getEstado().getPais().setPaisPt(txtPais.getText());
-        
+
         fBLL.getCargo().setCodigo(listaDeCargos.get(cmbCargos.getSelectedIndex()).getCodigo());
-        
+
         fBLL.getLogin().getCodCadastro().setCodigoDeCadastro(txtCodCadastro.getText());
         fBLL.getLogin().setUsuario(txtUsuario.getText());
         fBLL.getLogin().setSenha(String.valueOf(txtSenha.getPassword()));
-        
+
         fBLL.setAtivo(true);
-        
+
         //DEPOIS DE SETAR TODOS OS ATRIBUTOS, TENTAR CADASTRAR
         if (fBLL.Cadastrar()) {
-                JOptionPane.showMessageDialog(null, "Funcionário cadastrado com sucesso.", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Aconteceu um erro ao cadastrar o funcionário.", "ERRO", JOptionPane.ERROR_MESSAGE);
-            }
-        
+            JOptionPane.showMessageDialog(null, "Funcionário cadastrado com sucesso.", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Aconteceu um erro ao cadastrar o funcionário.", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnCadFuncionarioActionPerformed
 
+    private void btnValidarCodCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarCodCadastroActionPerformed
+
+        CodigoDeCadastroBLL ccBLL = new CodigoDeCadastroBLL();
+        ccBLL.setCodigoDeCadastro(txtCodCadastro.getText().trim());
+
+        CodigoDeCadastroDAL ccDAL = new CodigoDeCadastroDAL();
+
+        if (ccDAL.Validar(ccBLL)) {
+            lblValidarCodigo.setText("CÓDIGO VÁLIDO");
+            lblValidarCodigo.setForeground(Color.BLUE);
+            LiberarTelaCompleta();
+        } else {
+               lblValidarCodigo.setText("CÓDIGO INVÁLIDO");
+            lblValidarCodigo.setForeground(Color.RED);
+            
+        }
+
+    }//GEN-LAST:event_btnValidarCodCadastroActionPerformed
+
+    private void LiberarTelaCompleta(){
+        this.setSize(this.getSize().width, 700);
+        BloquearOuDesbloquearCampos(true);
+    }
     /**
      * @param args the command line arguments
      */
@@ -365,6 +434,7 @@ public class frmCadFuncionario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadFuncionario;
+    private javax.swing.JButton btnValidarCodCadastro;
     private javax.swing.JComboBox<String> cmbCargos;
     private javax.swing.JComboBox<String> cmbLogradouro;
     private javax.swing.JLabel jLabel1;
@@ -382,6 +452,7 @@ public class frmCadFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblValidarCodigo;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JFormattedTextField txtCep;
     private javax.swing.JTextField txtCidade;

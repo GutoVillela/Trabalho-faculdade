@@ -5,10 +5,16 @@ import BLL.CargoBLL; // IMPORTAÇÃO DA CLASSE BLL NECESSÁRIA
 import BLL.CodigoDeCadastroBLL;
 import java.util.LinkedList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.html.parser.DTDConstants;
 
 public class frmCadCodCadastro extends javax.swing.JFrame {
 
+    // CONSTANTES DE CONTROLE
+    private final int INDICE_COLUNA_COD_CADASTRO = 0; // ESTA CONSTANTE MAPEIA A POSIÇÃO DA COLUNA AONDE EXISTE O CÓDIGO DE CADASTRO NA TABELA
+    private final int INDICE_COLUNA_CARGO = 1; // ESTA CONSTANTE MAPEIA A POSIÇÃO DA COLUNA AONDE EXISTE O CARGO NA TABELA
+    
     private CargoBLL cBLL = new CargoBLL();// INSTÂNCIA DA CLASSE DE CARGO
     private List<CargoBLL> listaDeCargos;
     private CodigoDeCadastroBLL ccBLL = new CodigoDeCadastroBLL();
@@ -169,15 +175,28 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         
         for (int i = 0; i < tableModel.getRowCount(); i++) {
             
-            if(tableModel.getValueAt(i + 1, 2) == cmbCargos.getSelectedItem().toString()){
+            if(tableModel.getValueAt(i, INDICE_COLUNA_CARGO) == cmbCargos.getSelectedItem().toString()){
                 qtdCodigosJaGeradosParaCargo++;
             }
             
         }
         
+        CodigoDeCadastroBLL.qtdDeCodigosPreGerados = qtdCodigosJaGeradosParaCargo;
+        
         for(int i = 0; i < qtdCodigos; i++){
             int codigoDoCargo = listaDeCargos.get(cmbCargos.getSelectedIndex()).getCodigo();
-            tableModel.insertRow(tableModel.getRowCount(), new Object[] { ccBLL.GerarProximo(codigoDoCargo), cmbCargos.getSelectedItem().toString()});
+            //int proximoCodigo = Integer.parseInt(ccBLL.GerarProximo(codigoDoCargo)) + qtdCodigosJaGeradosParaCargo;
+            
+            String proximoCodigo = ccBLL.GerarProximo(codigoDoCargo);
+            
+            CodigoDeCadastroBLL codigoParaGerar = new CodigoDeCadastroBLL();
+            codigoParaGerar.setCodigoDeCadastro(proximoCodigo);
+            codigoParaGerar.getCargo().setCodigo(codigoDoCargo);
+            codigoParaGerar.setAtivo(true);
+            codigoParaGerar.setUtilizado(false);
+            
+            listaDeCodigos.add(codigoParaGerar);
+            tableModel.insertRow(tableModel.getRowCount(), new Object[] { proximoCodigo, cmbCargos.getSelectedItem().toString()});
         }
         
         ccBLL.ResetarCodigos();
@@ -185,7 +204,17 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGerarCodigosActionPerformed
 
     private void btnCadCodigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadCodigosActionPerformed
-        // TODO add your handling code here:
+        
+        if (ccBLL.Cadastrar(listaDeCodigos)) {
+            JOptionPane.showMessageDialog(null, "FOI SIM");
+        }
+        else
+            JOptionPane.showMessageDialog(null, "FOI NÃO :((");
+        
+        //REMOVER TODAS AS LINHAS
+        
+        
+        
     }//GEN-LAST:event_btnCadCodigosActionPerformed
 
     /**

@@ -96,4 +96,32 @@ public class CodigoDeCadastroDAL {
             return 0;
         }
     }
+    
+    public boolean Validar(CodigoDeCadastroBLL ccBLL){
+        
+        String comandoSQL = "SELECT * FROM Codigos_de_cadastro WHERE codigo_de_cadastro = ?;"; // COMANDO SQL
+        
+        try {
+            
+            PreparedStatement query = con.Conectar().prepareStatement(comandoSQL); // PREPARAR COMANDO PARA EXECUÇÃO
+            query.setString(1, ccBLL.getCodigoDeCadastro());// DEFININDO PARÂMETRO
+            
+            ResultSet resultadoConsulta = query.executeQuery();
+            
+            if (resultadoConsulta.next()) {
+                return true; // CÓDIGO EXISTE
+            }
+            else{
+                return false; // CÓDIGO NÃO EXISTE
+                
+            }
+            
+            
+        } catch (SQLException ex) {
+            
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + ex);
+            return false;
+        }
+        
+    }
 }

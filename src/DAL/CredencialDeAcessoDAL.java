@@ -33,9 +33,8 @@ public class CredencialDeAcessoDAL {
             
         } catch (SQLException ex) {
             
-            System.out.println("ERRO DE SQL. \n" + ex);
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + ex);
             return false;
-            
         }
         
     }
