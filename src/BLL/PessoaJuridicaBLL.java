@@ -1,10 +1,15 @@
 
 package BLL;
 
+import DAL.PessoaJuridicaDAL;
+
 public class PessoaJuridicaBLL extends ClienteBLL{
     
     private String razaoSocial;
     private String cnpj;
+    
+    private PessoaJuridicaDAL pjDAL = new PessoaJuridicaDAL();
+    
 
     /**
      * @return the razaoSocial
@@ -32,6 +37,13 @@ public class PessoaJuridicaBLL extends ClienteBLL{
      */
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+    
+    @Override
+    public boolean Cadastrar(){
+        super.Cadastrar();
+        this.codigo = super.RecuperarUltimaChavePrimaria();
+        return pjDAL.Cadastrar(this);
     }
     
 }

@@ -19,7 +19,7 @@ public class Conexao {
     private String driver = "com.mysql.jdbc.Driver"; // ESTA LINHA CHAMA O DRIVER
     private String url = "jdbc:mysql://localhost:3306/BD_LJ"; // ESTE É O ENDEREÇO DO BANCO DE DADOS (VAI SER UTILIZADO PARA RECUPERAR UMA STRING DE CONEXÃO MAIS A FRENTE)
     private String user = "root"; // USUÁRIO DO BANCO
-    private String password = ""; // ESTA É A SENHA PARA CONECTAR COM O BANCO DE DADOS
+    private String password = "63778158"; // ESTA É A SENHA PARA CONECTAR COM O BANCO DE DADOS
 
     public Connection Conectar() {
         conexao = null; // INICIAR UMA CONEXAO VAZIA
