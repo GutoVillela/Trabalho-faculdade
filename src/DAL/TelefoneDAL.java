@@ -35,6 +35,7 @@ public class TelefoneDAL {
         
     }
     
+    
     public int RecuperarUltimaChavePrimaria(){
         //CRIANDO COMANDO SQL
         String comandoSQL = "select count(codigo) as 'ID' from telefones;";
