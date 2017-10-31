@@ -6,6 +6,10 @@
 package UI;
 
 import BLL.AcessorioBLL;
+import BLL.PlataformaBLL;
+import BLL.TituloBLL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -19,9 +23,9 @@ public class frmCadProduto extends javax.swing.JFrame {
     public frmCadProduto() {
         initComponents();
     }
-    
+    List<TituloBLL> titulos = new ArrayList<TituloBLL>();
+    List<PlataformaBLL> plataformas = new ArrayList<PlataformaBLL>();
     private AcessorioBLL aBLL = new AcessorioBLL();
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,6 +69,12 @@ public class frmCadProduto extends javax.swing.JFrame {
         cmbPlataforma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusTraversalPolicyProvider(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setText("Tipo de produto: ");
 
@@ -245,25 +255,23 @@ public class frmCadProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
         frmCadPlataforma cadPlataforma = new frmCadPlataforma();
         cadPlataforma.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        cadPlataforma.setType(Type.UTILITY);
         cadPlataforma.setVisible(true);
     }//GEN-LAST:event_btnNovaPlataforma1ActionPerformed
 
     private void btnCadJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadJogoActionPerformed
         // TODO add your handling code here:
-        
+
         aBLL.setNome(txtNomeProduto.getText());
-        
-        
-        
-        
+
 
     }//GEN-LAST:event_btnCadJogoActionPerformed
 
     private void rdbJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbJogoActionPerformed
         // TODO add your handling code here:
-        
+
         if (rdbJogo.isSelected()) {
-            
+
             txtNomeProduto.setEnabled(false);
             cmbTipoAcessorio.setEnabled(false);
             btnNovoTipoAcessorio.setEnabled(false);
@@ -271,9 +279,8 @@ public class frmCadProduto extends javax.swing.JFrame {
             cmbPlataforma1.setEnabled(true);
             btnNovoTitulo.setEnabled(true);
             btnNovaPlataforma1.setEnabled(true);
-            
-        }
-        else{
+
+        } else {
             txtNomeProduto.setEnabled(true);
             cmbTipoAcessorio.setEnabled(true);
             btnNovoTipoAcessorio.setEnabled(true);
@@ -286,9 +293,9 @@ public class frmCadProduto extends javax.swing.JFrame {
 
     private void rdbAcessorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbAcessorioActionPerformed
         // TODO add your handling code here:
-        
+
         if (rdbJogo.isSelected()) {
-            
+
             txtNomeProduto.setEnabled(false);
             cmbTipoAcessorio.setEnabled(false);
             btnNovoTipoAcessorio.setEnabled(false);
@@ -296,9 +303,8 @@ public class frmCadProduto extends javax.swing.JFrame {
             cmbPlataforma1.setEnabled(true);
             btnNovoTitulo.setEnabled(true);
             btnNovaPlataforma1.setEnabled(true);
-            
-        }
-        else{
+
+        } else {
             txtNomeProduto.setEnabled(true);
             cmbTipoAcessorio.setEnabled(true);
             btnNovoTipoAcessorio.setEnabled(true);
@@ -307,8 +313,37 @@ public class frmCadProduto extends javax.swing.JFrame {
             btnNovoTitulo.setEnabled(false);
             btnNovaPlataforma1.setEnabled(false);
         }
-        
+
     }//GEN-LAST:event_rdbAcessorioActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        CarregarTitulos();
+        CarregarPlataformas();
+
+    }//GEN-LAST:event_formWindowOpened
+
+    private void CarregarTitulos() {
+        TituloBLL tBLL = new TituloBLL();
+        titulos = tBLL.Consultar();
+
+        cmbTitulo.removeAllItems();
+
+        for (int i = 0; i < titulos.size(); i++) {
+            cmbTitulo.addItem(titulos.get(i).getNome());
+        }
+    }
+
+    private void CarregarPlataformas() {
+        PlataformaBLL pBLL = new PlataformaBLL();
+        plataformas = pBLL.Consultar();
+
+        cmbPlataforma1.removeAllItems();
+
+        for (int i = 0; i < plataformas.size(); i++) {
+            cmbPlataforma1.addItem(plataformas.get(i).getPlataforma());
+        }
+    }
 
     /**
      * @param args the command line arguments

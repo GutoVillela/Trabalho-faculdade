@@ -100,5 +100,9 @@ public class ClienteBLL {
         return cDAL.RecuperarUltimaChavePrimaria();
     }
     
+    protected boolean AssociarTodosTelefoneDaLista(){
+        return cDAL.AssociarTodosTelefoneDaLista(this);
+    }
+    
     
 }

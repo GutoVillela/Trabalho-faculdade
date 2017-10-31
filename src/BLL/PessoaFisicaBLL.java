@@ -43,6 +43,23 @@ public class PessoaFisicaBLL extends ClienteBLL{
     public boolean Cadastrar(){
         super.Cadastrar();
         this.codigo = super.RecuperarUltimaChavePrimaria();
-        return pfDAL.Cadastrar(this);
+        
+        // CADASTRAR TODOS OS TELEFONES DA LISTA
+        for (int i = 0; i < telefones.size(); i++) {
+            if (telefones.get(i).Cadastrar()){
+                telefones.get(i).setCodigo(telefones.get(i).RecuperarUltimaChavePrimaria()); // RECUPERAR ÚLTIMA CHAVE PRIMÁRIA E COLOCAR DENTRO DO RESPECTIVO TELEFONE
+                System.out.println("TEL. COD: " + telefones.get(i).getCodigo());
+            }
+                
+        }
+        
+        //ASSOCIAR TODOS OS TELEFONES DA LISTA
+        boolean deuCertoTelefones = AssociarTodosTelefoneDaLista();
+        
+        // CADASTRAR PESSOA FÍSICA ASSOCIADA À CLIENTE
+        boolean deuCertoPessoaFisica = pfDAL.Cadastrar(this);
+        
+        // RETORNAR RESULTADOS DE AMBAS AS OPERAÇÕES
+        return deuCertoTelefones && deuCertoPessoaFisica;
     }
 }

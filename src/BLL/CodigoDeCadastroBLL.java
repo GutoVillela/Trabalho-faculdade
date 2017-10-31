@@ -95,7 +95,7 @@ public class CodigoDeCadastroBLL {
         String codigoGerado = String.valueOf(ccDAL.QuantidadeDeCodigosCadastradosEmUmCargo(this) + CodigoDeCadastroBLL.qtdDeCodigosPreGerados);
         
         //GERAR UM VETOR COM OS POSSÍVEIS CARACTERES
-        String[] caracteres = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+        String[] caracteres = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f"};
         // PREENCHER TODO O CÓDIGO DE CADASTRO
         do {
             if(codigoGerado.length() == 4 || codigoGerado.length() == 9 ||codigoGerado.length() == 14 ){

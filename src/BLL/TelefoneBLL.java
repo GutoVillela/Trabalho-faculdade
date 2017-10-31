@@ -3,12 +3,16 @@
  */
 package BLL;
 
+import DAL.TelefoneDAL; // IMPROTAÇÃO DA RESPECTIVA CLASSE BLL
+
 public class TelefoneBLL {
     //ATRIBUTOS DE TELEFONE
     private int codigo;
     private String ddd;
     private String numero;
     private boolean ativo;
+    
+    private TelefoneDAL tDAL = new TelefoneDAL();
 
     /**
      * @return the codigo
@@ -64,5 +68,14 @@ public class TelefoneBLL {
      */
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
+    }
+    
+    //MÉTODOS
+    public boolean Cadastrar(){
+        return tDAL.Cadastrar(this);
+    }
+    
+    public int RecuperarUltimaChavePrimaria(){
+        return tDAL.RecuperarUltimaChavePrimaria();
     }
 }

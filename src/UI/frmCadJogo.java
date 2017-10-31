@@ -6,6 +6,9 @@ import BLL.CopiaParaAlugarBLL;
 import BLL.CopiaParaVenderBLL;
 import BLL.PlataformaBLL;
 import BLL.TituloBLL;
+import java.awt.Dialog;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class frmCadJogo extends javax.swing.JFrame {
@@ -172,9 +175,24 @@ public class frmCadJogo extends javax.swing.JFrame {
 
     private void btnNovaPlataformaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaPlataformaActionPerformed
         // TODO add your handling code here:
-        frmCadPlataforma cadPlataforma = new frmCadPlataforma();
-        cadPlataforma.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        cadPlataforma.setVisible(true);
+        frmCadPlataforma cadPlataforma = new frmCadPlataforma(); // INSTÂNCIA DO JFRAME QUE EU VOU COPIAR
+        
+        JDialog dialogo = new JDialog(this, "TOMA NO SEU CU", true); // INSTÂNCIA DO JDIALOG QUE VAI RECEBER O MEU JFRAME
+        
+        // COLOCAR TODOS OS COMPONENTES DO JFRAME DENTRO DO MEU JDIALOG
+        for (int i = 0; i < cadPlataforma.getComponentCount(); i++) {
+            
+            dialogo.add(cadPlataforma.getComponent(i));
+            
+        }
+        
+        // DEFINIR TAMANHO do JDialog IDÊNTICO AO MEU JFRAME
+        dialogo.setSize(cadPlataforma.getSize());
+        
+        //EXIBIR DIÁLOGO PRONTO
+        dialogo.setVisible(true);
+        
+        
     }//GEN-LAST:event_btnNovaPlataformaActionPerformed
 
     private void btnCadJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadJogoActionPerformed

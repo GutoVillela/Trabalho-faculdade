@@ -728,11 +728,12 @@ public class frmCadCliente extends javax.swing.JFrame {
         
         TelefoneBLL celular1 = new TelefoneBLL();
         celular1.setDdd(txtddd2.getText().replace("(", "").replace(")", ""));
-        celular1.setNumero(txtcelular.getText());
+        celular1.setNumero(txtcelular.getText().replace("-", ""));
         celular1.setAtivo(true);
         
         pbll.getTelefones().add(celular1);
         pbll.getTelefones().add(telefone1);
+        
         pbll.setEmail(txtemail.getText());
         pbll.setAtivo(true);
         
@@ -768,6 +769,9 @@ public class frmCadCliente extends javax.swing.JFrame {
         celular2.setDdd(txtddd3.getText().replace("(", "").replace(")", ""));
         celular2.setNumero(txtcelular1.getText().replace("-", ""));
         celular2.setAtivo(true);
+        
+        pjbll.getTelefones().add(telefone2);
+        pjbll.getTelefones().add(celular2);
         
         if(pjbll.Cadastrar()){
             JOptionPane.showMessageDialog(null, "CADASTROU O CLIENTE", "Cadastro efetuado com sucesso", JOptionPane.INFORMATION_MESSAGE);

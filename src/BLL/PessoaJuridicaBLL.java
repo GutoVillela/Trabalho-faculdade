@@ -43,7 +43,27 @@ public class PessoaJuridicaBLL extends ClienteBLL{
     public boolean Cadastrar(){
         super.Cadastrar();
         this.codigo = super.RecuperarUltimaChavePrimaria();
-        return pjDAL.Cadastrar(this);
+        
+        // CADASTRAR TODOS OS TELEFONES DA LISTA
+        for (int i = 0; i < telefones.size(); i++) {
+            if (telefones.get(i).Cadastrar())
+                telefones.get(i).setCodigo(telefones.get(i).RecuperarUltimaChavePrimaria()); // RECUPERAR ÚLTIMA CHAVE PRIMÁRIA E COLOCAR DENTRO DO RESPECTIVO TELEFONE
+        }
+        
+        //ASSOCIAR TODOS OS TELEFONES DA LISTA
+        boolean deuCertoTelefones = AssociarTodosTelefoneDaLista();
+        
+        // CADASTRAR PESSOA JURÍDICA ASSOCIADA À CLIENTE
+        boolean deuCertoPessoaJuridica = pjDAL.Cadastrar(this);
+        
+        // RETORNAR RESULTADOS DE AMBAS AS OPERAÇÕES
+        return deuCertoTelefones && deuCertoPessoaJuridica;
     }
+    
+    private boolean AssociarTelefoneACliente(){
+        return true;
+    }
+    
+    
     
 }
