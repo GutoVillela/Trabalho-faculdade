@@ -1,10 +1,14 @@
 
 package DAL;
 
+
+import BLL.ClienteBLL;
 import BLL.PessoaFisicaBLL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PessoaFisicaDAL {
     private Conexao con = new Conexao(); // INSTÂNCIA DA CLASSE DE CONEXÃO
@@ -33,6 +37,41 @@ public class PessoaFisicaDAL {
         }
         
         
+    }
+    public List<PessoaFisicaBLL> ConsultarPorNome(String nome){
+    
+        String comandoSQL = "select nome, cpf, logradouro, email, telefones.numero from Pessoa_fisica inner join enderecos \n" +
+"on (Pessoa_fisica.codigo = Enderecos.codigo) \n" +
+"inner join clientes on (Pessoa_fisica.codigo = Clientes.codigo) \n" +
+"inner join telefones on (Pessoa_fisica.codigo = telefones.codigo)\n" +
+"where nome LIKE ? ;";
+
+        // TRATAMENTO DE ERRO
+        try {
+            //PREPARANDO COMANDO PARA SER EXECUTADO
+            PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
+            query.setString(1, nome);
+            List<PessoaFisicaBLL> listatelefone = new ArrayList<PessoaFisicaBLL>();
+            ResultSet consulta = query.executeQuery();
+            while (consulta.next()) {
+                PessoaFisicaBLL pfBLL = new PessoaFisicaBLL();
+                pfBLL.setNome(consulta.getString("nome"));
+                pfBLL.setCpf(consulta.getString("cpf"));
+                pfBLL.getEndereco().setLogradouro(consulta.getString("logradouro"));
+                pfBLL.setEmail(consulta.getString("email"));
+                
+                BLL.TelefoneBLL tBLL = new BLL.TelefoneBLL();
+                tBLL.setNumero(consulta.getString("numero"));
+                pfBLL.getTelefones().add(tBLL);
+                listatelefone.add(pfBLL);
+       
+            }
+            return listatelefone;
+        } catch (SQLException erro) {
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + erro);
+            return null;
+        }
+          
     }
     
     public int RecuperarUltimaChavePrimaria(){

@@ -2,6 +2,7 @@
 package BLL;
 
 import DAL.PessoaFisicaDAL;
+import java.util.List;
 
 public class PessoaFisicaBLL extends ClienteBLL{
     
@@ -52,6 +53,7 @@ public class PessoaFisicaBLL extends ClienteBLL{
             }
                 
         }
+     
         
         //ASSOCIAR TODOS OS TELEFONES DA LISTA
         boolean deuCertoTelefones = AssociarTodosTelefoneDaLista();
@@ -62,4 +64,12 @@ public class PessoaFisicaBLL extends ClienteBLL{
         // RETORNAR RESULTADOS DE AMBAS AS OPERAÇÕES
         return deuCertoTelefones && deuCertoPessoaFisica;
     }
+
+    public List<PessoaFisicaBLL> ConsultarPorNome(){
+        
+        return pfDAL.ConsultarPorNome(this.getNome());
+    }
+
 }
+
+    

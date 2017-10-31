@@ -4,6 +4,7 @@ import BLL.ClienteBLL; // IMPORTAÇÃO DA RESPECTIVA CLASSE BLL
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class ClienteDAL {
 
@@ -32,6 +33,7 @@ public class ClienteDAL {
         }
 
     }
+    
 
     public int RecuperarUltimaChavePrimaria() {
         //CRIANDO COMANDO SQL
