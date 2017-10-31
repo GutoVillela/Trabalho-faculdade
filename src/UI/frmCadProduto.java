@@ -6,10 +6,14 @@
 package UI;
 
 import BLL.AcessorioBLL;
+import BLL.CopiaParaVenderBLL;
 import BLL.PlataformaBLL;
+import BLL.TipoAcessorioBLL;
+import BLL.TipoEquipamentoBLL;
 import BLL.TituloBLL;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,9 +27,13 @@ public class frmCadProduto extends javax.swing.JFrame {
     public frmCadProduto() {
         initComponents();
     }
+
+    List<TipoAcessorioBLL> listaDeTiposDeAcessorios = new ArrayList<TipoAcessorioBLL>();
     List<TituloBLL> titulos = new ArrayList<TituloBLL>();
     List<PlataformaBLL> plataformas = new ArrayList<PlataformaBLL>();
     private AcessorioBLL aBLL = new AcessorioBLL();
+    private CopiaParaVenderBLL cpvBLL = new CopiaParaVenderBLL();
+    private TipoAcessorioBLL taBLL = new TipoAcessorioBLL();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -236,6 +244,18 @@ public class frmCadProduto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void AtualizarTiposDeAcessorio() {
+        // LIMPAR E CARREGAR LISTA COM AS PERMISSOES ENCONTRADAS
+        cmbTipoAcessorio.removeAllItems();
+        listaDeTiposDeAcessorios = taBLL.Consultar();
+
+        for (int i = 0; i < listaDeTiposDeAcessorios.size(); i++) {
+            cmbTipoAcessorio.addItem(String.valueOf(listaDeTiposDeAcessorios.get(i).getNome()));
+
+        }
+
+    }
+
     private void btnNovoTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoTituloActionPerformed
         // TODO add your handling code here:
         frmCadTitulo cadTitulo = new frmCadTitulo();
@@ -260,9 +280,34 @@ public class frmCadProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNovaPlataforma1ActionPerformed
 
     private void btnCadJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadJogoActionPerformed
-        // TODO add your handling code here:
 
-        aBLL.setNome(txtNomeProduto.getText());
+        if (rdbJogo.isSelected()) {
+            // DEFINIR ATRIBUTOS DA CÓPIA PARA VENDER
+            cpvBLL.setQuantidade(Integer.valueOf(txtQuantidade.getText()));
+            cpvBLL.setPreco(Float.valueOf(txtPreco.getText()));
+            cpvBLL.getTitulo().setCodigo(titulos.get(cmbTitulo.getSelectedIndex()).getCodigo());
+            cpvBLL.getPlataforma().setCodigo(plataformas.get(cmbPlataforma1.getSelectedIndex()).getCodigo());
+            cpvBLL.setAtivo(true);
+
+            if (cpvBLL.Cadastrar()) {
+                JOptionPane.showMessageDialog(null, "FOI MANOOO");
+            } else {
+                JOptionPane.showMessageDialog(null, "NÃO FOI DESTA VEZ QUE EU CONSEGUI :(");
+            }
+        } else {
+            // DEFINIR ATRIBUTOS DO ACESSÓRIO   
+            aBLL.setNome(txtNomeProduto.getText());
+            aBLL.setQuantidade(Integer.valueOf(txtQuantidade.getText()));
+            aBLL.setPreco(Float.valueOf(txtPreco.getText()));
+            aBLL.getTipo().setCodigo(listaDeTiposDeAcessorios.get(cmbTipoAcessorio.getSelectedIndex()).getCodigo());
+            aBLL.setAtivo(true);
+
+            if (aBLL.Cadastrar()) {
+                JOptionPane.showMessageDialog(null, "FOI MANOOO");
+            } else {
+                JOptionPane.showMessageDialog(null, "NÃO FOI DESTA VEZ QUE EU CONSEGUI :(");
+            }
+        }
 
 
     }//GEN-LAST:event_btnCadJogoActionPerformed
@@ -320,6 +365,7 @@ public class frmCadProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
         CarregarTitulos();
         CarregarPlataformas();
+        AtualizarTiposDeAcessorio();
 
     }//GEN-LAST:event_formWindowOpened
 

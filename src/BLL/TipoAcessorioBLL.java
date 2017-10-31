@@ -1,11 +1,16 @@
 
 package BLL;
 
+import DAL.TipoAcessorioDAL;
+import java.util.List;
+
 public class TipoAcessorioBLL {
     
     private int codigo;
     private String nome;
     private boolean ativo;
+    
+    private TipoAcessorioDAL taDAL = new TipoAcessorioDAL();
 
     /**
      * @return the codigo
@@ -47,6 +52,15 @@ public class TipoAcessorioBLL {
      */
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
+    }
+    
+    // MÉTODOS
+    public List<TipoAcessorioBLL> Consultar(){
+        return taDAL.Consultar();
+    }
+
+    public boolean Cadastrar() {
+        return taDAL.Cadastrar(this);
     }
     
 }

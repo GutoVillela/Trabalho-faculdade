@@ -1,15 +1,15 @@
 
 package UI;
 
-import BLL.PlataformaBLL;
+import BLL.TipoAcessorioBLL;
 import javax.swing.JOptionPane;
 
-public class frmCadPlataforma extends javax.swing.JFrame {
+public class frmCadTipoAcessorio extends javax.swing.JFrame {
 
     /**
-     * Creates new form frmCadPlataforma
+     * Creates new form frmCadTipoAcessorio
      */
-    public frmCadPlataforma() {
+    public frmCadTipoAcessorio() {
         initComponents();
     }
 
@@ -23,18 +23,17 @@ public class frmCadPlataforma extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        txtPlataforma = new javax.swing.JTextField();
-        btnCadPlataforma = new javax.swing.JButton();
+        txtNomeTipoAcessorio = new javax.swing.JTextField();
+        btnCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("CADASTRAR PLATAFORMA");
 
-        jLabel1.setText("NOME DA PLATAFORMA: ");
+        jLabel1.setText("TIPO DO ACESSÓRIO: ");
 
-        btnCadPlataforma.setText("CADASTRAR PLATAFORMA");
-        btnCadPlataforma.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastrar.setText("CADASTRAR");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadPlataformaActionPerformed(evt);
+                btnCadastrarActionPerformed(evt);
             }
         });
 
@@ -43,43 +42,44 @@ public class frmCadPlataforma extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCadPlataforma)
+                    .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPlataforma, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                        .addComponent(txtNomeTipoAcessorio, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtPlataforma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(btnCadPlataforma, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                    .addComponent(txtNomeTipoAcessorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCadPlataformaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadPlataformaActionPerformed
-        // TODO add your handling code here:
-        PlataformaBLL pBLL = new PlataformaBLL(); // CRIANDO UM OBJETO BLL CORRESPONDENTE AO FORMULÁRIO
-        pBLL.setPlataforma(txtPlataforma.getText());
-        pBLL.setAtivo(true);
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         
-        if (pBLL.Cadastrar()) {
-            JOptionPane.showMessageDialog(null, "CADASTROU");
+        TipoAcessorioBLL taBLL = new TipoAcessorioBLL();
+        taBLL.setNome(txtNomeTipoAcessorio.getText());
+        taBLL.setAtivo(true);
+        
+        if (taBLL.Cadastrar()) {
+            JOptionPane.showMessageDialog(null, "Tipo de acessório cadastrado com sucesso!");
         }
-        else
-            JOptionPane.showMessageDialog(null, "NÃO CADASTROU");
-    }//GEN-LAST:event_btnCadPlataformaActionPerformed
+        else{
+            JOptionPane.showMessageDialog(null, "ALGO DEU ERRADO :(");
+        }
+        
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -98,27 +98,27 @@ public class frmCadPlataforma extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmCadPlataforma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCadTipoAcessorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmCadPlataforma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCadTipoAcessorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmCadPlataforma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCadTipoAcessorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmCadPlataforma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCadTipoAcessorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmCadPlataforma().setVisible(true);
+                new frmCadTipoAcessorio().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadPlataforma;
+    private javax.swing.JButton btnCadastrar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtPlataforma;
+    private javax.swing.JTextField txtNomeTipoAcessorio;
     // End of variables declaration//GEN-END:variables
 }
