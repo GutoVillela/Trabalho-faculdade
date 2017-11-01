@@ -4,6 +4,7 @@ package DAL;
 
 import BLL.ClienteBLL;
 import BLL.PessoaFisicaBLL;
+import BLL.TelefoneBLL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,38 +41,79 @@ public class PessoaFisicaDAL {
     }
     public List<PessoaFisicaBLL> ConsultarPorNome(String nome){
     
-        String comandoSQL = "select nome, cpf, logradouro, email, telefones.numero from Pessoa_fisica inner join enderecos \n" +
+        String comandoSQL = "select * from Pessoa_fisica inner join enderecos \n" +
 "on (Pessoa_fisica.codigo = Enderecos.codigo) \n" +
-"inner join clientes on (Pessoa_fisica.codigo = Clientes.codigo) \n" +
-"inner join telefones on (Pessoa_fisica.codigo = telefones.codigo)\n" +
-"where nome LIKE ? ;";
+"inner join clientes on (clientes.codigo = pessoa_fisica.codigo)\n" +
+"where nome like ?;";
 
         // TRATAMENTO DE ERRO
         try {
             //PREPARANDO COMANDO PARA SER EXECUTADO
+            
             PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
-            query.setString(1, nome);
-            List<PessoaFisicaBLL> listatelefone = new ArrayList<PessoaFisicaBLL>();
+            query.setString(1, nome + "%");
+            List<PessoaFisicaBLL> listaPessoaFisica = new ArrayList<PessoaFisicaBLL>();
+           
             ResultSet consulta = query.executeQuery();
             while (consulta.next()) {
                 PessoaFisicaBLL pfBLL = new PessoaFisicaBLL();
+                pfBLL.setCodigo(consulta.getInt("codigo"));
                 pfBLL.setNome(consulta.getString("nome"));
                 pfBLL.setCpf(consulta.getString("cpf"));
                 pfBLL.getEndereco().setLogradouro(consulta.getString("logradouro"));
                 pfBLL.setEmail(consulta.getString("email"));
                 
-                BLL.TelefoneBLL tBLL = new BLL.TelefoneBLL();
-                tBLL.setNumero(consulta.getString("numero"));
-                pfBLL.getTelefones().add(tBLL);
-                listatelefone.add(pfBLL);
+                List<TelefoneBLL> listaTelefones = consultarTelefone(pfBLL.getCodigo());
+                pfBLL.setTelefones(listaTelefones);
+                listaPessoaFisica.add(pfBLL);
+                
+                System.out.println("NOME: " + pfBLL.getNome());
+                
+                
        
             }
-            return listatelefone;
+            return listaPessoaFisica;
         } catch (SQLException erro) {
             System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + erro);
             return null;
         }
           
+    }
+    public List<TelefoneBLL> consultarTelefone(int codCliente){
+        
+        
+        String comandoSQL = "select * from clientes_tem_telefones join telefones on (telefones.codigo = clientes_tem_telefones.telefone)\n" +
+"where cliente=?;";
+
+        // TRATAMENTO DE ERRO
+        try {
+            //PREPARANDO COMANDO PARA SER EXECUTADO
+            PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
+            query.setInt(1, codCliente);
+            List<TelefoneBLL> listaTel = new ArrayList<TelefoneBLL>();
+            ResultSet consulta = query.executeQuery();
+            
+            while (consulta.next()) {
+                
+                TelefoneBLL telefone = new TelefoneBLL();
+                telefone.setNumero(consulta.getString("numero"));
+                telefone.setCodigo(consulta.getInt("codigo"));
+                telefone.setDdd(consulta.getString("ddd"));
+                telefone.setAtivo(consulta.getBoolean("ativo"));
+                listaTel.add(telefone);
+                
+            
+                        
+            }
+
+            return listaTel;
+        
+        } catch (SQLException erro) {
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + erro);
+            return null;
+        }
+        
+        
     }
     
     public int RecuperarUltimaChavePrimaria(){

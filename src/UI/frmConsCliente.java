@@ -162,7 +162,7 @@ public class frmConsCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnbuscarnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarnomeActionPerformed
-        consultar.setNome(txtNome.getText());
+        consultar.setNome(txtconsultnome.getText());
         listaConsulta = consultar.ConsultarPorNome();
         
         DefaultListModel satanas = new DefaultListModel();
