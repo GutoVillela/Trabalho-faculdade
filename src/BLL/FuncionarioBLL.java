@@ -156,6 +156,19 @@ public class FuncionarioBLL {
     
     // MÉTODOS
     public boolean Cadastrar(){
-        return endereco.Cadastrar() && login.Cadastrar() && fDAL.Cadastrar(this); // O IDEAL É CADASTRAR O ENDEREÇO, AS CREDENCIAIS DE ACESSO E DEPOIS ELE MESMO
+        
+        // CADASTRAR ENDEREÇO E RECUPERAR CHAVE CADASTRADA
+        boolean deuCertoEndereco = endereco.Cadastrar();
+        this.endereco.setCodigo(endereco.RecuperarUltimaChavePrimaria());
+        
+        // CADASTRAR LOGIN
+        boolean deuCertoLogin = login.Cadastrar();
+        
+        // RETORNAR SE TODOS DERAM CERTO
+        return deuCertoEndereco && deuCertoLogin && fDAL.Cadastrar(this); // O IDEAL É CADASTRAR O ENDEREÇO, AS CREDENCIAIS DE ACESSO E DEPOIS ELE MESMO
+    }
+    
+    public List<FuncionarioBLL> Consultar (){
+        return fDAL.Consultar();
     }
 }

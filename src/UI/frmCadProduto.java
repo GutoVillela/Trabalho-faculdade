@@ -275,7 +275,6 @@ public class frmCadProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
         frmCadPlataforma cadPlataforma = new frmCadPlataforma();
         cadPlataforma.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        cadPlataforma.setType(Type.UTILITY);
         cadPlataforma.setVisible(true);
     }//GEN-LAST:event_btnNovaPlataforma1ActionPerformed
 

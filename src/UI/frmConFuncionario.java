@@ -5,6 +5,10 @@
  */
 package UI;
 
+import BLL.FuncionarioBLL;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Guto
@@ -32,7 +36,6 @@ public class frmConFuncionario extends javax.swing.JFrame {
         rdbNome = new javax.swing.JRadioButton();
         rdbCpf = new javax.swing.JRadioButton();
         rdbEmail = new javax.swing.JRadioButton();
-        rdbEndereco = new javax.swing.JRadioButton();
         rdbCargo = new javax.swing.JRadioButton();
         rdbUsuario = new javax.swing.JRadioButton();
         txtConsulta = new javax.swing.JTextField();
@@ -40,6 +43,11 @@ public class frmConFuncionario extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MÉTODO DE CONSULTA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 14))); // NOI18N
 
@@ -52,9 +60,6 @@ public class frmConFuncionario extends javax.swing.JFrame {
 
         btgMetodosDePesquisa.add(rdbEmail);
         rdbEmail.setText("EMAIL");
-
-        btgMetodosDePesquisa.add(rdbEndereco);
-        rdbEndereco.setText("ENDEREÇO");
 
         btgMetodosDePesquisa.add(rdbCargo);
         rdbCargo.setText("CARGO");
@@ -71,20 +76,20 @@ public class frmConFuncionario extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(232, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(rdbNome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(35, 35, 35)
                         .addComponent(rdbCpf)
-                        .addGap(4, 4, 4)
+                        .addGap(52, 52, 52)
                         .addComponent(rdbEmail)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rdbEndereco)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(50, 50, 50)
                         .addComponent(rdbCargo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rdbUsuario)))
-                .addContainerGap(232, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rdbUsuario)
+                        .addGap(171, 171, 171))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +99,6 @@ public class frmConFuncionario extends javax.swing.JFrame {
                     .addComponent(rdbNome)
                     .addComponent(rdbCpf)
                     .addComponent(rdbEmail)
-                    .addComponent(rdbEndereco)
                     .addComponent(rdbCargo)
                     .addComponent(rdbUsuario))
                 .addGap(18, 18, 18)
@@ -147,6 +151,22 @@ public class frmConFuncionario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+        FuncionarioBLL fBLL = new FuncionarioBLL();
+        List<FuncionarioBLL> listaDeFuncionarios = new ArrayList<FuncionarioBLL>();
+        listaDeFuncionarios = fBLL.Consultar();
+        
+        for (int i = 0; i < listaDeFuncionarios.size(); i++) {
+            FuncionarioBLL get = listaDeFuncionarios.get(i);
+            
+            System.out.println("NOME: " + get.getNome());
+            System.out.println("");
+            
+        }
+        
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -190,7 +210,6 @@ public class frmConFuncionario extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdbCargo;
     private javax.swing.JRadioButton rdbCpf;
     private javax.swing.JRadioButton rdbEmail;
-    private javax.swing.JRadioButton rdbEndereco;
     private javax.swing.JRadioButton rdbNome;
     private javax.swing.JRadioButton rdbUsuario;
     private javax.swing.JTextField txtConsulta;
