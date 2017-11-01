@@ -47,7 +47,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("CADASTRAR");
 
-        btnCadJogo.setText("JOGO");
+        btnCadJogo.setText("JOGO PARA ALUGAR");
         btnCadJogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadJogoActionPerformed(evt);

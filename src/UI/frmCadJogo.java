@@ -7,6 +7,7 @@ import BLL.CopiaParaVenderBLL;
 import BLL.PlataformaBLL;
 import BLL.TituloBLL;
 import java.awt.Dialog;
+import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,6 +20,9 @@ public class frmCadJogo extends javax.swing.JFrame {
     public frmCadJogo() {
         initComponents();
     }
+    
+    List<TituloBLL> titulos;
+    List<PlataformaBLL> plataformas;
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -144,40 +148,71 @@ public class frmCadJogo extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void AtualizarPlataformas(){
+        PlataformaBLL pBLL = new PlataformaBLL();
+        plataformas = pBLL.Consultar();
+        
+        
+        cmbPlataforma.removeAllItems();
+        
+        
+        for (int i = 0; i < plataformas.size(); i++) {
+            cmbPlataforma.addItem(plataformas.get(i).getPlataforma());
+        }
+    }
+    
+    private void AtualizarTitulos(){
+        TituloBLL tBLL = new TituloBLL();
+        titulos = tBLL.Consultar();
+        
+        cmbTitulo.removeAllItems();
+        
+        for (int i = 0; i < titulos.size(); i++) {
+            cmbTitulo.addItem(titulos.get(i).getNome());
+        }
+    }
+    
     private void btnNovoTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoTituloActionPerformed
         // TODO add your handling code here:
-        frmCadTitulo cadTitulo = new frmCadTitulo();
-        cadTitulo.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        cadTitulo.setVisible(true);
+        frmCadTitulo cadTitulo = new frmCadTitulo(); // INSTÂNCIA DO JFRAME QUE EU VOU COPIAR
+        
+        JDialog dialogo = new JDialog(this, cadTitulo.getTitle(), true); // INSTÂNCIA DO JDIALOG QUE VAI RECEBER O MEU JFRAME
+        
+        // COLOCAR TODOS OS COMPONENTES DO JFRAME DENTRO DO MEU JDIALOG
+        for (int i = 0; i < cadTitulo.getComponentCount(); i++) {
+            
+            dialogo.add(cadTitulo.getComponent(i));
+            
+        }
+        
+        // DEFINIR TAMANHO do JDialog IDÊNTICO AO MEU JFRAME
+        dialogo.setSize(cadTitulo.getSize());
+        
+        // DEIXAR A POSIÇÃO DO DIÁLOGO RELATIVO À ESTE FORM
+        dialogo.setLocationRelativeTo(this);
+        
+        //EXIBIR DIÁLOGO PRONTO
+        dialogo.setVisible(true);
+        
+        //DEPOIS DE EXIBIR O DIÁLOGO, ATUALIZAR TÍTULOS
+        AtualizarTitulos();
         
     }//GEN-LAST:event_btnNovoTituloActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         
-        TituloBLL tBLL = new TituloBLL();
-        java.util.List<TituloBLL> titulos = tBLL.Consultar();
+        AtualizarTitulos();
+        AtualizarPlataformas();
         
-        PlataformaBLL pBLL = new PlataformaBLL();
-        java.util.List<PlataformaBLL> plataformas = pBLL.Consultar();
         
-        cmbTitulo.removeAllItems();
-        cmbPlataforma.removeAllItems();
-        
-        for (int i = 0; i < titulos.size(); i++) {
-            cmbTitulo.addItem(titulos.get(i).getNome());
-        }
-        
-        for (int i = 0; i < plataformas.size(); i++) {
-            cmbPlataforma.addItem(plataformas.get(i).getPlataforma());
-        }
     }//GEN-LAST:event_formWindowOpened
 
     private void btnNovaPlataformaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaPlataformaActionPerformed
         // TODO add your handling code here:
         frmCadPlataforma cadPlataforma = new frmCadPlataforma(); // INSTÂNCIA DO JFRAME QUE EU VOU COPIAR
         
-        JDialog dialogo = new JDialog(this, "TOMA NO SEU CU", true); // INSTÂNCIA DO JDIALOG QUE VAI RECEBER O MEU JFRAME
+        JDialog dialogo = new JDialog(this, cadPlataforma.getTitle(), true); // INSTÂNCIA DO JDIALOG QUE VAI RECEBER O MEU JFRAME
         
         // COLOCAR TODOS OS COMPONENTES DO JFRAME DENTRO DO MEU JDIALOG
         for (int i = 0; i < cadPlataforma.getComponentCount(); i++) {
@@ -189,29 +224,30 @@ public class frmCadJogo extends javax.swing.JFrame {
         // DEFINIR TAMANHO do JDialog IDÊNTICO AO MEU JFRAME
         dialogo.setSize(cadPlataforma.getSize());
         
+        // DEIXAR A POSIÇÃO DO DIÁLOGO RELATIVO À ESTE FORM
+        dialogo.setLocationRelativeTo(this);
+        
         //EXIBIR DIÁLOGO PRONTO
         dialogo.setVisible(true);
+        
+        //DEPOIS DE EXIBIR O DIÁLOGO, ATUALIZAR PLATAFORMAS
+        AtualizarPlataformas();
         
         
     }//GEN-LAST:event_btnNovaPlataformaActionPerformed
 
     private void btnCadJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadJogoActionPerformed
-        // TODO add your handling code here:
-      
-       
-        BLL.CopiaParaVenderBLL cBLL = new CopiaParaVenderBLL();
-        BLL.TituloBLL tBLL = new TituloBLL();
-        BLL.PlataformaBLL pBLL = new PlataformaBLL();
+    
+       //DEFININDO ATRIBUTOS 
+        BLL.CopiaParaAlugarBLL cpaBLL = new CopiaParaAlugarBLL();
         
-        tBLL.setCodigo(cmbTitulo.getSelectedIndex());
-        pBLL.setCodigo(cmbPlataforma.getSelectedIndex());
-        
-        cBLL.setTitulo(tBLL);
-        cBLL.setPlataforma(pBLL);
-        cBLL.setQuantidade(Integer.valueOf(txtQuantidade.getText()));
+        cpaBLL.getTitulo().setCodigo(titulos.get(cmbTitulo.getSelectedIndex()).getCodigo());
+        cpaBLL.getPlataforma().setCodigo(plataformas.get(cmbPlataforma.getSelectedIndex()).getCodigo());
+        cpaBLL.setQuantidade(Integer.valueOf(txtQuantidade.getText()));
+        cpaBLL.setAtivo(true);
         
         // CADASTRAR
-        if (cBLL.Cadastrar()) {
+        if (cpaBLL.Cadastrar()) {
             JOptionPane.showMessageDialog(null, "DEU CERTO");
         }
         else{
