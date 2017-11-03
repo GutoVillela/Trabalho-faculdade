@@ -19,7 +19,7 @@ public class Conexao {
     private String driver = "com.mysql.jdbc.Driver"; // ESTA LINHA CHAMA O DRIVER
     private String url = "jdbc:mysql://localhost:3306/BD_LJ"; // ESTE É O ENDEREÇO DO BANCO DE DADOS (VAI SER UTILIZADO PARA RECUPERAR UMA STRING DE CONEXÃO MAIS A FRENTE)
     private String user = "root"; // USUÁRIO DO BANCO
-    private String password = "63778158"; // ESTA É A SENHA PARA CONECTAR COM O BANCO DE DADOS
+    private String password = ""; // ESTA É A SENHA PARA CONECTAR COM O BANCO DE DADOS
 
     public Connection Conectar() {
         conexao = null; // INICIAR UMA CONEXAO VAZIA
@@ -73,15 +73,16 @@ public class Conexao {
                 Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            // CRIAÇÃO DAS TABELAS
-            if (GerarTabelas()) {
-                //SE TUDO DER CERTO, RETORNAR TRUE
-                return true;
-            } else {
-                // SE A CRIAÇÃO DAS TABELAS FALHAR, RETORNAR FALSE
-                setErro(mensagemDeErroCriacaoTabelas);
-                return false;
+            //CRIAR PROCEDURE
+            CriarDeclararProcedureQueCriaTabelas();
+
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+            return ChamarProcedure();
 
         } catch (SQLException erro) {
             System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + erro);
@@ -91,10 +92,14 @@ public class Conexao {
 
     }
 
-    public boolean GerarTabelas() {
+    private boolean CriarDeclararProcedureQueCriaTabelas() {
         // CRIAR COMANDO SQL
-        String comandoSQL = "-- CRIAÇÃO DAS TABELAS\n"
-                + "CREATE TABLE IF NOT EXISTS Telefones(\n"
+        String comandoSQL = "CREATE PROCEDURE BD_LJ.GerarTabelas ()\n"
+                + "\n"
+                + "	BEGIN\n"
+                + "\n"
+                + "-- CRIAÇÃO DAS TABELAS\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Telefones(\n"
                 + "	codigo int auto_increment,\n"
                 + "    ddd char(2),\n"
                 + "    numero char(9) not null,\n"
@@ -102,14 +107,14 @@ public class Conexao {
                 + "    primary key (codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Paises (\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Paises (\n"
                 + "  codigo int NOT NULL AUTO_INCREMENT,\n"
                 + "  paisPt varchar(50) NOT NULL,\n"
                 + "  paisEn varchar(50) NOT NULL,\n"
                 + "  PRIMARY KEY (codigo)\n"
                 + ");\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Estados (\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Estados (\n"
                 + "    codigo   INT		  NOT NULL AUTO_INCREMENT,\n"
                 + "    CodigoUf INT          NOT NULL,\n"
                 + "    Nome     VARCHAR (50) NOT NULL,\n"
@@ -119,7 +124,7 @@ public class Conexao {
                 + "    foreign key (Pais) references Paises (codigo)\n"
                 + ");\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Cidades(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Cidades(\n"
                 + "	codigo 	 INT 		  NOT NULL AUTO_INCREMENT,\n"
                 + "	CodigoCidade INT		  NOT NULL,\n"
                 + "	Nome 	 VARCHAR(255) NOT NULL,\n"
@@ -128,7 +133,7 @@ public class Conexao {
                 + "    FOREIGN KEY (Estado) references Estados(codigo)\n"
                 + ");\n"
                 + "\n"
-                + "CREATE TABLE IF NOT EXISTS Bairros (\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Bairros (\n"
                 + "  codigo 	 INT 		  NOT NULL AUTO_INCREMENT,\n"
                 + "  CodigoBairro CHAR(10)	  NOT NULL,\n"
                 + "  Nome 	 VARCHAR(255) NOT NULL,\n"
@@ -137,7 +142,7 @@ public class Conexao {
                 + "  Foreign Key (Cidade) references Cidades (codigo)\n"
                 + ");\n"
                 + "/*\n"
-                + "CREATE TABLE IF NOT EXISTS Enderecos(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Enderecos(\n"
                 + "	codigo int auto_increment,\n"
                 + "    Logradouro VARCHAR (255),\n"
                 + "    Numero VARCHAR (20),\n"
@@ -149,7 +154,7 @@ public class Conexao {
                 + "    );\n"
                 + "	*/\n"
                 + "	\n"
-                + "CREATE TABLE IF NOT EXISTS Enderecos(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Enderecos(\n"
                 + "	codigo int auto_increment,\n"
                 + "    Logradouro VARCHAR (255),\n"
                 + "    Numero VARCHAR (20),\n"
@@ -159,11 +164,10 @@ public class Conexao {
                 + "	estado VARCHAR (255),\n"
                 + "	PAIS VARCHAR (255),\n"
                 + "	ativo bit,\n"
-                + "    Primary key (codigo),\n"
-                + "    foreign key (bairro) references Bairros (codigo)\n"
+                + "    Primary key (codigo)\n"
                 + "    );\n"
                 + "\n"
-                + "CREATE TABLE IF NOT EXISTS Clientes(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Clientes(\n"
                 + "	codigo int auto_increment,\n"
                 + "    ativo bit,\n"
                 + "    endereco int,\n"
@@ -172,7 +176,7 @@ public class Conexao {
                 + "    foreign key (endereco) references Enderecos (codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Pessoa_fisica(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Pessoa_fisica(\n"
                 + "	codigo int,\n"
                 + "    nome varchar (50) not null,\n"
                 + "    cpf char (11),\n"
@@ -180,7 +184,7 @@ public class Conexao {
                 + "    foreign key (codigo) references Clientes(codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Pessoa_jurudica(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Pessoa_jurudica(\n"
                 + "	codigo int,\n"
                 + "    razao_social varchar (50) not null,\n"
                 + "    cnpj char (14),\n"
@@ -188,7 +192,7 @@ public class Conexao {
                 + "    foreign key (codigo) references Clientes(codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Clientes_tem_telefones(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Clientes_tem_telefones(\n"
                 + "	cliente int,\n"
                 + "    telefone int,\n"
                 + "    primary key(cliente, telefone),\n"
@@ -196,7 +200,7 @@ public class Conexao {
                 + "    foreign key (telefone) references Telefones (codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Permissoes(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Permissoes(\n"
                 + "	codigo int auto_increment,\n"
                 + "    \n"
                 + "    pode_cadastrar_FORNECEDOR bit,\n"
@@ -326,7 +330,7 @@ public class Conexao {
                 + "    );\n"
                 + "	\n"
                 + "\n"
-                + "CREATE TABLE IF NOT EXISTS Cargos(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Cargos(\n"
                 + "	codigo int auto_increment,\n"
                 + "    cargo varchar (30) not null,\n"
                 + "    salario decimal (15,2) not null,\n"
@@ -336,7 +340,7 @@ public class Conexao {
                 + "    foreign key (permissao) references Permissoes (codigo)\n"
                 + "    );\n"
                 + "        \n"
-                + "CREATE TABLE IF NOT EXISTS Codigos_de_cadastro(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Codigos_de_cadastro(\n"
                 + "    codigo_De_Cadastro varchar (20) not null,\n"
                 + "    utilizado bit not null,\n"
                 + "	cargo int not null,\n"
@@ -345,7 +349,7 @@ public class Conexao {
                 + "	foreign key (cargo) references Cargos (codigo)\n"
                 + "    );\n"
                 + "	\n"
-                + "CREATE TABLE IF NOT EXISTS Credenciais_de_acesso(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Credenciais_de_acesso(\n"
                 + "	usuario varchar(20) not null,\n"
                 + "    senha varchar (20) not null,\n"
                 + "    cod_cadastro varchar (20) not null,\n"
@@ -354,7 +358,7 @@ public class Conexao {
                 + "    );\n"
                 + "\n"
                 + "\n"
-                + "CREATE TABLE IF NOT EXISTS Funcionarios(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Funcionarios(\n"
                 + "	codigo int auto_increment,\n"
                 + "    nome varchar (50) not null,\n"
                 + "    cpf char (11),\n"
@@ -369,7 +373,7 @@ public class Conexao {
                 + "    foreign key (login) references Credenciais_de_acesso (usuario)\n"
                 + "    );\n"
                 + "	\n"
-                + "CREATE TABLE IF NOT EXISTS Funcionarios_tem_telefones(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Funcionarios_tem_telefones(\n"
                 + "	funcionario int,\n"
                 + "    telefone int,\n"
                 + "	email int,\n"
@@ -378,7 +382,7 @@ public class Conexao {
                 + "    foreign key (telefone) references Telefones (codigo)\n"
                 + "    );\n"
                 + "\n"
-                + "CREATE TABLE IF NOT EXISTS Titulos(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Titulos(\n"
                 + "	codigo INT auto_increment,\n"
                 + "    NOME VARCHAR (50) NOT NULL,\n"
                 + "    SINOPSE VARCHAR(1000),\n"
@@ -386,14 +390,14 @@ public class Conexao {
                 + "    primary key(codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Plataformas(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Plataformas(\n"
                 + "	codigo INT auto_increment,\n"
                 + "    Plataforma VARCHAR(20) NOT NULL,\n"
                 + "	ativo bit,\n"
                 + "    primary key(codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Copias_para_alugar(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Copias_para_alugar(\n"
                 + "	codigo INT auto_increment,\n"
                 + "    titulo int not null,\n"
                 + "    plataforma int not null,\n"
@@ -404,7 +408,7 @@ public class Conexao {
                 + "    foreign key (plataforma) references Plataformas (codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Alugueis(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Alugueis(\n"
                 + "	codigo INT auto_increment,\n"
                 + "    horario_inicio datetime not null,\n"
                 + "    duracao time not null,\n"
@@ -414,7 +418,7 @@ public class Conexao {
                 + "    foreign key (CLiente) references Clientes (codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Copias_do_aluguel(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Copias_do_aluguel(\n"
                 + "	copia int,\n"
                 + "    aluguel int,\n"
                 + "    primary key (copia, aluguel),\n"
@@ -422,14 +426,14 @@ public class Conexao {
                 + "    foreign key (aluguel) references Alugueis (codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Tipos_equipamentos( -- ESTA É UMA TABELA AUXILIAR PARA CADASTRAR OS TIPOS DE EQUIPAMENTO\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Tipos_equipamentos( -- ESTA É UMA TABELA AUXILIAR PARA CADASTRAR OS TIPOS DE EQUIPAMENTO\n"
                 + "		codigo int auto_increment,\n"
                 + "        tipo varchar(20) not null,\n"
                 + "		ativo bit,\n"
                 + "        primary key(codigo)\n"
                 + "        );\n"
                 + "\n"
-                + "CREATE TABLE IF NOT EXISTS Equipamentos_da_loja(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Equipamentos_da_loja(\n"
                 + "	codigo int auto_increment,\n"
                 + "    tipo int not null,\n"
                 + "    nome varchar (20) not null,\n"
@@ -439,7 +443,7 @@ public class Conexao {
                 + "    foreign key (tipo) references Tipos_Equipamentos (codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Equipamentos_do_aluguel( -- ESTA ERA UMA ENTIDADE ASSOCIATIVA ENTRE ALUGUÉIS E EQUIPAMENTOS DA LOJA\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Equipamentos_do_aluguel( -- ESTA ERA UMA ENTIDADE ASSOCIATIVA ENTRE ALUGUÉIS E EQUIPAMENTOS DA LOJA\n"
                 + "	equipamento int,\n"
                 + "    aluguel int,\n"
                 + "    valor_cobrado_por_hora decimal(15,2) not null,\n"
@@ -450,16 +454,16 @@ public class Conexao {
                 + "        \n"
                 + "\n"
                 + "\n"
-                + "CREATE TABLE IF NOT EXISTS Produtos(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Produtos(\n"
                 + "	codigo int auto_increment,\n"
-                + "    nome varchar (25) not null,\n"
+                + "    nome varchar (100) not null,\n"
                 + "    quantidade int not null,\n"
                 + "    preco decimal (15,2) not null,\n"
                 + "	ativo bit,\n"
                 + "    primary key (codigo)\n"
                 + "    );\n"
                 + "	\n"
-                + "CREATE TABLE IF NOT EXISTS Promocoes(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Promocoes(\n"
                 + "	codigo int auto_increment,\n"
                 + "	nome_promocao varchar (20) not null,\n"
                 + "	descricao varchar(1000),\n"
@@ -467,7 +471,7 @@ public class Conexao {
                 + "	\n"
                 + ");\n"
                 + "	\n"
-                + "CREATE TABLE IF NOT EXISTS Kits_promocionais(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Kits_promocionais(\n"
                 + "	promocao int not null,\n"
                 + "    produto int not null,\n"
                 + "    preco decimal (15,2) not null,\n"
@@ -477,25 +481,24 @@ public class Conexao {
                 + "    foreign key (produto) references Produtos (codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Copias_para_vender(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Copias_para_vender(\n"
                 + "	codigo INT auto_increment,\n"
                 + "    titulo int not null,\n"
                 + "    plataforma int not null,\n"
-                + "    quantidade int not null,\n"
                 + "    primary key (codigo),\n"
                 + "    foreign key (codigo) references Produtos (codigo),\n"
                 + "    foreign key (titulo) references Titulos (codigo),\n"
                 + "    foreign key (plataforma) references Plataformas (codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Tipos_acessorio(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Tipos_acessorio(\n"
                 + "	codigo int auto_increment,\n"
                 + "    nome varchar (20) not null,\n"
                 + "	ativo bit,\n"
                 + "    primary key (codigo)\n"
                 + "    );\n"
                 + "\n"
-                + "CREATE TABLE IF NOT EXISTS Acessorios(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Acessorios(\n"
                 + "	codigo int auto_increment,\n"
                 + "    tipo int not null,\n"
                 + "    primary key (codigo),\n"
@@ -503,7 +506,7 @@ public class Conexao {
                 + "    foreign key (tipo) references Tipos_acessorio (codigo)\n"
                 + "    );\n"
                 + "\n"
-                + "CREATE TABLE IF NOT EXISTS Fornecedores(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Fornecedores(\n"
                 + "	codigo int auto_increment,\n"
                 + "    Razao_social varchar (50) not null,\n"
                 + "    cnpj char (14),\n"
@@ -514,7 +517,7 @@ public class Conexao {
                 + "    foreign key (endereco) references Enderecos (codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Fornecedores_tem_telefones(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Fornecedores_tem_telefones(\n"
                 + "	fornecedor int,\n"
                 + "    telefone int,\n"
                 + "    primary key(fornecedor, telefone),\n"
@@ -522,7 +525,7 @@ public class Conexao {
                 + "    foreign key (telefone) references Telefones (codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Fornecimentos(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Fornecimentos(\n"
                 + "	fornecedor int,\n"
                 + "    produto int,\n"
                 + "    duracao_garantia date,\n"
@@ -533,7 +536,7 @@ public class Conexao {
                 + "    foreign key (produto) references Produtos (codigo)\n"
                 + "    );\n"
                 + "\n"
-                + "CREATE TABLE IF NOT EXISTS Vendas(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Vendas(\n"
                 + "	codigo int auto_increment,\n"
                 + "    cliente int not null,\n"
                 + "    data_da_venda datetime not null,\n"
@@ -542,7 +545,7 @@ public class Conexao {
                 + "    foreign key (cliente) references Clientes (codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Itens_da_venda(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Itens_da_venda(\n"
                 + "	venda int not null,\n"
                 + "    produto int not null,\n"
                 + "    preco decimal (15,2) not null,\n"
@@ -551,7 +554,7 @@ public class Conexao {
                 + "    foreign key (produto) references Produtos (codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Equipamentos_manutencao(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Equipamentos_manutencao(\n"
                 + "	codigo int auto_increment,\n"
                 + "    nome varchar (30) not null,\n"
                 + "    tipo int not null,\n"
@@ -560,7 +563,7 @@ public class Conexao {
                 + "    foreign key (tipo) references Tipos_Equipamentos (codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Manutencoes(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Manutencoes(\n"
                 + "	codigo int auto_increment,\n"
                 + "    valor decimal (15,2) not null,\n"
                 + "    data_manutencao datetime not null,\n"
@@ -573,14 +576,14 @@ public class Conexao {
                 + "    foreign key (tecnico_responsavel) references Funcionarios (codigo)\n"
                 + "    );	\n"
                 + "\n"
-                + "CREATE TABLE IF NOT EXISTS Tipos_manutencoes(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Tipos_manutencoes(\n"
                 + "	codigo int auto_increment,\n"
                 + "    tipo_manutencao varchar (25) not null,\n"
                 + "	ativo bit,\n"
                 + "    primary key (codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Manutencoes_tem_tipos(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Manutencoes_tem_tipos(\n"
                 + "	manutencao int,\n"
                 + "    tipo int,\n"
                 + "    primary key (manutencao, tipo),\n"
@@ -588,7 +591,7 @@ public class Conexao {
                 + "	foreign key (tipo) references Tipos_manutencoes (codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS Equipamentos_da_manutencao(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Equipamentos_da_manutencao(\n"
                 + "	equipamento int,\n"
                 + "    manutencao int,\n"
                 + "    defeito varchar (255),\n"
@@ -599,7 +602,7 @@ public class Conexao {
                 + "    );\n"
                 + "    \n"
                 + "-- CRIAÇÃO DO PRIMEIRO USUÁRIO PARA ACESSAR O SISTEMA\n"
-                + "INSERT INTO Permissoes (\n"
+                + "INSERT INTO BD_LJ.Permissoes (\n"
                 + "                 \n"
                 + "                 	pode_cadastrar_FORNECEDOR, \n"
                 + "                 	pode_consultar_FORNECEDOR,\n"
@@ -663,28 +666,45 @@ public class Conexao {
                 + "                     \n"
                 + "                 	ativo) VALUES (1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);\n"
                 + "                    \n"
-                + "INSERT INTO Cargos (cargo, salario, permissao, ativo) VALUES ('Administrador', 0.0, 1, 1);\n"
+                + "INSERT INTO BD_LJ.Cargos (cargo, salario, permissao, ativo) VALUES ('Administrador', 0.0, 1, 1);\n"
                 + "\n"
-                + "INSERT INTO Codigos_de_cadastro (codigo_De_Cadastro, utilizado, cargo, ativo) VALUES ('1234', 1, 1, 1);\n"
+                + "INSERT INTO BD_LJ.Codigos_de_cadastro (codigo_De_Cadastro, utilizado, cargo, ativo) VALUES ('1234', 1, 1, 1);\n"
                 + "\n"
-                + "INSERT INTO Credenciais_de_acesso (usuario, senha, cod_cadastro) VALUES ('admin', 'admin', '12334');";
+                + "INSERT INTO BD_LJ.Credenciais_de_acesso (usuario, senha, cod_cadastro) VALUES ('admin', 'admin', '1234');"
+                + "END";
 
         // TRATAMENTO DE ERROS
         try {
+
+            // PREPARAR COMANDO PARA EXXECUTAR
             PreparedStatement pQuery = Conectar().prepareStatement(comandoSQL);
             pQuery.execute();
-            /*
-            //PREPARAR COMANDO PARA EXECUÇÃO
-            Statement query = Conectar().prepareStatement(comandoSQL);
-            
-            //EXECUTAR COMANDO
-            query.executeUpdate(comandoSQL);
-             */
+
             //SE TUDO DER CERTO, RETORNAR TRUE
             return true;
 
         } catch (SQLException erro) {
-            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + " NO MÉTODO 'GERAR TABELAS' \n" + erro);
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + " NO MÉTODO 'CRIAR STATEMENT' \n" + erro);
+            return false;
+        }
+    }
+
+    private boolean ChamarProcedure() {
+        // CRIAR COMANDO SQL
+        String comandoSQL = "CALL BD_LJ.GerarTabelas();";
+
+        // TRATAMENTO DE ERROS
+        try {
+
+            // PREPARAR COMANDO PARA EXXECUTAR
+            PreparedStatement pQuery = Conectar().prepareStatement(comandoSQL);
+            pQuery.execute();
+
+            //SE TUDO DER CERTO, RETORNAR TRUE
+            return true;
+
+        } catch (SQLException erro) {
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + " NO MÉTODO 'ChamarProcedure' \n" + erro);
             return false;
         }
     }
