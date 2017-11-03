@@ -76,6 +76,24 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="CONSULTAR"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="btnConCliente">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CLIENTE"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConClienteActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="btnConFuncionario">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="FUNCION&#xc1;RIO"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConFuncionarioActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

@@ -350,7 +350,7 @@ public class frmCadFuncionario extends javax.swing.JFrame {
         fBLL.setCpf(txtCpf.getText().replace(".", "").replace("-", ""));
         fBLL.setEmail(txtEmail.getText());
 
-        fBLL.getEndereco().setLogradouro(cmbLogradouro.getSelectedItem().toString() + txtLogradouro.getText());
+        fBLL.getEndereco().setLogradouro(cmbLogradouro.getSelectedItem().toString().trim() + " " + txtLogradouro.getText().trim());
         fBLL.getEndereco().setNumero(txtNumero.getText());
         fBLL.getEndereco().setCep(txtCep.getText());
         fBLL.getEndereco().getBairro().setNome(txtBairro.getText());

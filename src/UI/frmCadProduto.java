@@ -13,6 +13,7 @@ import BLL.TipoEquipamentoBLL;
 import BLL.TituloBLL;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -148,6 +149,11 @@ public class frmCadProduto extends javax.swing.JFrame {
 
         btnNovoTipoAcessorio.setText("NOVO TIPO");
         btnNovoTipoAcessorio.setEnabled(false);
+        btnNovoTipoAcessorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoTipoAcessorioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -257,10 +263,28 @@ public class frmCadProduto extends javax.swing.JFrame {
     }
 
     private void btnNovoTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoTituloActionPerformed
-        // TODO add your handling code here:
-        frmCadTitulo cadTitulo = new frmCadTitulo();
-        cadTitulo.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        cadTitulo.setVisible(true);
+        frmCadTitulo cadTitulo = new frmCadTitulo(); // INSTÂNCIA DO JFRAME QUE EU VOU COPIAR
+        
+        JDialog dialogo = new JDialog(this, cadTitulo.getTitle(), true); // INSTÂNCIA DO JDIALOG QUE VAI RECEBER O MEU JFRAME
+        
+        // COLOCAR TODOS OS COMPONENTES DO JFRAME DENTRO DO MEU JDIALOG
+        for (int i = 0; i < cadTitulo.getComponentCount(); i++) {
+            
+            dialogo.add(cadTitulo.getComponent(i));
+            
+        }
+        
+        // DEFINIR TAMANHO do JDialog IDÊNTICO AO MEU JFRAME
+        dialogo.setSize(cadTitulo.getSize());
+        
+        // DEIXAR A POSIÇÃO DO DIÁLOGO RELATIVO À ESTE FORM
+        dialogo.setLocationRelativeTo(this);
+        
+        //EXIBIR DIÁLOGO PRONTO
+        dialogo.setVisible(true);
+        
+        //DEPOIS DE EXIBIR O DIÁLOGO, ATUALIZAR TÍTULOS
+        CarregarTitulos();
 
     }//GEN-LAST:event_btnNovoTituloActionPerformed
 
@@ -272,16 +296,35 @@ public class frmCadProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNovaPlataformaActionPerformed
 
     private void btnNovaPlataforma1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaPlataforma1ActionPerformed
-        // TODO add your handling code here:
-        frmCadPlataforma cadPlataforma = new frmCadPlataforma();
-        cadPlataforma.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        cadPlataforma.setVisible(true);
+        frmCadPlataforma cadPlataforma = new frmCadPlataforma(); // INSTÂNCIA DO JFRAME QUE EU VOU COPIAR
+        
+        JDialog dialogo = new JDialog(this, cadPlataforma.getTitle(), true); // INSTÂNCIA DO JDIALOG QUE VAI RECEBER O MEU JFRAME
+        
+        // COLOCAR TODOS OS COMPONENTES DO JFRAME DENTRO DO MEU JDIALOG
+        for (int i = 0; i < cadPlataforma.getComponentCount(); i++) {
+            
+            dialogo.add(cadPlataforma.getComponent(i));
+            
+        }
+        
+        // DEFINIR TAMANHO do JDialog IDÊNTICO AO MEU JFRAME
+        dialogo.setSize(cadPlataforma.getSize());
+        
+        // DEIXAR A POSIÇÃO DO DIÁLOGO RELATIVO À ESTE FORM
+        dialogo.setLocationRelativeTo(this);
+        
+        //EXIBIR DIÁLOGO PRONTO
+        dialogo.setVisible(true);
+        
+        //DEPOIS DE EXIBIR O DIÁLOGO, ATUALIZAR PLATAFORMAS
+        CarregarPlataformas();
     }//GEN-LAST:event_btnNovaPlataforma1ActionPerformed
 
     private void btnCadJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadJogoActionPerformed
 
         if (rdbJogo.isSelected()) {
             // DEFINIR ATRIBUTOS DA CÓPIA PARA VENDER
+            cpvBLL.setNome(cmbTitulo.getSelectedItem().toString() + " " + cmbPlataforma1.getSelectedItem().toString());
             cpvBLL.setQuantidade(Integer.valueOf(txtQuantidade.getText()));
             cpvBLL.setPreco(Float.valueOf(txtPreco.getText()));
             cpvBLL.getTitulo().setCodigo(titulos.get(cmbTitulo.getSelectedIndex()).getCodigo());
@@ -367,6 +410,33 @@ public class frmCadProduto extends javax.swing.JFrame {
         AtualizarTiposDeAcessorio();
 
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnNovoTipoAcessorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoTipoAcessorioActionPerformed
+        
+        frmCadTipoAcessorio cadTipoAcessorio = new frmCadTipoAcessorio(); // INSTÂNCIA DO JFRAME QUE EU VOU COPIAR
+        
+        JDialog dialogo = new JDialog(this, cadTipoAcessorio.getTitle(), true); // INSTÂNCIA DO JDIALOG QUE VAI RECEBER O MEU JFRAME
+        
+        // COLOCAR TODOS OS COMPONENTES DO JFRAME DENTRO DO MEU JDIALOG
+        for (int i = 0; i < cadTipoAcessorio.getComponentCount(); i++) {
+            
+            dialogo.add(cadTipoAcessorio.getComponent(i));
+            
+        }
+        
+        // DEFINIR TAMANHO do JDialog IDÊNTICO AO MEU JFRAME
+        dialogo.setSize(cadTipoAcessorio.getSize());
+        
+        // DEIXAR A POSIÇÃO DO DIÁLOGO RELATIVO À ESTE FORM
+        dialogo.setLocationRelativeTo(this);
+        
+        //EXIBIR DIÁLOGO PRONTO
+        dialogo.setVisible(true);
+        
+        //DEPOIS DE EXIBIR O DIÁLOGO, ATUALIZAR TIPOS
+        AtualizarTiposDeAcessorio();
+        
+    }//GEN-LAST:event_btnNovoTipoAcessorioActionPerformed
 
     private void CarregarTitulos() {
         TituloBLL tBLL = new TituloBLL();

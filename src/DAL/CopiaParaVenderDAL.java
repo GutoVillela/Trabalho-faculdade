@@ -15,7 +15,7 @@ public class CopiaParaVenderDAL {
     public boolean Cadastrar(CopiaParaVenderBLL cBLL){
         
         // CRIANDO COMANDO SQL
-        String comandoSQL = "INSERT INTO copias_para_vender (TITULO, PLATAFORMA, QUANTIDADE) VALUES (?, ?, ?);";
+        String comandoSQL = "INSERT INTO copias_para_vender (TITULO, PLATAFORMA) VALUES (?, ?);";
         
         // TRATAMENTO DE ERRO
         try {
@@ -24,7 +24,6 @@ public class CopiaParaVenderDAL {
             PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
             query.setInt(1, cBLL.getTitulo().getCodigo());
             query.setInt(2, cBLL.getPlataforma().getCodigo());
-            query.setInt(3, cBLL.getQuantidade());
             
             // EXECUTAR COMANDO
             query.executeUpdate();

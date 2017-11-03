@@ -28,6 +28,7 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnMinimizar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
+        btnCriarBD = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -102,6 +103,13 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
 
+        btnCriarBD.setText("CRIAR BD");
+        btnCriarBD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarBDActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -124,10 +132,15 @@ public class frmLogin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(99, 99, 99)
-                        .addComponent(btnMinimizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnFechar)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(99, 99, 99)
+                                .addComponent(btnMinimizar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnFechar))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCriarBD)))
                         .addGap(2, 2, 2))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -146,6 +159,8 @@ public class frmLogin extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnFechar)
                             .addComponent(btnMinimizar))
+                        .addGap(11, 11, 11)
+                        .addComponent(btnCriarBD)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -236,6 +251,14 @@ public class frmLogin extends javax.swing.JFrame {
         this.setExtendedState(JFrame.ICONIFIED); // MINIMIZAR
     }//GEN-LAST:event_btnMinimizarActionPerformed
 
+    private void btnCriarBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarBDActionPerformed
+
+        // TODO add your handling code here:
+        
+        DAL.Conexao con = new Conexao();
+        con.GerarBanco();
+    }//GEN-LAST:event_btnCriarBDActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -270,6 +293,7 @@ public class frmLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadFuncionario;
+    private javax.swing.JButton btnCriarBD;
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnMinimizar;

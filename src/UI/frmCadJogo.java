@@ -173,7 +173,7 @@ public class frmCadJogo extends javax.swing.JFrame {
     }
     
     private void btnNovoTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoTituloActionPerformed
-        // TODO add your handling code here:
+
         frmCadTitulo cadTitulo = new frmCadTitulo(); // INSTÂNCIA DO JFRAME QUE EU VOU COPIAR
         
         JDialog dialogo = new JDialog(this, cadTitulo.getTitle(), true); // INSTÂNCIA DO JDIALOG QUE VAI RECEBER O MEU JFRAME

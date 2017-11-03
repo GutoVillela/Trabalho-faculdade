@@ -39,6 +39,8 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         btnCadCliente = new javax.swing.JMenuItem();
         btnCadProduto = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        btnConCliente = new javax.swing.JMenuItem();
+        btnConFuncionario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -109,6 +111,23 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("CONSULTAR");
+
+        btnConCliente.setText("CLIENTE");
+        btnConCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConClienteActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnConCliente);
+
+        btnConFuncionario.setText("FUNCIONÁRIO");
+        btnConFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConFuncionarioActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnConFuncionario);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -187,6 +206,20 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         cadProduto.setVisible(true);
     }//GEN-LAST:event_btnCadProdutoActionPerformed
 
+    private void btnConClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConClienteActionPerformed
+        // TODO add your handling code here:
+        frmConsCliente conCliente = new frmConsCliente();
+        conCliente.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        conCliente.setVisible(true);
+        
+    }//GEN-LAST:event_btnConClienteActionPerformed
+
+    private void btnConFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConFuncionarioActionPerformed
+        frmConFuncionario conFuncionario = new frmConFuncionario();
+        conFuncionario.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        conFuncionario.setVisible(true);
+    }//GEN-LAST:event_btnConFuncionarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -230,6 +263,8 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnCadEquipamento;
     private javax.swing.JMenuItem btnCadJogo;
     private javax.swing.JMenuItem btnCadProduto;
+    private javax.swing.JMenuItem btnConCliente;
+    private javax.swing.JMenuItem btnConFuncionario;
     private javax.swing.JMenuItem btnFuncionario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;

@@ -124,4 +124,39 @@ public class CodigoDeCadastroDAL {
         }
         
     }
+    
+    public BLL.CargoBLL BuscarCargoRelacionado(CodigoDeCadastroBLL ccBLL){
+        //CRIANDO COMANDO SQL
+        String comandoSQL = "SELECT * FROM Cargos JOIN codigos_de_cadastro ON codigos_de_cadastro.cargo = Cargos.codigo WHERE codigos_de_cadastro.codigo_De_Cadastro = ?;";
+       
+        try {
+            //PREPARANDO COMANDO PARA SER EXECUTADO
+            PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
+            query.setString(1, ccBLL.getCodigoDeCadastro());
+            
+            //RESULT SET QUE VAI GUARDAR O RESULTADO
+            ResultSet resultadoConsulta = query.executeQuery();
+            
+            //RECUPERAR PRÓXIMA CONSULTA
+            resultadoConsulta.next();
+            
+            //CRIAR CARGO E SETAR ATRIBUTOS DELE
+            BLL.CargoBLL cBLL = new BLL.CargoBLL();
+            cBLL.setCodigo(resultadoConsulta.getInt(1)); // COLUNA 'codigo' DA TABELA 'Cargos'
+            cBLL.setCargo(resultadoConsulta.getString(2)); // COLUNA 'cargo' DA TABELA 'Cargos'
+            cBLL.setSalario(resultadoConsulta.getFloat(3)); //COLUNA  'salario' DA TABELA 'Cargos'
+            cBLL.getPermissao().setCodigo(4); // COLUNA 'permissao' DA TABELA 'Cargos'
+            cBLL.setAtivo(resultadoConsulta.getBoolean(5)); // COLUNA 'ativo' DA TABELA 'Cargos'
+            cBLL.setPermissao(cBLL.ConsultarPermissao()); // CONSULTAR TODA A PERMISSÃO DO CARGO
+            
+            
+            // RETORNAR CARGO
+            return cBLL;
+            
+            
+        } catch (Exception e) {
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + e);
+            return null;
+        }
+    }
 }

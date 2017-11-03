@@ -45,6 +45,7 @@ public class CopiaParaVenderBLL extends ProdutoBLL{
 
     // MÉTODOS
     
+    @Override
     public boolean Cadastrar(){
         super.Cadastrar();
         this.setCodigo(super.RecuperarUltimaChavePrimaria());

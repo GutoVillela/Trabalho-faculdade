@@ -171,4 +171,28 @@ public class FuncionarioBLL {
     public List<FuncionarioBLL> Consultar (){
         return fDAL.Consultar();
     }
+    
+    public List<FuncionarioBLL> ConsultarPorNome (String nome){
+        return fDAL.ConsultarPorNome(nome);
+    }
+    
+    public List<FuncionarioBLL> ConsultarPorCpf (String cpf){
+        return fDAL.ConsultarPorCpf(cpf);
+    }
+    
+    public List<FuncionarioBLL> ConsultarPorEmail (String email){
+        return fDAL.ConsultarPorEmail(email);
+    }
+    
+    public List<FuncionarioBLL> ConsultarPorEndereco (){
+        return fDAL.ConsultarPorEndereco(endereco);
+    }
+    
+    public List<FuncionarioBLL> ConsultarPorUsuario (String usuario){
+        return fDAL.ConsultarPorUsuario(usuario);
+    }
+    
+    public List<FuncionarioBLL> ConsultarPorCargo (String cargo){
+        return fDAL.ConsultarPorCargo(cargo);
+    }
 }
