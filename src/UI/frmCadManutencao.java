@@ -7,6 +7,7 @@ package UI;
 
 import BLL.FuncionarioBLL;
 import BLL.PessoaFisicaBLL;
+import BLL.TipoManutencaoBLL;
 import java.util.List;
 import javax.swing.JDialog;
 
@@ -20,6 +21,10 @@ public class frmCadManutencao extends javax.swing.JFrame {
     
     private FuncionarioBLL fBLL= new FuncionarioBLL();
     private List<FuncionarioBLL> listaDeFuncionario;
+    
+    private TipoManutencaoBLL tmBLL = new TipoManutencaoBLL();
+    private List<TipoManutencaoBLL> listaTipoManutencao;
+    
             
     /**
      * Creates new form frmCadManutencao
@@ -125,6 +130,11 @@ public class frmCadManutencao extends javax.swing.JFrame {
         btnDefeito.setText("DEFEITO");
 
         cmbTipoDeManutencao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbTipoDeManutencao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTipoDeManutencaoActionPerformed(evt);
+            }
+        });
 
         txtTipoDeManutencao.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -274,7 +284,7 @@ public class frmCadManutencao extends javax.swing.JFrame {
         dialogo.setVisible(true);
         
         //DEPOIS DE EXIBIR O DIÁLOGO, ATUALIZAR TIPOS DE MANUTENÇÃO
-        CarregarTiposDeManutencao();
+        CarregarTipoManutencao();
         
     }//GEN-LAST:event_btnCadTipoManutencaoActionPerformed
 
@@ -290,7 +300,14 @@ public class frmCadManutencao extends javax.swing.JFrame {
         listaDeFuncionario = fBLL.Consultar();
         CarregarFuncionarios();
         
+        CarregarTipoManutencao();
+        
+        
     }//GEN-LAST:event_formWindowOpened
+
+    private void cmbTipoDeManutencaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoDeManutencaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTipoDeManutencaoActionPerformed
     private void CarregarClientes(){
         cmbClientes.removeAllItems();
         
@@ -303,9 +320,22 @@ public class frmCadManutencao extends javax.swing.JFrame {
     private void CarregarFuncionarios(){
         cmbTecnico.removeAllItems();
         
-        for(int i=0; i<listaDePessoaFisica.size(); i++){
+        for(int i=0; i<listaDeFuncionario.size(); i++){
             cmbTecnico.addItem(listaDeFuncionario.get(i).getNome());
         }
+    }
+    
+    private void CarregarTipoManutencao(){
+        
+        listaTipoManutencao = tmBLL.Consultar();
+        cmbTipoDeManutencao.removeAllItems();
+        
+        for (int i=0; i<listaTipoManutencao.size(); i++){
+            
+            cmbTipoDeManutencao.addItem(listaTipoManutencao.get(i).getTipoManutencao());
+        }
+        
+        
     }
     /**
      * @param args the command line arguments
