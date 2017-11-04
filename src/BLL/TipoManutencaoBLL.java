@@ -1,6 +1,7 @@
 package BLL;
 
 import DAL.TipoManutencaoDAL;
+import java.util.List;
 
 public class TipoManutencaoBLL {
     
@@ -20,6 +21,13 @@ public class TipoManutencaoBLL {
     // MÉTODOS
     public boolean Cadastrar(){
         return tmDAL.Cadastrar(this);
+    }
+    
+    /**
+     * @return Retorna uma lista com todos os tipos de manutenção cadastrados.
+     */
+    public List<TipoManutencaoBLL> Consultar(){
+        return tmDAL.Consultar();
     }
 
     /**

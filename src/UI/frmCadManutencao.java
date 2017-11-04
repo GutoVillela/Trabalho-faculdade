@@ -8,6 +8,7 @@ package UI;
 import BLL.FuncionarioBLL;
 import BLL.PessoaFisicaBLL;
 import java.util.List;
+import javax.swing.JDialog;
 
 /**
  *
@@ -252,9 +253,35 @@ public class frmCadManutencao extends javax.swing.JFrame {
     }//GEN-LAST:event_rdbClienteActionPerformed
 
     private void btnCadTipoManutencaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadTipoManutencaoActionPerformed
-        // TODO add your handling code here:
+        frmCadTipoManutencao cadTipoManutencao = new frmCadTipoManutencao(); // INSTÂNCIA DO JFRAME QUE EU VOU COPIAR
+        
+        JDialog dialogo = new JDialog(this, cadTipoManutencao.getTitle(), true); // INSTÂNCIA DO JDIALOG QUE VAI RECEBER O MEU JFRAME
+        
+        // COLOCAR TODOS OS COMPONENTES DO JFRAME DENTRO DO MEU JDIALOG
+        for (int i = 0; i < cadTipoManutencao.getComponentCount(); i++) {
+            
+            dialogo.add(cadTipoManutencao.getComponent(i));
+            
+        }
+        
+        // DEFINIR TAMANHO do JDialog IDÊNTICO AO MEU JFRAME
+        dialogo.setSize(cadTipoManutencao.getSize());
+        
+        // DEIXAR A POSIÇÃO DO DIÁLOGO RELATIVO À ESTE FORM
+        dialogo.setLocationRelativeTo(this);
+        
+        //EXIBIR DIÁLOGO PRONTO
+        dialogo.setVisible(true);
+        
+        //DEPOIS DE EXIBIR O DIÁLOGO, ATUALIZAR TIPOS DE MANUTENÇÃO
+        CarregarTiposDeManutencao();
+        
     }//GEN-LAST:event_btnCadTipoManutencaoActionPerformed
 
+    private void CarregarTiposDeManutencao(){
+        
+    }
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         listaDePessoaFisica = pfBLL.Consultar();
