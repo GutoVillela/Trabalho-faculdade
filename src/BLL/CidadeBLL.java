@@ -10,6 +10,7 @@ public class CidadeBLL {
     private String nome;
     private EstadoBLL estado;
 
+    // CONSTRUTOR
     public CidadeBLL() {
         this.estado = new EstadoBLL();
     }

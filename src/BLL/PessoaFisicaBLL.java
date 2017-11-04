@@ -10,34 +10,6 @@ public class PessoaFisicaBLL extends ClienteBLL{
     private String cpf;
     
     private PessoaFisicaDAL pfDAL = new PessoaFisicaDAL();
-
-    /**
-     * @return the nome
-     */
-    public String getNome() {
-        return nome;
-    }
-
-    /**
-     * @param nome the nome to set
-     */
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    /**
-     * @return the cpf
-     */
-    public String getCpf() {
-        return cpf;
-    }
-
-    /**
-     * @param cpf the cpf to set
-     */
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
     
     // MÉTODOS
     @Override
@@ -69,7 +41,42 @@ public class PessoaFisicaBLL extends ClienteBLL{
         
         return pfDAL.ConsultarPorNome(this.getNome());
     }
+    
+    /**
+     * @return Retorna uma lista com todas as pessoas físicas cadastradas.
+     * Retorna inclusive endereço completo.
+     */
+    public List<PessoaFisicaBLL> Consultar(){
+        return pfDAL.Consultar();
+    }
 
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    /**
+     * @return the cpf
+     */
+    public String getCpf() {
+        return cpf;
+    }
+
+    /**
+     * @param cpf the cpf to set
+     */
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 }
 
     

@@ -38,14 +38,19 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         btnCadAluguel = new javax.swing.JMenuItem();
         btnCadCliente = new javax.swing.JMenuItem();
         btnCadProduto = new javax.swing.JMenuItem();
+        frmCadAluguel = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnConCliente = new javax.swing.JMenuItem();
         btnConFuncionario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1000, 750));
         setResizable(false);
+        getContentPane().setLayout(null);
 
-        jLabel1.setText("Loja de Jogos");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/fundo_retro_de_bolinhas.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 770, 440);
 
         jMenu1.setText("CADASTRAR");
 
@@ -108,6 +113,14 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(btnCadProduto);
 
+        frmCadAluguel.setText("ALUGUEL");
+        frmCadAluguel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                frmCadAluguelActionPerformed(evt);
+            }
+        });
+        jMenu1.add(frmCadAluguel);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("CONSULTAR");
@@ -131,23 +144,6 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(237, 237, 237)
-                .addComponent(jLabel1)
-                .addContainerGap(472, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel1)
-                .addContainerGap(391, Short.MAX_VALUE))
-        );
 
         pack();
         setLocationRelativeTo(null);
@@ -220,6 +216,12 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         conFuncionario.setVisible(true);
     }//GEN-LAST:event_btnConFuncionarioActionPerformed
 
+    private void frmCadAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frmCadAluguelActionPerformed
+        frmCadAluguel cadAluguel = new frmCadAluguel();
+        cadAluguel.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        cadAluguel.setVisible(true);
+    }//GEN-LAST:event_frmCadAluguelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -266,6 +268,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnConCliente;
     private javax.swing.JMenuItem btnConFuncionario;
     private javax.swing.JMenuItem btnFuncionario;
+    private javax.swing.JMenuItem frmCadAluguel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

@@ -42,7 +42,7 @@ public class FuncionarioDAL {
     
     public List<FuncionarioBLL> Consultar() {
         //DEFINIR COMANDO SQL
-        String comandoSQL = "SELECT * FROM Funcionarios JOIN Cargos ON Funcionarios.cargo = Cargos.codigo JOIN credenciais_de_acesso ON  funcionarios.login = credenciais_de_acesso.usuario JOIN Enderecos ON Funcionarios.endereco = enderecos.codigo;";
+        String comandoSQL = "SELECT * FROM Funcionarios LEFT JOIN Cargos ON Funcionarios.cargo = Cargos.codigo LEFT JOIN credenciais_de_acesso ON  funcionarios.login = credenciais_de_acesso.usuario LEFT JOIN Enderecos ON Funcionarios.endereco = enderecos.codigo;";
 
         //CRIANDO LISTA QUE VAI RECEBER TODO O RESULTADO DA CONSULTA
         List<FuncionarioBLL> listaFuncionarios = new ArrayList<FuncionarioBLL>();
@@ -141,7 +141,7 @@ public class FuncionarioDAL {
     
     public List<FuncionarioBLL> ConsultarPorNome(String nome) {
         //DEFINIR COMANDO SQL
-        String comandoSQL = "SELECT * FROM Funcionarios JOIN Cargos ON Funcionarios.cargo = Cargos.codigo JOIN credenciais_de_acesso ON  funcionarios.login = credenciais_de_acesso.usuario JOIN Enderecos ON Funcionarios.endereco = enderecos.codigo WHERE Funcionarios.nome LIKE ?;";
+        String comandoSQL = "SELECT * FROM Funcionarios LEFT JOIN Cargos ON Funcionarios.cargo = Cargos.codigo LEFT JOIN credenciais_de_acesso ON  funcionarios.login = credenciais_de_acesso.usuario LEFT JOIN Enderecos ON Funcionarios.endereco = enderecos.codigo WHERE Funcionarios.nome LIKE ?;";
 
         //CRIANDO LISTA QUE VAI RECEBER TODO O RESULTADO DA CONSULTA
         List<FuncionarioBLL> listaFuncionarios = new ArrayList<FuncionarioBLL>();
@@ -200,7 +200,7 @@ public class FuncionarioDAL {
     
     public List<FuncionarioBLL> ConsultarPorCpf(String cpf) {
         //DEFINIR COMANDO SQL
-        String comandoSQL = "SELECT * FROM Funcionarios JOIN Cargos ON Funcionarios.cargo = Cargos.codigo JOIN credenciais_de_acesso ON  funcionarios.login = credenciais_de_acesso.usuario JOIN Enderecos ON Funcionarios.endereco = enderecos.codigo WHERE Funcionarios.cpf LIKE ?;";
+        String comandoSQL = "SELECT * FROM Funcionarios LEFT JOIN Cargos ON Funcionarios.cargo = Cargos.codigo LEFT JOIN credenciais_de_acesso ON  funcionarios.login = credenciais_de_acesso.usuario LEFT JOIN Enderecos ON Funcionarios.endereco = enderecos.codigo WHERE Funcionarios.cpf LIKE ?;";
 
         //CRIANDO LISTA QUE VAI RECEBER TODO O RESULTADO DA CONSULTA
         List<FuncionarioBLL> listaFuncionarios = new ArrayList<FuncionarioBLL>();
@@ -259,7 +259,7 @@ public class FuncionarioDAL {
     
     public List<FuncionarioBLL> ConsultarPorEmail(String email) {
         //DEFINIR COMANDO SQL
-        String comandoSQL = "SELECT * FROM Funcionarios JOIN Cargos ON Funcionarios.cargo = Cargos.codigo JOIN credenciais_de_acesso ON  funcionarios.login = credenciais_de_acesso.usuario JOIN Enderecos ON Funcionarios.endereco = enderecos.codigo WHERE Funcionarios.email LIKE ?;";
+        String comandoSQL = "SELECT * FROM Funcionarios LEFT JOIN Cargos ON Funcionarios.cargo = Cargos.codigo LEFT JOIN credenciais_de_acesso ON  funcionarios.login = credenciais_de_acesso.usuario LEFT JOIN Enderecos ON Funcionarios.endereco = enderecos.codigo WHERE Funcionarios.email LIKE ?;";
 
         //CRIANDO LISTA QUE VAI RECEBER TODO O RESULTADO DA CONSULTA
         List<FuncionarioBLL> listaFuncionarios = new ArrayList<FuncionarioBLL>();
@@ -318,7 +318,7 @@ public class FuncionarioDAL {
     
     public List<FuncionarioBLL> ConsultarPorEndereco(BLL.EnderecoBLL eBLL) {
         //DEFINIR COMANDO SQL
-        String comandoSQL = "SELECT * FROM Funcionarios JOIN Cargos ON Funcionarios.cargo = Cargos.codigo JOIN credenciais_de_acesso ON  funcionarios.login = credenciais_de_acesso.usuario JOIN Enderecos ON Funcionarios.endereco = enderecos.codigo WHERE enderecos.bairro LIKE ? OR enderecos.CEP LIKE ? OR enderecos.CIDADE LIKE ? OR enderecos.estado LIKE ? OR enderecos.Logradouro LIKE ? OR enderecos.Numero LIKE ? OR enderecos.PAIS LIKE ?;";
+        String comandoSQL = "SELECT * FROM Funcionarios LEFT JOIN Cargos ON Funcionarios.cargo = Cargos.codigo LEFT JOIN credenciais_de_acesso ON  funcionarios.login = credenciais_de_acesso.usuario LEFT JOIN Enderecos ON Funcionarios.endereco = enderecos.codigo WHERE enderecos.bairro LIKE ? OR enderecos.CEP LIKE ? OR enderecos.CIDADE LIKE ? OR enderecos.estado LIKE ? OR enderecos.Logradouro LIKE ? OR enderecos.Numero LIKE ? OR enderecos.PAIS LIKE ?;";
 
         //CRIANDO LISTA QUE VAI RECEBER TODO O RESULTADO DA CONSULTA
         List<FuncionarioBLL> listaFuncionarios = new ArrayList<FuncionarioBLL>();
@@ -383,7 +383,7 @@ public class FuncionarioDAL {
     
     public List<FuncionarioBLL> ConsultarPorUsuario(String usuario) {
         //DEFINIR COMANDO SQL
-        String comandoSQL = "SELECT * FROM Funcionarios JOIN Cargos ON Funcionarios.cargo = Cargos.codigo JOIN credenciais_de_acesso ON  funcionarios.login = credenciais_de_acesso.usuario JOIN Enderecos ON Funcionarios.endereco = enderecos.codigo WHERE credenciais_de_acesso.usuario LIKE ?;";
+        String comandoSQL = "SELECT * FROM Funcionarios LEFT JOIN Cargos ON Funcionarios.cargo = Cargos.codigo LEFT JOIN credenciais_de_acesso ON  funcionarios.login = credenciais_de_acesso.usuario LEFT JOIN Enderecos ON Funcionarios.endereco = enderecos.codigo WHERE credenciais_de_acesso.usuario LIKE ?;";
 
         //CRIANDO LISTA QUE VAI RECEBER TODO O RESULTADO DA CONSULTA
         List<FuncionarioBLL> listaFuncionarios = new ArrayList<FuncionarioBLL>();
@@ -442,7 +442,7 @@ public class FuncionarioDAL {
     
     public List<FuncionarioBLL> ConsultarPorCargo(String cargo) {
         //DEFINIR COMANDO SQL
-        String comandoSQL = "SELECT * FROM Funcionarios JOIN Cargos ON Funcionarios.cargo = Cargos.codigo JOIN credenciais_de_acesso ON  funcionarios.login = credenciais_de_acesso.usuario JOIN Enderecos ON Funcionarios.endereco = enderecos.codigo WHERE Cargos.cargo LIKE ?;";
+        String comandoSQL = "SELECT * FROM Funcionarios LEFT JOIN Cargos ON Funcionarios.cargo = Cargos.codigo LEFT JOIN credenciais_de_acesso ON  funcionarios.login = credenciais_de_acesso.usuario LEFT JOIN Enderecos ON Funcionarios.endereco = enderecos.codigo WHERE Cargos.cargo LIKE ?;";
 
         //CRIANDO LISTA QUE VAI RECEBER TODO O RESULTADO DA CONSULTA
         List<FuncionarioBLL> listaFuncionarios = new ArrayList<FuncionarioBLL>();

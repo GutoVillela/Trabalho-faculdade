@@ -2,6 +2,7 @@
 package BLL;
 
 import DAL.CopiaParaAlugarDAL;
+import java.util.List;
 
 public class CopiaParaAlugarBLL {
     
@@ -21,6 +22,14 @@ public class CopiaParaAlugarBLL {
     // MÉTODOS
     public boolean Cadastrar() {
         return cpaDAL.Cadastrar(this);
+    }
+    
+    /**
+     * @return Retorna todas as copias para alugar cadastradas no banco de dados.
+     * Preenche inclusive todas as informações do Título e da Plataforma relacionados à cada cópia.
+     */
+    public List<CopiaParaAlugarBLL> Consultar(){
+        return cpaDAL.Consultar();
     }
 
     // ENCAPSULAMENTOS

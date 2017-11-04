@@ -5,14 +5,10 @@
  */
 package UI;
 
-import BLL.BairroBLL;
 import BLL.CargoBLL;
 import BLL.CodigoDeCadastroBLL;
-import BLL.EnderecoBLL;
 import BLL.FuncionarioBLL;
-import DAL.CodigoDeCadastroDAL;
 import java.awt.Color;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,7 +24,6 @@ public class frmCadFuncionario extends javax.swing.JFrame {
         initComponents();
     }
     private CargoBLL cBLL = new CargoBLL();// INSTÂNCIA DA CLASSE DE CARGO
-    private List<CargoBLL> listaDeCargos;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,7 +76,7 @@ public class frmCadFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("NOME: ");
+        jLabel1.setText("NOME*: ");
 
         jLabel2.setText("CPF: ");
 
@@ -132,7 +127,7 @@ public class frmCadFuncionario extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 151, Short.MAX_VALUE)))
+                                .addGap(0, 157, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
@@ -189,17 +184,17 @@ public class frmCadFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("Cargo: ");
+        jLabel8.setText("Cargo*: ");
 
         cmbCargos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel9.setText("CÓDIGO DE CADASTRO: ");
 
-        jLabel10.setText("USUÁRIO: ");
+        jLabel10.setText("USUÁRIO*: ");
 
-        jLabel11.setText("SENHA: ");
+        jLabel11.setText("SENHA*: ");
 
-        jLabel12.setText("EMAIL: ");
+        jLabel12.setText("EMAIL*: ");
 
         btnValidarCodCadastro.setText("VALIDAR");
         btnValidarCodCadastro.addActionListener(new java.awt.event.ActionListener() {
@@ -260,7 +255,7 @@ public class frmCadFuncionario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnValidarCodCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(451, Short.MAX_VALUE)
+                        .addContainerGap(457, Short.MAX_VALUE)
                         .addComponent(btnCadFuncionario)))
                 .addContainerGap())
         );
@@ -310,19 +305,18 @@ public class frmCadFuncionario extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
 
-        listaDeCargos = cBLL.Consultar();
-
-        cmbCargos.removeAllItems();
-
-        for (int i = 0; i < listaDeCargos.size(); i++) {
-            cmbCargos.addItem(listaDeCargos.get(i).getCargo());
-        }
 
         this.setSize(this.getSize().width, 100);
 
         BloquearOuDesbloquearCampos(false);
     }//GEN-LAST:event_formWindowOpened
 
+    private void DefinirCargo(){
+        cmbCargos.removeAllItems();
+        
+        cmbCargos.addItem(cBLL.getCargo());
+    }
+    
     private void BloquearOuDesbloquearCampos(boolean liberado) {
         txtNome.setEnabled(liberado);
         txtCpf.setEnabled(liberado);
@@ -358,7 +352,7 @@ public class frmCadFuncionario extends javax.swing.JFrame {
         fBLL.getEndereco().getBairro().getCidade().getEstado().setNome(txtEstado.getText());
         fBLL.getEndereco().getBairro().getCidade().getEstado().getPais().setPaisPt(txtPais.getText());
 
-        fBLL.getCargo().setCodigo(listaDeCargos.get(cmbCargos.getSelectedIndex()).getCodigo());
+        fBLL.getCargo().setCodigo(cBLL.getCodigo());
 
         fBLL.getLogin().getCodCadastro().setCodigoDeCadastro(txtCodCadastro.getText());
         fBLL.getLogin().setUsuario(txtUsuario.getText());
@@ -380,12 +374,13 @@ public class frmCadFuncionario extends javax.swing.JFrame {
         CodigoDeCadastroBLL ccBLL = new CodigoDeCadastroBLL();
         ccBLL.setCodigoDeCadastro(txtCodCadastro.getText().trim());
 
-        CodigoDeCadastroDAL ccDAL = new CodigoDeCadastroDAL();
-
-        if (ccDAL.Validar(ccBLL)) {
+        if (ccBLL.Validar()) {
             lblValidarCodigo.setText("CÓDIGO VÁLIDO");
             lblValidarCodigo.setForeground(Color.BLUE);
+            cBLL = ccBLL.BuscarCargoRelacionado();
+            DefinirCargo();
             LiberarTelaCompleta();
+            
         } else {
                lblValidarCodigo.setText("CÓDIGO INVÁLIDO");
             lblValidarCodigo.setForeground(Color.RED);

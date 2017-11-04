@@ -2,6 +2,7 @@
 package BLL;
 
 import DAL.EquipamentoDaLojaDAL; // IMPORTAÇÃO DA RESPECTIVA CLASSE DAL
+import java.util.List;
 
 public class EquipamentoDaLojaBLL {
     
@@ -13,8 +14,22 @@ public class EquipamentoDaLojaBLL {
     
     private EquipamentoDaLojaDAL elDAL = new EquipamentoDaLojaDAL();
 
+    //CONSTRUTOR
     public EquipamentoDaLojaBLL() {
         this.tipo = new TipoEquipamentoBLL();
+    }
+    
+    // MÉTODOS
+    public boolean Cadastrar(){
+        return elDAL.Cadastrar(this);
+    }
+    
+    /*
+     * @return Retorna uma lista com todos os equipamentos da loja cadastradas no banco de dados.
+     * Preenche inclusive todas as informações do Tipo relacionados à cada equipamento.
+     */
+    public List<EquipamentoDaLojaBLL> Consultar (){
+        return elDAL.Consultar();
     }
 
     /**
@@ -86,10 +101,4 @@ public class EquipamentoDaLojaBLL {
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
-
-    // MÉTODOS
-    public boolean Cadastrar(){
-        return elDAL.Cadastrar(this);
-    }
-    
 }

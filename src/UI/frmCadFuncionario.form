@@ -87,7 +87,7 @@
                       <Component id="btnValidarCodCadastro" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="451" max="32767" attributes="0"/>
+                      <EmptySpace pref="457" max="32767" attributes="0"/>
                       <Component id="btnCadFuncionario" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -145,7 +145,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="NOME: "/>
+        <Property name="text" type="java.lang.String" value="NOME*: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNome">
@@ -195,7 +195,7 @@
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="txtNumero" min="-2" pref="57" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="151" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="157" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -342,7 +342,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cargo: "/>
+        <Property name="text" type="java.lang.String" value="Cargo*: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbCargos">
@@ -369,12 +369,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
-        <Property name="text" type="java.lang.String" value="USU&#xc1;RIO: "/>
+        <Property name="text" type="java.lang.String" value="USU&#xc1;RIO*: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
-        <Property name="text" type="java.lang.String" value="SENHA: "/>
+        <Property name="text" type="java.lang.String" value="SENHA*: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtUsuario">
@@ -383,7 +383,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">
       <Properties>
-        <Property name="text" type="java.lang.String" value="EMAIL: "/>
+        <Property name="text" type="java.lang.String" value="EMAIL*: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmail">

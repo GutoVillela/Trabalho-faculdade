@@ -174,5 +174,9 @@ public class CodigoDeCadastroBLL {
     public  boolean Validar(){
         return ccDAL.Validar(this);
     }
+    
+    public BLL.CargoBLL BuscarCargoRelacionado(){
+        return ccDAL.BuscarCargoRelacionado(this);
+    }
 
 }

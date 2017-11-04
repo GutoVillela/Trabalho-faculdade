@@ -184,7 +184,7 @@ public class Conexao {
                 + "    foreign key (codigo) references Clientes(codigo)\n"
                 + "    );\n"
                 + "    \n"
-                + "CREATE TABLE IF NOT EXISTS BD_LJ.Pessoa_jurudica(\n"
+                + "CREATE TABLE IF NOT EXISTS BD_LJ.Pessoa_juridica(\n"
                 + "	codigo int,\n"
                 + "    razao_social varchar (50) not null,\n"
                 + "    cnpj char (14),\n"
