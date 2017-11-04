@@ -5,10 +5,12 @@
  */
 package UI;
 
+import BLL.EquipamentoDoClienteBLL;
 import BLL.FuncionarioBLL;
 import BLL.PessoaFisicaBLL;
 import BLL.TipoManutencaoBLL;
 import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
 
 /**
@@ -25,7 +27,10 @@ public class frmCadManutencao extends javax.swing.JFrame {
     private TipoManutencaoBLL tmBLL = new TipoManutencaoBLL();
     private List<TipoManutencaoBLL> listaTipoManutencao;
     
+    private EquipamentoDoClienteBLL ecBLL = new EquipamentoDoClienteBLL();
+    private List<EquipamentoDoClienteBLL> listaEquipamentosDoCliente;
             
+    private DefaultListModel modelDaList;
     /**
      * Creates new form frmCadManutencao
      */
@@ -334,6 +339,11 @@ public class frmCadManutencao extends javax.swing.JFrame {
             
             cmbTipoDeManutencao.addItem(listaTipoManutencao.get(i).getTipoManutencao());
         }
+        
+        
+    }
+    private void CarregarEquipamentosDoCliente(){
+        
         
         
     }
