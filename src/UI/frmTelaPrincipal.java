@@ -39,6 +39,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         btnCadCliente = new javax.swing.JMenuItem();
         btnCadProduto = new javax.swing.JMenuItem();
         frmCadAluguel = new javax.swing.JMenuItem();
+        btnCadManutencao = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnConCliente = new javax.swing.JMenuItem();
         btnConFuncionario = new javax.swing.JMenuItem();
@@ -120,6 +121,14 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(frmCadAluguel);
+
+        btnCadManutencao.setText("MANUTENÇÃO");
+        btnCadManutencao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadManutencaoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnCadManutencao);
 
         jMenuBar1.add(jMenu1);
 
@@ -222,6 +231,13 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         cadAluguel.setVisible(true);
     }//GEN-LAST:event_frmCadAluguelActionPerformed
 
+    private void btnCadManutencaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadManutencaoActionPerformed
+        // TODO add your handling code here:
+        frmCadManutencao cadManutencao = new frmCadManutencao();
+        cadManutencao.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        cadManutencao.setVisible(true);
+    }//GEN-LAST:event_btnCadManutencaoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -264,6 +280,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnCadCodCadastro;
     private javax.swing.JMenuItem btnCadEquipamento;
     private javax.swing.JMenuItem btnCadJogo;
+    private javax.swing.JMenuItem btnCadManutencao;
     private javax.swing.JMenuItem btnCadProduto;
     private javax.swing.JMenuItem btnConCliente;
     private javax.swing.JMenuItem btnConFuncionario;
