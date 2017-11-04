@@ -568,7 +568,7 @@ public class Conexao {
                 + "    valor decimal (15,2) not null,\n"
                 + "    data_manutencao datetime not null,\n"
                 + "    parecer_tecnico varchar (255),\n"
-                + "    cliente int not null,\n"
+                + "    cliente int,\n"
                 + "    tecnico_responsavel int not null,\n"
                 + "    ativo bit,\n"
                 + "    primary key (codigo),\n"

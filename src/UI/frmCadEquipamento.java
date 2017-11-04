@@ -10,6 +10,7 @@ import BLL.EquipamentoDaManutencaoBLL;
 import BLL.EquipamentoManutencaoBLL;
 import BLL.TipoEquipamentoBLL;
 import java.util.List;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -159,10 +160,27 @@ public class frmCadEquipamento extends javax.swing.JFrame {
     private void btnCadTipoEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadTipoEquipamentoActionPerformed
         // TODO add your handling code here:
 
-        frmCadTipoEquipamento cadTipo = new frmCadTipoEquipamento();
-        cadTipo.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        cadTipo.setVisible(true);
+        frmCadTipoEquipamento cadTipoEquipamento = new frmCadTipoEquipamento(); // INSTÂNCIA DO JFRAME QUE EU VOU COPIAR
         
+        JDialog dialogo = new JDialog(this, cadTipoEquipamento.getTitle(), true); // INSTÂNCIA DO JDIALOG QUE VAI RECEBER O MEU JFRAME
+        
+        // COLOCAR TODOS OS COMPONENTES DO JFRAME DENTRO DO MEU JDIALOG
+        for (int i = 0; i < cadTipoEquipamento.getComponentCount(); i++) {
+            
+            dialogo.add(cadTipoEquipamento.getComponent(i));
+            
+        }
+        
+        // DEFINIR TAMANHO do JDialog IDÊNTICO AO MEU JFRAME
+        dialogo.setSize(cadTipoEquipamento.getSize());
+        
+        // DEIXAR A POSIÇÃO DO DIÁLOGO RELATIVO À ESTE FORM
+        dialogo.setLocationRelativeTo(this);
+        
+        //EXIBIR DIÁLOGO PRONTO
+        dialogo.setVisible(true);
+        
+        //DEPOIS DE EXIBIR O DIÁLOGO, CARREGAR TIPOS
         AtualizarTiposDeEquipamento();
 
     }//GEN-LAST:event_btnCadTipoEquipamentoActionPerformed
@@ -179,6 +197,8 @@ public class frmCadEquipamento extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        lblValorPorHora.setVisible(false);
+        txtValorPorHora.setVisible(false);
         AtualizarTiposDeEquipamento();
     }//GEN-LAST:event_formWindowOpened
 
