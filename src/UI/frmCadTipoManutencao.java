@@ -5,6 +5,9 @@
  */
 package UI;
 
+import BLL.TipoManutencaoBLL;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Uny
@@ -17,6 +20,8 @@ public class frmCadTipoManutencao extends javax.swing.JFrame {
     public frmCadTipoManutencao() {
         initComponents();
     }
+    
+    private TipoManutencaoBLL tmBLL = new TipoManutencaoBLL(); // INSTÂNCIA DAS CLASSES BLL NECESSÁRIAS
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,7 +34,7 @@ public class frmCadTipoManutencao extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         btnCadastrar = new javax.swing.JButton();
-        txtTipoDeEquipamento = new javax.swing.JTextField();
+        txtTipoDeManutencao = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,15 +52,13 @@ public class frmCadTipoManutencao extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnCadastrar)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtTipoDeEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(184, 184, 184)
-                        .addComponent(btnCadastrar)))
+                        .addComponent(txtTipoDeManutencao, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -64,17 +67,31 @@ public class frmCadTipoManutencao extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(txtTipoDeEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                    .addComponent(txtTipoDeManutencao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
                 .addComponent(btnCadastrar)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        // TODO add your handling code here:
+        // DEFINIR ATRIBUTOS E CADASTRAR
+        tmBLL.setTipoManutencao(txtTipoDeManutencao.getText().trim());
+        tmBLL.setAtivo(true);
+        
+        //DEPOIS DE SETAR TODOS OS ATRIBUTOS, TENTAR CADASTRAR
+        if (tmBLL.Cadastrar()) {
+            int escolha = JOptionPane.showConfirmDialog(null, "Tipo de manutenção cadastrado com sucesso.\nDeseja cadastrar outro tipo?", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.YES_NO_OPTION);
+            
+            //CASO O USUÁRIO ESCOLHA NÃO
+            if (escolha == JOptionPane.NO_OPTION) {
+                this.setVisible(false);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Aconteceu um erro ao cadastrar o tipo de manutenção.", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
@@ -115,6 +132,6 @@ public class frmCadTipoManutencao extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtTipoDeEquipamento;
+    private javax.swing.JTextField txtTipoDeManutencao;
     // End of variables declaration//GEN-END:variables
 }

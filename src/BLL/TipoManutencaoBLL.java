@@ -1,16 +1,25 @@
 package BLL;
 
+import DAL.TipoManutencaoDAL;
+
 public class TipoManutencaoBLL {
     
     private int codigo;
     private String tipoManutencao;
     private boolean ativo;
+    
+    private TipoManutencaoDAL tmDAL = new TipoManutencaoDAL();
 
     /**
      * @return the codigo
      */
     public int getCodigo() {
         return codigo;
+    }
+    
+    // MÉTODOS
+    public boolean Cadastrar(){
+        return tmDAL.Cadastrar(this);
     }
 
     /**
