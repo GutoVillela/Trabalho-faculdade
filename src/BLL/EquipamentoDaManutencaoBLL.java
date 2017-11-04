@@ -1,7 +1,7 @@
 
 package BLL;
 
-public class EquipamentoDaManutencaoBLL extends EquipamentoManutencaoBLL{
+public class EquipamentoDaManutencaoBLL extends EquipamentoDoClienteBLL{
     
     private String defeito;
     private float orcamento;

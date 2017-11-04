@@ -7,7 +7,8 @@ package UI;
 
 import BLL.EquipamentoDaLojaBLL;
 import BLL.EquipamentoDaManutencaoBLL;
-import BLL.EquipamentoManutencaoBLL;
+import BLL.EquipamentoDoClienteBLL;
+import BLL.PessoaFisicaBLL;
 import BLL.TipoEquipamentoBLL;
 import java.util.List;
 import javax.swing.JDialog;
@@ -28,6 +29,10 @@ public class frmCadEquipamento extends javax.swing.JFrame {
 
     private List<TipoEquipamentoBLL> tiposDeEquipamentos;
     private TipoEquipamentoBLL teBLL = new TipoEquipamentoBLL();
+    
+    private PessoaFisicaBLL pfBLL =new PessoaFisicaBLL();
+    private List<PessoaFisicaBLL> listaDePessoaFisica;
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,6 +55,8 @@ public class frmCadEquipamento extends javax.swing.JFrame {
         btnCadTipoEquipamento = new javax.swing.JButton();
         lblValorPorHora = new javax.swing.JLabel();
         txtValorPorHora = new javax.swing.JTextField();
+        lblCliente = new javax.swing.JLabel();
+        cmbClientes = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -99,6 +106,10 @@ public class frmCadEquipamento extends javax.swing.JFrame {
 
         lblValorPorHora.setText("VALOR POR HORA: ");
 
+        lblCliente.setText("A QUEM PERTENCE?");
+
+        cmbClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,15 +128,17 @@ public class frmCadEquipamento extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
-                            .addComponent(lblValorPorHora))
+                            .addComponent(lblValorPorHora)
+                            .addComponent(lblCliente))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cmbTipoEquipamento, 0, 184, Short.MAX_VALUE)
                             .addComponent(txtNome)
-                            .addComponent(txtValorPorHora))))
+                            .addComponent(txtValorPorHora)
+                            .addComponent(cmbClientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
                 .addComponent(btnCadTipoEquipamento)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +161,11 @@ public class frmCadEquipamento extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblValorPorHora)
                     .addComponent(txtValorPorHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCliente)
+                    .addComponent(cmbClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
         );
@@ -194,12 +211,23 @@ public class frmCadEquipamento extends javax.swing.JFrame {
             cmbTipoEquipamento.addItem(tiposDeEquipamentos.get(i).getTipo());
         }
     }
+    
+    private void AtualizarClientes(){
+        listaDePessoaFisica = pfBLL.Consultar(); // CONSULTAR TODOS OS TIPOS DE EQUIPAMENTOS DISPONÍVEIS
+
+        cmbClientes.removeAllItems();
+
+        for (int i = 0; i < listaDePessoaFisica.size(); i++) {
+            cmbClientes.addItem(listaDePessoaFisica.get(i).getNome());
+        }
+    }
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         lblValorPorHora.setVisible(false);
         txtValorPorHora.setVisible(false);
         AtualizarTiposDeEquipamento();
+        AtualizarClientes();
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
@@ -208,8 +236,9 @@ public class frmCadEquipamento extends javax.swing.JFrame {
         if (rdbDoCliente.isSelected()) {
 
             // INSTÂNCIA E PREENCHIMENTO DAS INFORMAÇÕES DO EQUIPAMENTO DO CLIENTE
-            EquipamentoManutencaoBLL emBLL = new EquipamentoDaManutencaoBLL();
+            EquipamentoDoClienteBLL emBLL = new EquipamentoDaManutencaoBLL();
             emBLL.setNome(txtNome.getText());
+            emBLL.getCliente().setCodigo(listaDePessoaFisica.get(cmbClientes.getSelectedIndex()).getCodigo());
             emBLL.setTipo(tiposDeEquipamentos.get(cmbTipoEquipamento.getSelectedIndex()));
             emBLL.setAtivo(true);
 
@@ -236,26 +265,33 @@ public class frmCadEquipamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void rdbDaLojaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbDaLojaActionPerformed
-        // TODO add your handling code here:
         if (rdbDaLoja.isSelected()) {
             lblValorPorHora.setVisible(true);
             txtValorPorHora.setVisible(true);
+            lblCliente.setVisible(false);
+            cmbClientes.setVisible(false);
         }
         else{
             lblValorPorHora.setVisible(false);
             txtValorPorHora.setVisible(false);
+            lblCliente.setVisible(true);
+            cmbClientes.setVisible(true);
         }
     }//GEN-LAST:event_rdbDaLojaActionPerformed
 
     private void rdbDoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbDoClienteActionPerformed
-        // TODO add your handling code here:
+        
         if (rdbDaLoja.isSelected()) {
             lblValorPorHora.setVisible(true);
             txtValorPorHora.setVisible(true);
+            lblCliente.setVisible(false);
+            cmbClientes.setVisible(false);
         }
         else{
             lblValorPorHora.setVisible(false);
             txtValorPorHora.setVisible(false);
+            lblCliente.setVisible(true);
+            cmbClientes.setVisible(true);
         }
     }//GEN-LAST:event_rdbDoClienteActionPerformed
 
@@ -298,10 +334,12 @@ public class frmCadEquipamento extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btgDaLojaOuNao;
     private javax.swing.JButton btnCadTipoEquipamento;
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JComboBox<String> cmbClientes;
     private javax.swing.JComboBox<String> cmbTipoEquipamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblValorPorHora;
     private javax.swing.JRadioButton rdbDaLoja;
     private javax.swing.JRadioButton rdbDoCliente;
