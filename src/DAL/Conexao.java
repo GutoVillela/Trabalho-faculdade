@@ -700,6 +700,8 @@ public class Conexao {
             PreparedStatement pQuery = Conectar().prepareStatement(comandoSQL);
             pQuery.execute();
 
+            System.out.println("BANCO DE DADOS CRIADO COM SUCESSO!");
+            
             //SE TUDO DER CERTO, RETORNAR TRUE
             return true;
 

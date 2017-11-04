@@ -244,6 +244,7 @@ public class frmLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         DAL.Conexao con = new Conexao();
         con.GerarBanco();
+        
     }//GEN-LAST:event_btnCriarBDActionPerformed
 
     public static void main(String args[]) {
