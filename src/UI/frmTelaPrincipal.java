@@ -5,6 +5,8 @@
  */
 package UI;
 
+import java.awt.Toolkit;
+
 /**
  *
  * @author Guto
@@ -15,6 +17,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
      * Creates new form frmTelaPrincipal
      */
     public frmTelaPrincipal() {
+        
         initComponents();
     }
 
@@ -45,13 +48,14 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         btnConFuncionario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1000, 750));
         setResizable(false);
-        getContentPane().setLayout(null);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/fundo_retro_de_bolinhas.jpg"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 770, 440);
 
         jMenu1.setText("CADASTRAR");
 
@@ -154,6 +158,17 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 770, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, Short.MAX_VALUE)
+        );
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -237,6 +252,10 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         cadManutencao.setDefaultCloseOperation(HIDE_ON_CLOSE);
         cadManutencao.setVisible(true);
     }//GEN-LAST:event_btnCadManutencaoActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setExtendedState(MAXIMIZED_BOTH); // MAXIMIZAR FORMULÁRIO ASSIM QUE ABRIR
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

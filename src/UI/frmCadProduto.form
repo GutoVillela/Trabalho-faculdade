@@ -78,9 +78,9 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="cmbTitulo" pref="259" max="32767" attributes="0"/>
                                   <Component id="cmbPlataforma1" max="32767" attributes="0"/>
-                                  <Component id="txtQuantidade" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtPreco" max="32767" attributes="0"/>
                                   <Component id="cmbTipoAcessorio" max="32767" attributes="0"/>
+                                  <Component id="spnQuantidade" max="32767" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
@@ -151,7 +151,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtQuantidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="spnQuantidade" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -266,8 +266,6 @@
         <Property name="text" type="java.lang.String" value="QUANTIDADE: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtQuantidade">
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
         <Property name="text" type="java.lang.String" value="PRE&#xc7;O: "/>
@@ -312,6 +310,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNovoTipoAcessorioActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="spnQuantidade">
     </Component>
   </SubComponents>
 </Form>

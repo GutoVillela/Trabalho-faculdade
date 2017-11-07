@@ -60,13 +60,13 @@ public class frmCadProduto extends javax.swing.JFrame {
         btnNovaPlataforma1 = new javax.swing.JButton();
         cmbPlataforma1 = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        txtQuantidade = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtPreco = new javax.swing.JTextField();
         btnCadJogo = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         cmbTipoAcessorio = new javax.swing.JComboBox<>();
         btnNovoTipoAcessorio = new javax.swing.JButton();
+        spnQuantidade = new javax.swing.JSpinner();
 
         btnNovaPlataforma.setText("NOVA PLATAFORMA");
         btnNovaPlataforma.addActionListener(new java.awt.event.ActionListener() {
@@ -181,9 +181,9 @@ public class frmCadProduto extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cmbTitulo, 0, 259, Short.MAX_VALUE)
                                     .addComponent(cmbPlataforma1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtQuantidade)
                                     .addComponent(txtPreco)
-                                    .addComponent(cmbTipoAcessorio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(cmbTipoAcessorio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(spnQuantidade))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(16, 16, 16)
@@ -236,7 +236,7 @@ public class frmCadProduto extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spnQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -325,7 +325,7 @@ public class frmCadProduto extends javax.swing.JFrame {
         if (rdbJogo.isSelected()) {
             // DEFINIR ATRIBUTOS DA CÓPIA PARA VENDER
             cpvBLL.setNome(cmbTitulo.getSelectedItem().toString() + " " + cmbPlataforma1.getSelectedItem().toString());
-            cpvBLL.setQuantidade(Integer.valueOf(txtQuantidade.getText()));
+            cpvBLL.setQuantidade(Integer.valueOf(spnQuantidade.getValue().toString()));
             cpvBLL.setPreco(Float.valueOf(txtPreco.getText()));
             cpvBLL.getTitulo().setCodigo(titulos.get(cmbTitulo.getSelectedIndex()).getCodigo());
             cpvBLL.getPlataforma().setCodigo(plataformas.get(cmbPlataforma1.getSelectedIndex()).getCodigo());
@@ -339,7 +339,7 @@ public class frmCadProduto extends javax.swing.JFrame {
         } else {
             // DEFINIR ATRIBUTOS DO ACESSÓRIO   
             aBLL.setNome(txtNomeProduto.getText());
-            aBLL.setQuantidade(Integer.valueOf(txtQuantidade.getText()));
+            aBLL.setQuantidade(Integer.valueOf(spnQuantidade.getValue().toString()));
             aBLL.setPreco(Float.valueOf(txtPreco.getText()));
             aBLL.getTipo().setCodigo(listaDeTiposDeAcessorios.get(cmbTipoAcessorio.getSelectedIndex()).getCodigo());
             aBLL.setAtivo(true);
@@ -515,8 +515,8 @@ public class frmCadProduto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JRadioButton rdbAcessorio;
     private javax.swing.JRadioButton rdbJogo;
+    private javax.swing.JSpinner spnQuantidade;
     private javax.swing.JTextField txtNomeProduto;
     private javax.swing.JTextField txtPreco;
-    private javax.swing.JTextField txtQuantidade;
     // End of variables declaration//GEN-END:variables
 }

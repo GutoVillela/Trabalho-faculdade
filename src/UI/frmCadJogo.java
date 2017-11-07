@@ -37,7 +37,7 @@ public class frmCadJogo extends javax.swing.JFrame {
         btnNovoTitulo = new javax.swing.JButton();
         btnNovaPlataforma = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        txtQuantidade = new javax.swing.JTextField();
+        spnQuantidade = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -79,6 +79,8 @@ public class frmCadJogo extends javax.swing.JFrame {
 
         jLabel3.setText("QUANTIDADE:");
 
+        spnQuantidade.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -95,7 +97,7 @@ public class frmCadJogo extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cmbTitulo, 0, 219, Short.MAX_VALUE)
                             .addComponent(cmbPlataforma, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtQuantidade))
+                            .addComponent(spnQuantidade))
                         .addGap(16, 16, 16)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnNovaPlataforma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -121,7 +123,7 @@ public class frmCadJogo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spnQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addComponent(btnCadJogo, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                 .addGap(98, 98, 98))
@@ -200,7 +202,6 @@ public class frmCadJogo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNovoTituloActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
         
         AtualizarTitulos();
         AtualizarPlataformas();
@@ -243,7 +244,7 @@ public class frmCadJogo extends javax.swing.JFrame {
         
         cpaBLL.getTitulo().setCodigo(titulos.get(cmbTitulo.getSelectedIndex()).getCodigo());
         cpaBLL.getPlataforma().setCodigo(plataformas.get(cmbPlataforma.getSelectedIndex()).getCodigo());
-        cpaBLL.setQuantidade(Integer.valueOf(txtQuantidade.getText()));
+        cpaBLL.setQuantidade(Integer.valueOf(spnQuantidade.getValue().toString()));
         cpaBLL.setAtivo(true);
         
         // CADASTRAR
@@ -303,6 +304,6 @@ public class frmCadJogo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtQuantidade;
+    private javax.swing.JSpinner spnQuantidade;
     // End of variables declaration//GEN-END:variables
 }

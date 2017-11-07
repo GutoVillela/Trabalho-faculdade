@@ -1,4 +1,3 @@
-
 package UI;
 
 import BLL.AluguelBLL;
@@ -7,9 +6,15 @@ import BLL.CopiaParaAlugarBLL;
 import BLL.EquipamentoDaLojaBLL;
 import BLL.PessoaFisicaBLL;
 import BLL.PessoaJuridicaBLL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 
 public class frmCadAluguel extends javax.swing.JFrame {
@@ -24,7 +29,7 @@ public class frmCadAluguel extends javax.swing.JFrame {
         modelListaMaquinasParaAlugar = (DefaultListModel) lstMaquinasDisponiveis.getModel();
         modelListaJogosDoAluguel = (DefaultListModel) lstJogosDoAluguel.getModel();
         modelListaMaquinasDoAluguel = (DefaultListModel) lstMaquinasDoAluguel.getModel();
-        */
+         */
         modelListaJogosParaAlugar = new DefaultListModel();
         modelListaMaquinasParaAlugar = new DefaultListModel();
         modelListaJogosDoAluguel = new DefaultListModel();
@@ -35,26 +40,24 @@ public class frmCadAluguel extends javax.swing.JFrame {
     DefaultListModel modelListaMaquinasParaAlugar;
     DefaultListModel modelListaJogosDoAluguel;
     DefaultListModel modelListaMaquinasDoAluguel;
-    
-    
+
     private CopiaParaAlugarBLL cpaBLL = new CopiaParaAlugarBLL(); // INSTÂNCIA DO OBJETO BLL NECESSÁRIO
     private List<CopiaParaAlugarBLL> listaDeJogosParaAlugar; // LISTA DE JOGOS PARA ALUGAR
-    
+
     private EquipamentoDaLojaBLL edlBLL = new EquipamentoDaLojaBLL();
     private List<EquipamentoDaLojaBLL> listaDeMaquinasParaAlugar;
-    
+
     private PessoaFisicaBLL pfBLL = new PessoaFisicaBLL();
     private List<PessoaFisicaBLL> listaDeClientesFisicos;
-    
+
     private PessoaJuridicaBLL pjBLL = new PessoaJuridicaBLL();
     private List<PessoaJuridicaBLL> listaDeClientesJuridicos;
-    
+
     //ATRIBUTOS PARA CADASTRAR O ALUGUEL COM SUCESSO
     private AluguelBLL aluguel = new AluguelBLL();
     private ClienteBLL clienteQueEstaAlugando = new ClienteBLL();
     private List<CopiaParaAlugarBLL> copiasQueSeraoAlugadas = new ArrayList<>();
     private List<EquipamentoDaLojaBLL> equipamentosQueSeraoAlugados = new ArrayList<>();
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,6 +68,7 @@ public class frmCadAluguel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btgTipoCliente = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -74,11 +78,11 @@ public class frmCadAluguel extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lstJogosParaAlugar = new javax.swing.JList<>();
         cmbCliente = new javax.swing.JComboBox<>();
-        cmbHorarioInicio = new javax.swing.JComboBox<>();
-        cmbDuracao = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         lstMaquinasDisponiveis = new javax.swing.JList<>();
+        jLabel7 = new javax.swing.JLabel();
+        txtValorPorHora = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         lstJogosDoAluguel = new javax.swing.JList<>();
@@ -87,6 +91,10 @@ public class frmCadAluguel extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         btnCadAluguel = new javax.swing.JButton();
+        spnHorarioInicio = new javax.swing.JSpinner();
+        spnDuracao = new javax.swing.JSpinner();
+        rdbPessoaFisica = new javax.swing.JRadioButton();
+        rdbPessoaJuridica = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -137,11 +145,6 @@ public class frmCadAluguel extends javax.swing.JFrame {
         cmbCliente.setEditable(true);
         cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cmbHorarioInicio.setEditable(true);
-        cmbHorarioInicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cmbDuracao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "30 m", "1 h", "1h 30m", "2 h", "2h 30m", "3 h", "3h 30m", "4 h", "4h 30m", "5 h", "5h 30m", "6 h", "6h 30m", "7 h", "7h 30m", "8 h" }));
-
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MÁQUINAS DISPONÍVEIS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 10))); // NOI18N
 
         lstMaquinasDisponiveis.setModel(new javax.swing.AbstractListModel<String>() {
@@ -156,6 +159,8 @@ public class frmCadAluguel extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(lstMaquinasDisponiveis);
 
+        jLabel7.setText("Valor por hora:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -163,13 +168,23 @@ public class frmCadAluguel extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtValorPorHora)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtValorPorHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -208,7 +223,7 @@ public class frmCadAluguel extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,43 +246,75 @@ public class frmCadAluguel extends javax.swing.JFrame {
             }
         });
 
+        spnHorarioInicio.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), null, null, java.util.Calendar.MINUTE));
+
+        spnDuracao.setModel(new javax.swing.SpinnerListModel(new String[] {"30m", "1h", "1h30m", "2h", "2h30m", "3h", "3h30m", "4h", "4h30m", "5h", "5h30m", "6h", "6h30m", "7h", "7h30m", "8h"}));
+
+        btgTipoCliente.add(rdbPessoaFisica);
+        rdbPessoaFisica.setText("Pessoa Física");
+        rdbPessoaFisica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbPessoaFisicaActionPerformed(evt);
+            }
+        });
+
+        btgTipoCliente.add(rdbPessoaJuridica);
+        rdbPessoaJuridica.setText("Pessoa Jurídica");
+        rdbPessoaJuridica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbPessoaJuridicaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(410, 410, 410)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbHorarioInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(68, 68, 68))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(rdbPessoaFisica)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(rdbPessoaJuridica)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cmbCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnBuscar)))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(7, 7, 7)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBuscar)))
-                .addGap(54, 54, 54)
-                .addComponent(btnCadAluguel)
-                .addGap(121, 121, 121))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addComponent(btnCadAluguel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(spnDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(410, 410, 410)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(spnHorarioInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,18 +325,24 @@ public class frmCadAluguel extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(btnBuscar)
-                            .addComponent(cmbHorarioInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(spnHorarioInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
+                            .addComponent(jLabel2)
+                            .addComponent(spnDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(13, 13, 13))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(cmbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)))
-                .addGap(13, 13, 13)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(rdbPessoaFisica)
+                                    .addComponent(rdbPessoaJuridica))
+                                .addGap(18, 18, 18)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
@@ -298,7 +351,7 @@ public class frmCadAluguel extends javax.swing.JFrame {
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btnCadAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -306,153 +359,192 @@ public class frmCadAluguel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
         //PREENCHER LISTA DE JOGOS
         listaDeJogosParaAlugar = cpaBLL.Consultar();
         PreencherListaDeJogosParaAlugar();
-        
+
         //PREENCHER LISTA DE MÁQUINAS
         listaDeMaquinasParaAlugar = edlBLL.Consultar();
         PreencherListaDeMaquinasParaAlugar();
-        
-        // PREENCHER LISTA DE CLIENTES FÍSICOS
+
+        // PREENCHER LISTA DE CLIENTES FÍSICOS E JURÍDICOS
         listaDeClientesFisicos = pfBLL.Consultar();
         listaDeClientesJuridicos = pjBLL.Consultar();
+        rdbPessoaFisica.setSelected(true); // SELECIONAR O RADIOBUTTON DE PESSOA FÍSICA
         CarregarClientes();
     }//GEN-LAST:event_formWindowOpened
 
     private void lstJogosParaAlugarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstJogosParaAlugarMouseClicked
-        
+
         // RECONHECER SE É UM CLIQUE DUPLO
-        if(evt.getClickCount() == 2){
-            
+        if (evt.getClickCount() == 2) {
+
             copiasQueSeraoAlugadas.add(listaDeJogosParaAlugar.get(lstJogosParaAlugar.getSelectedIndex()));
             AtualizarJogosAlugados();
-            
+
         }
-        
+
     }//GEN-LAST:event_lstJogosParaAlugarMouseClicked
 
     private void lstMaquinasDisponiveisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstMaquinasDisponiveisMouseClicked
+
+        // EXIBIR VALOR POR HORA DESTA MÁQUINA
+        txtValorPorHora.setText(String.valueOf(listaDeMaquinasParaAlugar.get(lstMaquinasDisponiveis.getSelectedIndex()).getValorPorHora()));
+
         // RECONHECER SE É UM CLIQUE DUPLO
-        if(evt.getClickCount() == 2){
-            
+        if (evt.getClickCount() == 2) {
+
             equipamentosQueSeraoAlugados.add(listaDeMaquinasParaAlugar.get(lstMaquinasDisponiveis.getSelectedIndex()));
             AtualizarEquipamentosAlugados();
-            
+
         }
+
+
     }//GEN-LAST:event_lstMaquinasDisponiveisMouseClicked
 
     private void lstJogosDoAluguelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstJogosDoAluguelMouseClicked
-        
-        if(evt.getClickCount() == 2){
+
+        if (evt.getClickCount() == 2) {
             copiasQueSeraoAlugadas.remove(lstJogosDoAluguel.getSelectedIndex());
             AtualizarJogosAlugados();
         }
-        
+
     }//GEN-LAST:event_lstJogosDoAluguelMouseClicked
 
     private void lstMaquinasDoAluguelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstMaquinasDoAluguelMouseClicked
-        if(evt.getClickCount() == 2){
+        if (evt.getClickCount() == 2) {
             equipamentosQueSeraoAlugados.remove(lstMaquinasDoAluguel.getSelectedIndex());
             AtualizarEquipamentosAlugados();
         }
     }//GEN-LAST:event_lstMaquinasDoAluguelMouseClicked
 
     private void btnCadAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadAluguelActionPerformed
+
+        //DEFINIR HORÁRIO DE INÍCIO DO ALUGUEL
+        SimpleDateFormat entradaDaData = new SimpleDateFormat();
+        SimpleDateFormat saidaDaData = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String horarioInicioString = String.valueOf(spnHorarioInicio.getValue());
+        JOptionPane.showMessageDialog(null, String.valueOf(spnHorarioInicio.getValue()));
+        Date lerData;
+        try {
+            lerData = entradaDaData.parse(horarioInicioString);
+            JOptionPane.showMessageDialog(null, saidaDaData.format(lerData));
+            aluguel.setHorarioInicio(saidaDaData.format(lerData));
+        } catch (ParseException ex) {
+            Logger.getLogger(frmCadAluguel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
         //DEFINIR O CLIENTE QUE ESTÁ ALUGANDO
+        if(rdbPessoaFisica.isSelected())
+            clienteQueEstaAlugando = listaDeClientesFisicos.get(cmbCliente.getSelectedIndex());
+        else if(rdbPessoaJuridica.isSelected())
+            clienteQueEstaAlugando = listaDeClientesJuridicos.get(cmbCliente.getSelectedIndex());
         
-        
+        aluguel.setCliente(clienteQueEstaAlugando);
+
+
     }//GEN-LAST:event_btnCadAluguelActionPerformed
 
-    private void PreencherListaDeJogosParaAlugar(){
+    private void rdbPessoaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbPessoaFisicaActionPerformed
+        CarregarClientes();
+    }//GEN-LAST:event_rdbPessoaFisicaActionPerformed
+
+    private void rdbPessoaJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbPessoaJuridicaActionPerformed
+        CarregarClientes();
+    }//GEN-LAST:event_rdbPessoaJuridicaActionPerformed
+
+    private void PreencherListaDeJogosParaAlugar() {
         //LIMPAR LISTA E PREENCHER COM NOVOS DADOS
         modelListaJogosParaAlugar.removeAllElements();
-        
+
         for (int i = 0; i < listaDeJogosParaAlugar.size(); i++) {
             modelListaJogosParaAlugar.addElement(listaDeJogosParaAlugar.get(i).getTitulo().getNome());
-            
+
         }
-        
+
         // CRIAR LISTA E PREENCHELA COM O MODEL
         ListModel lista = modelListaJogosParaAlugar;
-        
+
         // ATRIBUIR ListModel À LISTA
         lstJogosParaAlugar.setModel(lista);
-        
+
     }
-    
-    private void PreencherListaDeMaquinasParaAlugar(){
+
+    private void PreencherListaDeMaquinasParaAlugar() {
         //LIMPAR LISTA E PREENCHER COM NOVOS DADOS
         modelListaMaquinasParaAlugar.removeAllElements();
-        
+
         for (int i = 0; i < listaDeMaquinasParaAlugar.size(); i++) {
             modelListaMaquinasParaAlugar.addElement(listaDeMaquinasParaAlugar.get(i).getNome());
-            
+
         }
-        
+
         // CRIAR LISTA E PREENCHELA COM O MODEL
         ListModel lista = modelListaMaquinasParaAlugar;
-        
+
         // ATRIBUIR ListModel À LISTA
         lstMaquinasDisponiveis.setModel(lista);
     }
-    
-    private void CarregarClientes(){
-        
+
+    private void CarregarClientes() {
+
         // LIMPAR COMBO BOX
         cmbCliente.removeAllItems();
-        
-        // PREENCHER COMBO BOX COM PESSOAS FÍSICAS
-        for (int i = 0; i < listaDeClientesFisicos.size(); i++) {
-            
-            cmbCliente.addItem(listaDeClientesFisicos.get(i).getNome());
-            
+
+        if (rdbPessoaFisica.isSelected()) {
+            // PREENCHER COMBO BOX COM PESSOAS FÍSICAS
+            for (int i = 0; i < listaDeClientesFisicos.size(); i++) {
+
+                cmbCliente.addItem(listaDeClientesFisicos.get(i).getNome());
+
+            }
+        } else if(rdbPessoaJuridica.isSelected()){
+            //PREENCHER COMBO BOX COM PESSOAS JURÍDICAS
+            for (int i = 0; i < listaDeClientesJuridicos.size(); i++) {
+
+                cmbCliente.addItem(listaDeClientesJuridicos.get(i).getRazaoSocial());
+
+            }
         }
-        
-        //PREENCHER COMBO BOX COM PESSOAS JURÍDICAS
-        for (int i = 0; i < listaDeClientesJuridicos.size(); i++) {
-            
-            cmbCliente.addItem(listaDeClientesJuridicos.get(i).getRazaoSocial());
-            
-        }
+
     }
-    
-    private void AtualizarJogosAlugados(){
-        
+
+    private void AtualizarJogosAlugados() {
+
         //LIMPAR LISTA E PREENCHER COM NOVOS DADOS
         modelListaJogosDoAluguel.removeAllElements();
-        
+
         for (int i = 0; i < copiasQueSeraoAlugadas.size(); i++) {
             modelListaJogosDoAluguel.addElement(copiasQueSeraoAlugadas.get(i).getTitulo().getNome());
-            
+
         }
-        
+
         // CRIAR LISTA E PREENCHELA COM O MODEL
         ListModel lista = modelListaJogosDoAluguel;
-        
+
         // ATRIBUIR ListModel À LISTA
         lstJogosDoAluguel.setModel(lista);
     }
-    
-    private void AtualizarEquipamentosAlugados(){
-        
+
+    private void AtualizarEquipamentosAlugados() {
+
         //LIMPAR LISTA E PREENCHER COM NOVOS DADOS
         modelListaMaquinasDoAluguel.removeAllElements();
-        
+
         for (int i = 0; i < equipamentosQueSeraoAlugados.size(); i++) {
             modelListaMaquinasDoAluguel.addElement(equipamentosQueSeraoAlugados.get(i).getNome());
-            
+
         }
-        
+
         // CRIAR LISTA E PREENCHELA COM O MODEL
         ListModel lista = modelListaMaquinasDoAluguel;
-        
+
         // ATRIBUIR ListModel À LISTA
         lstMaquinasDoAluguel.setModel(lista);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -489,17 +581,17 @@ public class frmCadAluguel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btgTipoCliente;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCadAluguel;
     private javax.swing.JComboBox<String> cmbCliente;
-    private javax.swing.JComboBox<String> cmbDuracao;
-    private javax.swing.JComboBox<String> cmbHorarioInicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -511,5 +603,10 @@ public class frmCadAluguel extends javax.swing.JFrame {
     private javax.swing.JList<String> lstJogosParaAlugar;
     private javax.swing.JList<String> lstMaquinasDisponiveis;
     private javax.swing.JList<String> lstMaquinasDoAluguel;
+    private javax.swing.JRadioButton rdbPessoaFisica;
+    private javax.swing.JRadioButton rdbPessoaJuridica;
+    private javax.swing.JSpinner spnDuracao;
+    private javax.swing.JSpinner spnHorarioInicio;
+    private javax.swing.JTextField txtValorPorHora;
     // End of variables declaration//GEN-END:variables
 }

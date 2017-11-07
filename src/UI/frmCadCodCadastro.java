@@ -43,11 +43,11 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         cmbCargos = new javax.swing.JComboBox<>();
         btnCadCargo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        txtQtdCodigos = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCodigosGerados = new javax.swing.JTable();
         btnCadCodigos = new javax.swing.JButton();
         btnGerarCodigos = new javax.swing.JButton();
+        spnQuantidade = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -93,6 +93,9 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
             }
         });
 
+        spnQuantidade.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spnQuantidade.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,7 +112,7 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(cmbCargos, 0, 225, Short.MAX_VALUE)
-                                .addComponent(txtQtdCodigos))
+                                .addComponent(spnQuantidade))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(btnCadCargo)
@@ -130,8 +133,8 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtQtdCodigos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGerarCodigos))
+                    .addComponent(btnGerarCodigos)
+                    .addComponent(spnQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -169,7 +172,7 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
 
     private void btnGerarCodigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarCodigosActionPerformed
         // TODO add your handling code here:
-        int qtdCodigos = Integer.valueOf(txtQtdCodigos.getText());
+        int qtdCodigos = Integer.valueOf(spnQuantidade.getValue().toString());
         
         int qtdCodigosJaGeradosParaCargo = 0;
         
@@ -260,7 +263,7 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner spnQuantidade;
     private javax.swing.JTable tblCodigosGerados;
-    private javax.swing.JTextField txtQtdCodigos;
     // End of variables declaration//GEN-END:variables
 }
