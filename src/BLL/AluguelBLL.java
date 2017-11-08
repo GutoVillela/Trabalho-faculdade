@@ -1,6 +1,8 @@
 
 package BLL;
 
+import DAL.AluguelDAL;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,14 +15,27 @@ public class AluguelBLL {
     private ClienteBLL cliente;
     private List<CopiaParaAlugarBLL> copiasDoAluguel;
     private List<EquipamentoDaLojaBLL> equipamentosDoAluguel;
+    
+    private AluguelDAL aDAL = new AluguelDAL();
 
+    //CONSTRUTOR
     public AluguelBLL() {
         //INICIALIZAR TODOS OS OBJETOS
         this.equipamentosDoAluguel = new LinkedList<>();
         this.copiasDoAluguel = new LinkedList<>();
         this.cliente = new ClienteBLL();
     }
-
+    
+    //MÉTODOS
+    public boolean Cadastrar(){
+        boolean cadastrouAluguel =  aDAL.Cadastrar(this);
+        this.codigo = aDAL.RecuperarUltimaChavePrimaria();
+        boolean cadastrouEquipamentos = aDAL.CadastrarListaDeEquipamentos(this);
+        boolean cadastrouCopias = aDAL.CadastrarListaDeCopias(this);
+        return cadastrouAluguel && cadastrouEquipamentos && cadastrouCopias;
+    }
+    
+    //ENCAPSULAMENTOS
     /**
      * @return the codigo
      */

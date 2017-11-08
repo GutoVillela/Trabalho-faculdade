@@ -361,6 +361,7 @@ public class Conexao {
                 + "CREATE TABLE IF NOT EXISTS BD_LJ.Copias_do_aluguel(\n"
                 + "	copia int,\n"
                 + "    aluguel int,\n"
+                + "	quantidade_alugada int,\n"
                 + "    primary key (copia, aluguel),\n"
                 + "    foreign key (copia) references Copias_para_alugar (codigo),\n"
                 + "    foreign key (aluguel) references Alugueis (codigo)\n"
@@ -612,7 +613,7 @@ public class Conexao {
                 + "\n"
                 + "INSERT INTO BD_LJ.Codigos_de_cadastro (codigo_De_Cadastro, utilizado, cargo, ativo) VALUES ('1234', 1, 1, 1);\n"
                 + "\n"
-                + "INSERT INTO BD_LJ.Credenciais_de_acesso (usuario, senha, cod_cadastro) VALUES ('admin', 'admin', '1234');\n"
+                + "INSERT INTO BD_LJ.Credenciais_de_acesso (usuario, senha, cod_cadastro) VALUES ('admin', 'admin', '1234');"
                 + "END";
 
 // TRATAMENTO DE ERROS
