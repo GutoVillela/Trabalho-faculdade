@@ -96,6 +96,7 @@ public class frmCadAluguel extends javax.swing.JFrame {
         lstMaquinasDoAluguel = new javax.swing.JList<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         spnHorarioInicioHora = new javax.swing.JSpinner();
         jLabel8 = new javax.swing.JLabel();
@@ -112,6 +113,9 @@ public class frmCadAluguel extends javax.swing.JFrame {
             }
         });
 
+        jPanel4.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("CLIENTE: ");
 
         cmbCliente.setEditable(true);
@@ -135,7 +139,8 @@ public class frmCadAluguel extends javax.swing.JFrame {
 
         btnBuscar.setText("BUSCAR");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "JOGOS DISPONÍVEIS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 10))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "JOGOS DISPONÍVEIS", 0, 0, new java.awt.Font("Century Gothic", 1, 10), new java.awt.Color(255, 255, 255))); // NOI18N
 
         lstJogosParaAlugar.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -163,10 +168,11 @@ public class frmCadAluguel extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MÁQUINAS DISPONÍVEIS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 10))); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MÁQUINAS DISPONÍVEIS", 0, 0, new java.awt.Font("Century Gothic", 1, 10), new java.awt.Color(255, 255, 255))); // NOI18N
 
         lstMaquinasDisponiveis.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -180,6 +186,7 @@ public class frmCadAluguel extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(lstMaquinasDisponiveis);
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Valor por hora:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -209,7 +216,8 @@ public class frmCadAluguel extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ESTE ALUGUEL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 10))); // NOI18N
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ESTE ALUGUEL", 0, 0, new java.awt.Font("Century Gothic", 1, 10), new java.awt.Color(255, 255, 255))); // NOI18N
 
         lstJogosDoAluguel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -226,9 +234,11 @@ public class frmCadAluguel extends javax.swing.JFrame {
         jScrollPane2.setViewportView(lstMaquinasDoAluguel);
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("JOGOS:");
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("MÁQUINAS:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -255,18 +265,23 @@ public class frmCadAluguel extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );
 
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("HORÁRIO INÍCIO: ");
 
         spnHorarioInicioHora.setModel(new javax.swing.SpinnerNumberModel(0, 0, 23, 1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("h");
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("DURAÇÃO: ");
 
         spnDuracao.setModel(new javax.swing.SpinnerListModel(new String[] {"30m", "1h", "1h30m", "2h", "2h30m", "3h", "3h30m", "4h", "4h30m", "5h", "5h30m", "6h", "6h30m", "7h", "7h30m", "8h"}));
@@ -274,6 +289,7 @@ public class frmCadAluguel extends javax.swing.JFrame {
         spnHorarioInicioMinuto.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 15));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("m");
 
         btnCadAluguel.setText("CADASTRAR");
@@ -282,6 +298,52 @@ public class frmCadAluguel extends javax.swing.JFrame {
                 btnCadAluguelActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(7, 7, 7)
+                        .addComponent(spnHorarioInicioHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spnHorarioInicioMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(spnDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCadAluguel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(spnHorarioInicioHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(spnHorarioInicioMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(spnDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(btnCadAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -306,29 +368,10 @@ public class frmCadAluguel extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(0, 11, Short.MAX_VALUE)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(7, 7, 7)
-                                        .addComponent(spnHorarioInicioHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(spnHorarioInicioMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel9))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(spnDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(btnCadAluguel)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addGap(18, 39, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -336,9 +379,7 @@ public class frmCadAluguel extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(btnBuscar)
-                        .addGap(26, 26, 26))
+                    .addComponent(btnBuscar)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
@@ -347,32 +388,17 @@ public class frmCadAluguel extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(rdbPessoaFisica)
                             .addComponent(rdbPessoaJuridica))))
-                .addGap(24, 24, 24)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel1)
-                                    .addComponent(spnHorarioInicioHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(spnHorarioInicioMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(spnDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(121, 121, 121)
-                        .addComponent(btnCadAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 29, Short.MAX_VALUE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -380,24 +406,19 @@ public class frmCadAluguel extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(jLabel3))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(37, 37, 37)
+                .addComponent(jLabel3)
+                .addContainerGap(628, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -730,6 +751,7 @@ public class frmCadAluguel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
