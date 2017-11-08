@@ -44,8 +44,16 @@ public class frmCadCargo extends javax.swing.JFrame {
         jCheckBox46 = new javax.swing.JCheckBox();
         jCheckBox47 = new javax.swing.JCheckBox();
         jCheckBox48 = new javax.swing.JCheckBox();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtNomeCargo = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtSalario = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        cmbPermissoes = new javax.swing.JComboBox<>();
+        btnCadPermissao = new javax.swing.JButton();
+        btnCadCargo = new javax.swing.JButton();
+        btnCancelarCadPermissao = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         ckbPodeCadFornecedor = new javax.swing.JCheckBox();
         ckbPodeConFornecedor = new javax.swing.JCheckBox();
@@ -94,13 +102,6 @@ public class frmCadCargo extends javax.swing.JFrame {
         ckbPodeGerarRelatorio = new javax.swing.JCheckBox();
         ckbPodeGerarBackup = new javax.swing.JCheckBox();
         ckbPodeRestaurarBackup = new javax.swing.JCheckBox();
-        btnCadCargo = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        cmbPermissoes = new javax.swing.JComboBox<>();
-        btnCadPermissao = new javax.swing.JButton();
-        btnCancelarCadPermissao = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        txtSalario = new javax.swing.JTextField();
 
         jCheckBox45.setText("Pode DESLIGAR FUNCIONÁRIO");
         jCheckBox45.addActionListener(new java.awt.event.ActionListener() {
@@ -122,16 +123,58 @@ public class frmCadCargo extends javax.swing.JFrame {
             }
         });
 
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("NOME DO CARGO: ");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("PERMISSÕES"));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("SALÁRIO: ");
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("PERMISSÃO: ");
+
+        cmbPermissoes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbPermissoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbPermissoesActionPerformed(evt);
+            }
+        });
+
+        btnCadPermissao.setText("OUTRA PERMISSÃO");
+        btnCadPermissao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadPermissaoActionPerformed(evt);
+            }
+        });
+
+        btnCadCargo.setText("CADASTRAR CARGO");
+        btnCadCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadCargoActionPerformed(evt);
+            }
+        });
+
+        btnCancelarCadPermissao.setText("CANCELAR");
+        btnCancelarCadPermissao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarCadPermissaoActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PERMISSÕES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+
+        ckbPodeCadFornecedor.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeCadFornecedor.setText("Pode CADASTRAR FORNECEDOR");
 
+        ckbPodeConFornecedor.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeConFornecedor.setText("Pode CONSULTAR FORNECEDOR");
 
+        ckbPodeAltFornecedor.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeAltFornecedor.setText("Pode ALTERAR FORNECEDOR");
 
+        ckbPodeDesFornecedor.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeDesFornecedor.setText("Pode DESLIGAR FORNECEDOR");
         ckbPodeDesFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,6 +182,7 @@ public class frmCadCargo extends javax.swing.JFrame {
             }
         });
 
+        ckbPodeDesCliente.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeDesCliente.setText("Pode DESLIGAR CLIENTE");
         ckbPodeDesCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,12 +190,16 @@ public class frmCadCargo extends javax.swing.JFrame {
             }
         });
 
+        ckbPodeAltCliente.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeAltCliente.setText("Pode ALTERAR CLIENTE");
 
+        ckbPodeConCliente.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeConCliente.setText("Pode CONSULTAR CLIENTE");
 
+        ckbPodeCadCliente.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeCadCliente.setText("Pode CADASTRAR CLIENTE");
 
+        ckbPodeDesCodCad.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeDesCodCad.setText("Pode DESLIGAR COD. DE CADASTRO");
         ckbPodeDesCodCad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,12 +207,16 @@ public class frmCadCargo extends javax.swing.JFrame {
             }
         });
 
+        ckbPodeAltCodCad.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeAltCodCad.setText("Pode ALTERAR COD. DE CADASTRO");
 
+        ckbPodeConCodCad.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeConCodCad.setText("Pode CONSULTAR COD. DE CADASTRO");
 
+        ckbPodeCadCodCad.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeCadCodCad.setText("Pode CADASTRAR COD. DE CADASTRO");
 
+        ckbPodeDesVenda.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeDesVenda.setText("Pode DESLIGAR VENDA");
         ckbPodeDesVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,12 +224,16 @@ public class frmCadCargo extends javax.swing.JFrame {
             }
         });
 
+        ckbPodeAltVenda.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeAltVenda.setText("Pode ALTERAR VENDA");
 
+        ckbPodeConVenda.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeConVenda.setText("Pode CONSULTAR VENDA");
 
+        ckbPodeCadVenda.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeCadVenda.setText("Pode CADASTRAR VENDA");
 
+        ckbPodeDesPromocao.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeDesPromocao.setText("Pode DESLIGAR PROMOÇÃO");
         ckbPodeDesPromocao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,12 +241,16 @@ public class frmCadCargo extends javax.swing.JFrame {
             }
         });
 
+        ckbPodeCadPromocao.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeCadPromocao.setText("Pode CADASTRAR PROMOÇÃO");
 
+        ckbPodeConPromocao.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeConPromocao.setText("Pode CONSULTAR PROMOÇÃO");
 
+        ckbPodeAltPromocao.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeAltPromocao.setText("Pode ALTERAR PROMOÇÃO");
 
+        ckbPodeDesAluguel.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeDesAluguel.setText("Pode DESLIGAR ALUGUEL");
         ckbPodeDesAluguel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,12 +258,16 @@ public class frmCadCargo extends javax.swing.JFrame {
             }
         });
 
+        ckbPodeCadAluguel.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeCadAluguel.setText("Pode CADASTRAR ALUGUEL");
 
+        ckbPodeConAluguel.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeConAluguel.setText("Pode CONSULTAR ALUGUEL");
 
+        ckbPodeAltAluguel.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeAltAluguel.setText("Pode ALTERAR ALUGUEL");
 
+        ckbPodeDesProduto.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeDesProduto.setText("Pode DESLIGAR PRODUTO");
         ckbPodeDesProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,12 +275,16 @@ public class frmCadCargo extends javax.swing.JFrame {
             }
         });
 
+        ckbPodeCadProduto.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeCadProduto.setText("Pode CADASTRAR PRODUTO");
 
+        ckbPodeConProduto.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeConProduto.setText("Pode CONSULTAR PRODUTO");
 
+        ckbPodeAltProduto.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeAltProduto.setText("Pode ALTERAR PRODUTO");
 
+        ckbPodeDesEquipamento.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeDesEquipamento.setText("Pode DESLIGAR EQUIPAMENTO");
         ckbPodeDesEquipamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,12 +292,16 @@ public class frmCadCargo extends javax.swing.JFrame {
             }
         });
 
+        ckbPodeCadEquipamento.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeCadEquipamento.setText("Pode CADASTRAR EQUIPAMENTO");
 
+        ckbPodeConEquipamento.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeConEquipamento.setText("Pode CONSULTAR EQUIPAMENTO");
 
+        ckbPodeAltEquipamento.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeAltEquipamento.setText("Pode ALTERAR EQUIPAMENTO");
 
+        ckbPodeDesManutencao.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeDesManutencao.setText("Pode DESLIGAR MANUTENÇÃO");
         ckbPodeDesManutencao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,12 +309,16 @@ public class frmCadCargo extends javax.swing.JFrame {
             }
         });
 
+        ckbPodeCadManutencao.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeCadManutencao.setText("Pode CADASTRAR MANUTENÇÃO");
 
+        ckbPodeConManutencao.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeConManutencao.setText("Pode CONSULTAR MANUTENÇÃO");
 
+        ckbPodeAltManutencao.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeAltManutencao.setText("Pode ALTERAR MANUTENÇÃO");
 
+        ckbPodeDesCargo.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeDesCargo.setText("Pode DESLIGAR CARGO");
         ckbPodeDesCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,12 +326,16 @@ public class frmCadCargo extends javax.swing.JFrame {
             }
         });
 
+        ckbPodeCadCargo.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeCadCargo.setText("Pode CADASTRAR CARGO");
 
+        ckbPodeConCargo.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeConCargo.setText("Pode CONSULTAR CARGO");
 
+        ckbPodeAltCargo.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeAltCargo.setText("Pode ALTERAR CARGO");
 
+        ckbPodeDesFuncionario.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeDesFuncionario.setText("Pode DESLIGAR FUNCIONÁRIO");
         ckbPodeDesFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,16 +343,22 @@ public class frmCadCargo extends javax.swing.JFrame {
             }
         });
 
+        ckbPodeCadFuncionario.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeCadFuncionario.setText("Pode CADASTRAR FUNCIONÁRIO");
 
+        ckbPodeConFuncionario.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeConFuncionario.setText("Pode CONSULTAR FUNCIONÁRIO");
 
+        ckbPodeAltFuncionario.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeAltFuncionario.setText("Pode ALTERAR FUNCIONÁRIO");
 
+        ckbPodeGerarRelatorio.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeGerarRelatorio.setText("Pode GERAR RELATÓRIO");
 
+        ckbPodeGerarBackup.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeGerarBackup.setText("Pode GERAR BACKUP");
 
+        ckbPodeRestaurarBackup.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeRestaurarBackup.setText("Pode RESTAURAR BACKUP");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -445,90 +531,69 @@ public class frmCadCargo extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnCadCargo.setText("CADASTRAR CARGO");
-        btnCadCargo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadCargoActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("PERMISSÃO: ");
-
-        cmbPermissoes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbPermissoes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbPermissoesActionPerformed(evt);
-            }
-        });
-
-        btnCadPermissao.setText("OUTRA PERMISSÃO");
-        btnCadPermissao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadPermissaoActionPerformed(evt);
-            }
-        });
-
-        btnCancelarCadPermissao.setText("CANCELAR");
-        btnCancelarCadPermissao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarCadPermissaoActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("SALÁRIO: ");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmbPermissoes, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNomeCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCadCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCadPermissao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNomeCargo)
-                            .addComponent(cmbPermissoes, 0, 353, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnCadCargo, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                            .addComponent(btnCadPermissao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCancelarCadPermissao))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                        .addComponent(btnCancelarCadPermissao)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtNomeCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCadCargo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cmbPermissoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCadPermissao)
                     .addComponent(btnCancelarCadPermissao))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -1005,6 +1070,7 @@ public class frmCadCargo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtNomeCargo;
     private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
