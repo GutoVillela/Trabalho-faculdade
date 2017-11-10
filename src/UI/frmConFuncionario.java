@@ -136,6 +136,7 @@ public class frmConFuncionario extends javax.swing.JFrame {
             }
         });
 
+        btnConsultar.setBackground(new java.awt.Color(0, 0, 0));
         btnConsultar.setForeground(new java.awt.Color(255, 255, 255));
         btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/lupa_search.png"))); // NOI18N
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -207,7 +208,6 @@ public class frmConFuncionario extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        tblConsultaFuncionarios.setForeground(new java.awt.Color(255, 255, 255));
         tblConsultaFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
