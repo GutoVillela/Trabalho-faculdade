@@ -1,6 +1,7 @@
 package BLL;
 
-import java.util.LinkedList;
+import DAL.VendaDAL;
+import java.util.ArrayList;
 import java.util.List;
 
 public class VendaBLL {
@@ -10,11 +11,30 @@ public class VendaBLL {
     private String dataDaVenda;
     private boolean ativo;
     private List<ProdutoBLL> itensDaVenda;
+    
+    private VendaDAL vDAL = new VendaDAL();
 
     public VendaBLL() {
-        this.itensDaVenda = new LinkedList<>();
+        this.itensDaVenda = new ArrayList<>();
         this.cliente = new ClienteBLL();
     }
+    
+    //MÉTODOS
+    public boolean Cadastrar(){
+        //TENTAR CADASTRAR VENDA
+        boolean deuCertoVenda = vDAL.Cadastrar(this);
+        
+        //RECUPERAR VENDA CADASTRADA
+        this.codigo = vDAL.RecuperarUltimaChavePrimaria();
+        
+        // CADASTRAR TODOS OS ITENS DESTA VENDA
+        boolean deuCertoItensDaVenda = vDAL.CadastrarItensDaVenda(this);
+        
+        //RETORNAR RESULTADO DAS OPERAÇÕES
+        return deuCertoVenda && deuCertoItensDaVenda;
+    }
+    
+    //ENCAPSULADORES
 
     /**
      * @return the codigo
@@ -70,6 +90,20 @@ public class VendaBLL {
      */
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
+    }
+
+    /**
+     * @return the itensDaVenda
+     */
+    public List<ProdutoBLL> getItensDaVenda() {
+        return itensDaVenda;
+    }
+
+    /**
+     * @param itensDaVenda the itensDaVenda to set
+     */
+    public void setItensDaVenda(List<ProdutoBLL> itensDaVenda) {
+        this.itensDaVenda = itensDaVenda;
     }
     
 }
