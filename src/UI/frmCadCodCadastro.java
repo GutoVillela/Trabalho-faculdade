@@ -113,6 +113,7 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         btnCadCodigos.setBackground(new java.awt.Color(0, 0, 0));
         btnCadCodigos.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         btnCadCodigos.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadCodigos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar.png"))); // NOI18N
         btnCadCodigos.setText("CADASTRAR CÓDIGOS GERADOS");
         btnCadCodigos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,7 +164,7 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCadCodigos, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                .addComponent(btnCadCodigos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

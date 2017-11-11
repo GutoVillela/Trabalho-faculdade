@@ -148,6 +148,7 @@ public class frmCadCargo extends javax.swing.JFrame {
             }
         });
 
+        btnCadCargo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar.png"))); // NOI18N
         btnCadCargo.setText("CADASTRAR CARGO");
         btnCadCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,7 +164,7 @@ public class frmCadCargo extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PERMISSÕES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PERMISSÕES", 0, 0, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
 
         ckbPodeCadFornecedor.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeCadFornecedor.setText("Pode CADASTRAR FORNECEDOR");

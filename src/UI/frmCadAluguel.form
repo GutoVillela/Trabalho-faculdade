@@ -605,6 +605,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnCadAluguel">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/IMGS/cadastrar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="CADASTRAR"/>
               </Properties>
               <Events>

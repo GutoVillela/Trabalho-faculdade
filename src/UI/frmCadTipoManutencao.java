@@ -48,6 +48,7 @@ public class frmCadTipoManutencao extends javax.swing.JFrame {
 
         btnCadastrar.setBackground(new java.awt.Color(0, 0, 0));
         btnCadastrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar.png"))); // NOI18N
         btnCadastrar.setText("CADASTRAR");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +107,7 @@ public class frmCadTipoManutencao extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addComponent(btnCadastrar)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

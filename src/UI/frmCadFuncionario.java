@@ -226,6 +226,7 @@ public class frmCadFuncionario extends javax.swing.JFrame {
 
         btnCadFuncionario.setBackground(new java.awt.Color(51, 51, 51));
         btnCadFuncionario.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar.png"))); // NOI18N
         btnCadFuncionario.setText("CADASTRAR FUNCIONÁRIO");
         btnCadFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -47,6 +47,7 @@ public class frmCadTitulo extends javax.swing.JFrame {
         btnCadTitulo.setBackground(new java.awt.Color(0, 0, 0));
         btnCadTitulo.setFont(new java.awt.Font("Perpetua Titling MT", 3, 14)); // NOI18N
         btnCadTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar.png"))); // NOI18N
         btnCadTitulo.setText("CADASTRAR TÍTULO");
         btnCadTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
