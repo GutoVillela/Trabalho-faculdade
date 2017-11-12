@@ -19,6 +19,7 @@
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/CodigoDeCadastroDAL.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/TipoEquipamentoDAL.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmCadAluguel.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmCadVenda.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmConsCliente.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/EquipamentoDaLojaDAL.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/TipoManutencaoDAL.java</file>
@@ -33,17 +34,19 @@
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/Conexao.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/CopiaParaAlugarDAL.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/AluguelDAL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/ProdutoDAL.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmCadFuncionario.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmCadTipoEquipamento.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmCadCliente.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmCadTipoManutencao.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/DAL/VendaDAL.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/BLL/CopiaParaVenderBLL.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/BLL/CidadeBLL.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/BLL/CodigoDeCadastroBLL.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/BLL/AluguelBLL.java</file>
+            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/BLL/VendaBLL.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/BLL/FuncionarioBLL.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/BLL/TituloBLL.java</file>
-            <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmCadPlataforma.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmCadCodCadastro.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmCadTipoAcessorio.java</file>
             <file>file:/C:/Users/Guto/Documents/DESENVOLVIMENTO/JAVA/NetBeans/Trabalho-faculdade/src/UI/frmCadProduto.java</file>
