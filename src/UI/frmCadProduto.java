@@ -173,7 +173,7 @@ public class frmCadProduto extends javax.swing.JFrame {
         btnCadJogo.setBackground(new java.awt.Color(0, 0, 0));
         btnCadJogo.setForeground(new java.awt.Color(255, 255, 255));
         btnCadJogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar.png"))); // NOI18N
-        btnCadJogo.setText("CADASTRAR JOGO");
+        btnCadJogo.setToolTipText("Salvar");
         btnCadJogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadJogoActionPerformed(evt);

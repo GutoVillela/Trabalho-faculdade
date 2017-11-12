@@ -146,6 +146,7 @@ public class frmConFuncionario extends javax.swing.JFrame {
         btnConsultar.setBackground(new java.awt.Color(0, 0, 0));
         btnConsultar.setForeground(new java.awt.Color(255, 255, 255));
         btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/lupa_search.png"))); // NOI18N
+        btnConsultar.setToolTipText("Alterar");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarActionPerformed(evt);

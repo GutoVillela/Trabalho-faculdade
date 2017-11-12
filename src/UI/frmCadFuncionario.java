@@ -224,10 +224,10 @@ public class frmCadFuncionario extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("SENHA*: ");
 
-        btnCadFuncionario.setBackground(new java.awt.Color(51, 51, 51));
+        btnCadFuncionario.setBackground(new java.awt.Color(0, 0, 0));
         btnCadFuncionario.setForeground(new java.awt.Color(255, 255, 255));
         btnCadFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar.png"))); // NOI18N
-        btnCadFuncionario.setText("CADASTRAR FUNCIONÁRIO");
+        btnCadFuncionario.setToolTipText("Salvar");
         btnCadFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadFuncionarioActionPerformed(evt);
@@ -250,7 +250,6 @@ public class frmCadFuncionario extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(lblValidarCodigo)
                                 .addGap(43, 43, 43)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnValidarCodCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel3Layout.createSequentialGroup()

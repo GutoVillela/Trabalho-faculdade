@@ -113,7 +113,7 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         btnCadCodigos.setBackground(new java.awt.Color(0, 0, 0));
         btnCadCodigos.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         btnCadCodigos.setForeground(new java.awt.Color(255, 255, 255));
-        btnCadCodigos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar.png"))); // NOI18N
+        btnCadCodigos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/codcadastro.png"))); // NOI18N
         btnCadCodigos.setText("CADASTRAR CÓDIGOS GERADOS");
         btnCadCodigos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

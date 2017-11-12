@@ -141,7 +141,8 @@ public class frmCadAluguel extends javax.swing.JFrame {
             }
         });
 
-        btnBuscar.setText("BUSCAR");
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/lupa_search.png"))); // NOI18N
+        btnBuscar.setToolTipText("Consultar");
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "JOGOS DISPONÍVEIS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 10), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -298,7 +299,7 @@ public class frmCadAluguel extends javax.swing.JFrame {
         btnCadAluguel.setBackground(new java.awt.Color(0, 0, 0));
         btnCadAluguel.setForeground(new java.awt.Color(255, 255, 255));
         btnCadAluguel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar.png"))); // NOI18N
-        btnCadAluguel.setText("CADASTRAR");
+        btnCadAluguel.setToolTipText("Salvar");
         btnCadAluguel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadAluguelActionPerformed(evt);

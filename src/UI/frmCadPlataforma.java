@@ -40,7 +40,7 @@ public class frmCadPlataforma extends javax.swing.JFrame {
         btnCadPlataforma.setBackground(new java.awt.Color(0, 0, 0));
         btnCadPlataforma.setForeground(new java.awt.Color(255, 255, 255));
         btnCadPlataforma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar.png"))); // NOI18N
-        btnCadPlataforma.setText("CADASTRAR PLATAFORMA");
+        btnCadPlataforma.setToolTipText("Salvar");
         btnCadPlataforma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadPlataformaActionPerformed(evt);
@@ -85,7 +85,7 @@ public class frmCadPlataforma extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(178, 178, 178)
                         .addComponent(btnCadPlataforma)))
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
