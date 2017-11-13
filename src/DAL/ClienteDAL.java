@@ -63,6 +63,31 @@ public class ClienteDAL {
             return 0;
         }
     }
+    
+    public boolean AtualizarDados(ClienteBLL acBLL){
+        //CRIANDO COMANDO SQL
+        String comandoSQL = "UPDATE CLIENTES SET ativo=?, endereco=?, email=? where codigo=?;";
+
+        // TRATAMENTO DE ERRO
+        try {
+            //PREPARANDO COMANDO PARA SER EXECUTADO
+            PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
+            query.setBoolean(1, acBLL.isAtivo());
+            query.setInt(2, acBLL.getEndereco().getCodigo());
+            query.setString(3, acBLL.getEmail());
+            query.setInt(4, acBLL.getCodigo());
+
+            // EXECUTAR COMANDO
+            query.executeUpdate();
+
+            return true;
+        } catch (SQLException erro) {
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + erro);
+            return false;
+        }
+        
+    }
+    
 
     public boolean AssociarTodosTelefoneDaLista(ClienteBLL cBLL) {
 

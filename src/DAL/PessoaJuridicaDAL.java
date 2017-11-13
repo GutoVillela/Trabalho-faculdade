@@ -1,7 +1,9 @@
 
 package DAL;
 
+import BLL.ClienteBLL;
 import BLL.PessoaJuridicaBLL;
+import BLL.TelefoneBLL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,6 +38,110 @@ public class PessoaJuridicaDAL {
         
         
     }
+    
+    
+    
+        public List<PessoaJuridicaBLL> ConsultarPorRazao(String nome){
+    
+        String comandoSQL = "select * from Pessoa_juridica inner join clientes on (pessoa_juridica.codigo = clientes.codigo) left join enderecos\n" +
+"on (clientes.endereco = Enderecos.codigo)\n" +
+"where razao_social like ? and clientes.ativo=1;";
+
+        // TRATAMENTO DE ERRO
+        try {
+            //PREPARANDO COMANDO PARA SER EXECUTADO
+            
+            PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
+            query.setString(1, nome + "%");
+            List<PessoaJuridicaBLL> listaPessoaJuridica = new ArrayList<PessoaJuridicaBLL>();
+           
+            ResultSet consulta = query.executeQuery();
+            while (consulta.next()) {
+                PessoaJuridicaBLL pjBLL = new PessoaJuridicaBLL();
+                pjBLL.setCodigo(consulta.getInt(1));
+                pjBLL.setRazaoSocial(consulta.getString(2));
+                pjBLL.setCnpj(consulta.getString(3));
+                pjBLL.getEndereco().setCodigo(consulta.getInt(8));
+                pjBLL.getEndereco().setLogradouro(consulta.getString(9));
+                pjBLL.setEmail(consulta.getString("email"));
+                pjBLL.setAtivo(consulta.getBoolean("Ativo"));
+                
+                List<TelefoneBLL> listaTelefones = consultarTelefone(pjBLL.getCodigo());
+                pjBLL.setTelefones(listaTelefones);
+                listaPessoaJuridica.add(pjBLL);
+                
+                
+       
+            }
+            return listaPessoaJuridica;
+        } catch (SQLException erro) {
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + erro);
+            return null;
+        }
+          
+    }
+    
+    public List<TelefoneBLL> consultarTelefone(int codCliente){
+        
+        
+        String comandoSQL = "select * from clientes_tem_telefones join telefones on (telefones.codigo = clientes_tem_telefones.telefone)\n" +
+"where cliente=?;";
+
+        // TRATAMENTO DE ERRO
+        try {
+            //PREPARANDO COMANDO PARA SER EXECUTADO
+            PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
+            query.setInt(1, codCliente);
+            List<TelefoneBLL> listaTel = new ArrayList<TelefoneBLL>();
+            ResultSet consulta = query.executeQuery();
+            
+            while (consulta.next()) {
+                
+                TelefoneBLL telefone = new TelefoneBLL();
+                telefone.setNumero(consulta.getString("numero"));
+                telefone.setCodigo(consulta.getInt("codigo"));
+                telefone.setDdd(consulta.getString("ddd"));
+                telefone.setAtivo(consulta.getBoolean("ativo"));
+                listaTel.add(telefone);
+                
+            
+                        
+            }
+
+            return listaTel;
+        
+        } catch (SQLException erro) {
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + erro);
+            return null;
+        }
+        
+        
+    }
+    
+    public boolean AtualizarDadosPJ(PessoaJuridicaBLL apjBLL){
+        //CRIANDO COMANDO SQL
+        String comandoSQL = "UPDATE pessoa_juridica SET razao_social=?, cnpj=? where codigo=?;";
+
+        // TRATAMENTO DE ERRO
+        try {
+            //PREPARANDO COMANDO PARA SER EXECUTADO
+            PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
+            query.setString(1, apjBLL.getRazaoSocial());
+            query.setString(2, apjBLL.getCnpj());
+            query.setInt(3, apjBLL.getCodigo());
+                       
+
+            // EXECUTAR COMANDO
+            query.executeUpdate();
+
+            return true;
+        } catch (SQLException erro) {
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + erro);
+            return false;
+        }
+        
+    }
+    
     
     public int RecuperarUltimaChavePrimaria(){
         //CRIANDO COMANDO SQL
@@ -73,7 +179,7 @@ public class PessoaJuridicaDAL {
      */
     public List<PessoaJuridicaBLL> Consultar(){
         //DEFINIR COMANDO SQL
-        String comandoSQL = "SELECT * FROM clientes JOIN pessoa_juridica ON clientes.codigo = pessoa_juridica.codigo LEFT JOIN enderecos ON Clientes.endereco = enderecos.codigo;";
+        String comandoSQL = "SELECT * FROM clientes LEFT JOIN pessoa_juridica ON clientes.codigo = pessoa_juridica.codigo LEFT JOIN enderecos ON Clientes.endereco = enderecos.codigo;";
 
         //CRIANDO LISTA QUE VAI RECEBER TODO O RESULTADO DA CONSULTA
         List<PessoaJuridicaBLL> listaDePessoasJuridicas = new ArrayList<>();
@@ -116,4 +222,32 @@ public class PessoaJuridicaDAL {
             return null;
         }
     }
+
+    
+    public boolean Desativar(int CodPJ){
+        
+         //CRIANDO COMANDO SQL
+        String comandoSQL = "update clientes set ativo=0 where codigo=?;";
+        
+        // TRATAMENTO DE ERRO
+        try{
+            //PREPARANDO COMANDO PARA SER EXECUTADO
+            PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
+            query.setInt(1, CodPJ);
+            
+            
+            // EXECUTAR COMANDO
+            query.executeUpdate();
+            
+            return true;
+        }
+        catch (SQLException erro){
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + erro);
+            return false;
+        }
+        
+        
+        
+    }
+    
 }

@@ -41,10 +41,9 @@ public class PessoaFisicaDAL {
     }
     public List<PessoaFisicaBLL> ConsultarPorNome(String nome){
     
-        String comandoSQL = "select * from Pessoa_fisica inner join enderecos \n" +
-"on (Pessoa_fisica.codigo = Enderecos.codigo) \n" +
-"inner join clientes on (clientes.codigo = pessoa_fisica.codigo)\n" +
-"where nome like ?;";
+        String comandoSQL = "select * from Pessoa_fisica inner join clientes on (pessoa_fisica.codigo = clientes.codigo) left join enderecos\n" +
+"on (clientes.endereco = Enderecos.codigo)\n" +
+"where nome like ? and clientes.ativo=1;";
 
         // TRATAMENTO DE ERRO
         try {
@@ -57,17 +56,18 @@ public class PessoaFisicaDAL {
             ResultSet consulta = query.executeQuery();
             while (consulta.next()) {
                 PessoaFisicaBLL pfBLL = new PessoaFisicaBLL();
-                pfBLL.setCodigo(consulta.getInt("codigo"));
-                pfBLL.setNome(consulta.getString("nome"));
-                pfBLL.setCpf(consulta.getString("cpf"));
-                pfBLL.getEndereco().setLogradouro(consulta.getString("logradouro"));
+                pfBLL.setCodigo(consulta.getInt(1));
+                pfBLL.setNome(consulta.getString(2));
+                pfBLL.setCpf(consulta.getString(3));
+                pfBLL.getEndereco().setCodigo(consulta.getInt(8));
+                pfBLL.getEndereco().setLogradouro(consulta.getString(9));
                 pfBLL.setEmail(consulta.getString("email"));
+                pfBLL.setAtivo(consulta.getBoolean("Ativo"));
                 
                 List<TelefoneBLL> listaTelefones = consultarTelefone(pfBLL.getCodigo());
                 pfBLL.setTelefones(listaTelefones);
                 listaPessoaFisica.add(pfBLL);
                 
-                System.out.println("NOME: " + pfBLL.getNome());
                 
                 
        
@@ -117,6 +117,58 @@ public class PessoaFisicaDAL {
         
     }
     
+    public boolean AtualizarDados(PessoaFisicaBLL apfBLL){
+        //CRIANDO COMANDO SQL
+        String comandoSQL = "UPDATE pessoa_fisica SET nome=?, cpf=? where codigo=?;";
+
+        // TRATAMENTO DE ERRO
+        try {
+            //PREPARANDO COMANDO PARA SER EXECUTADO
+            PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
+            query.setString(1, apfBLL.getNome());
+            query.setString(2, apfBLL.getCpf());
+            query.setInt(3, apfBLL.getCodigo());
+                       
+
+            // EXECUTAR COMANDO
+            query.executeUpdate();
+
+            return true;
+        } catch (SQLException erro) {
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + erro);
+            return false;
+        }
+        
+    }
+    
+    
+    public boolean Desativar(int CodPF){
+        
+         //CRIANDO COMANDO SQL
+        String comandoSQL = "update clientes set ativo=0 where codigo=?;";
+        
+        // TRATAMENTO DE ERRO
+        try{
+            //PREPARANDO COMANDO PARA SER EXECUTADO
+            PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
+            query.setInt(1, CodPF);
+            
+            
+            // EXECUTAR COMANDO
+            query.executeUpdate();
+            
+            return true;
+        }
+        catch (SQLException erro){
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + erro);
+            return false;
+        }
+        
+        
+        
+    }
+    
+    
     public int RecuperarUltimaChavePrimaria(){
         //CRIANDO COMANDO SQL
         String comandoSQL = "select count(codigo) as 'ID' from pessoa_fisica;";
@@ -153,7 +205,7 @@ public class PessoaFisicaDAL {
      */
     public List<PessoaFisicaBLL> Consultar(){
         //DEFINIR COMANDO SQL
-        String comandoSQL = "SELECT * FROM clientes JOIN pessoa_fisica ON clientes.codigo = pessoa_fisica.codigo LEFT JOIN enderecos ON Clientes.endereco = enderecos.codigo;";
+        String comandoSQL = "SELECT * FROM clientes LEFT JOIN pessoa_fisica ON clientes.codigo = pessoa_fisica.codigo LEFT JOIN enderecos ON Clientes.endereco = enderecos.codigo;";
 
         //CRIANDO LISTA QUE VAI RECEBER TODO O RESULTADO DA CONSULTA
         List<PessoaFisicaBLL> listaDePessoasFisicas = new ArrayList<>();
