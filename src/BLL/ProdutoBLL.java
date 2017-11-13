@@ -1,6 +1,7 @@
 package BLL;
 
 import DAL.ProdutoDAL;
+import java.util.List;
 
 public class ProdutoBLL {
     
@@ -21,6 +22,9 @@ public class ProdutoBLL {
         return pDAL.RecuperarUltimaChavePrimaria();
     }
     
+    public List<ProdutoBLL> Consultar(){
+        return pDAL.Consultar();
+    }
     // ENCAPSULAMENTO
 
     /**

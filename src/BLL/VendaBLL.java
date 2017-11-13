@@ -34,6 +34,10 @@ public class VendaBLL {
         return deuCertoVenda && deuCertoItensDaVenda;
     }
     
+    public List<VendaBLL> Consultar(){
+        return vDAL.Consultar();
+    }
+    
     //ENCAPSULADORES
 
     /**

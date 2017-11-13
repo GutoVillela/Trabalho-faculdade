@@ -5,6 +5,8 @@ import BLL.ProdutoBLL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProdutoDAL {
     
@@ -62,6 +64,42 @@ public class ProdutoDAL {
         } catch (Exception e) {
             System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + e);
             return 0;
+        }
+    }
+    
+    public List<ProdutoBLL> Consultar(){
+        //DEFINIR COMANDO SQL
+        String comandoSQL = "SELECT * FROM Produtos;";
+        
+        //CRIANDO LISTA QUE VAI RECEBER TODO O RESULTADO DA CONSULTA
+        List<ProdutoBLL> listaDeProdutos = new ArrayList<>();
+        
+        try {
+            //PREPARANDO COMANDO PARA SER EXECUTADO
+            PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
+            
+            //RESULT SET QUE VAI GUARDAR O RESULTADO
+            ResultSet resultadoConsulta = query.executeQuery();
+            
+            while (resultadoConsulta.next()) { 
+                //PREENCHER ITEM
+                ProdutoBLL pBLL = new ProdutoBLL();
+                pBLL.setCodigo(resultadoConsulta.getInt(1)); // COLUNA 'codigo' DA TABELA 'Produtos'
+                pBLL.setNome(resultadoConsulta.getString(2)); // COLUNA 'nome' DA TABELA 'Produtos'
+                pBLL.setQuantidade(resultadoConsulta.getInt(3)); // COLUNA 'quantidade' DA TABELA 'Produtos'
+                pBLL.setPreco(resultadoConsulta.getFloat(4)); // COLUNA 'preco' DA TABELA 'Produtos'
+                pBLL.setAtivo(resultadoConsulta.getBoolean(5)); // COLUNA 'ativo' DA TABELA 'Produtos'
+                
+                //ADICIONAR NOVO TÍTULO PREENCHIDO À COMBOBOX
+                listaDeProdutos.add(pBLL);
+            }
+            
+            // RETORNAR LISTA PREENCHIDA
+            return listaDeProdutos;
+            
+            
+        } catch (Exception e) {
+            return null;
         }
     }
 }

@@ -123,6 +123,7 @@ public class frmCadAluguel extends javax.swing.JFrame {
         cmbCliente.setEditable(true);
         cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        rdbPessoaFisica.setBackground(new java.awt.Color(0, 0, 0));
         btgTipoCliente.add(rdbPessoaFisica);
         rdbPessoaFisica.setForeground(new java.awt.Color(255, 255, 255));
         rdbPessoaFisica.setText("Pessoa Física");
@@ -132,6 +133,7 @@ public class frmCadAluguel extends javax.swing.JFrame {
             }
         });
 
+        rdbPessoaJuridica.setBackground(new java.awt.Color(0, 0, 0));
         btgTipoCliente.add(rdbPessoaJuridica);
         rdbPessoaJuridica.setForeground(new java.awt.Color(255, 255, 255));
         rdbPessoaJuridica.setText("Pessoa Jurídica");

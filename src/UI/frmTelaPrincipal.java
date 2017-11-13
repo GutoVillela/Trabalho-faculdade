@@ -43,6 +43,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         btnCadProduto = new javax.swing.JMenuItem();
         frmCadAluguel = new javax.swing.JMenuItem();
         btnCadManutencao = new javax.swing.JMenuItem();
+        btnVenda = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnConCliente = new javax.swing.JMenuItem();
         btnConFuncionario = new javax.swing.JMenuItem();
@@ -133,6 +134,14 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(btnCadManutencao);
+
+        btnVenda.setText("VENDA");
+        btnVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnVenda);
 
         jMenuBar1.add(jMenu1);
 
@@ -257,6 +266,12 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         this.setExtendedState(MAXIMIZED_BOTH); // MAXIMIZAR FORMULÁRIO ASSIM QUE ABRIR
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaActionPerformed
+        frmCadVenda cadVenda = new frmCadVenda();
+        cadVenda.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        cadVenda.setVisible(true);
+    }//GEN-LAST:event_btnVendaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -304,6 +319,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnConCliente;
     private javax.swing.JMenuItem btnConFuncionario;
     private javax.swing.JMenuItem btnFuncionario;
+    private javax.swing.JMenuItem btnVenda;
     private javax.swing.JMenuItem frmCadAluguel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
