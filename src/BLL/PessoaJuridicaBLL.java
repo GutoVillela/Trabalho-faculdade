@@ -41,10 +41,31 @@ public class PessoaJuridicaBLL extends ClienteBLL{
      * @return Retorna uma lista com todas as pessoas juridicas cadastradas.
      * Retorna inclusive endereço completo.
      */
+    
+    public List<PessoaJuridicaBLL> ConsultarPorRazao(){
+        
+        return pjDAL.ConsultarPorRazao(this.getRazaoSocial());
+    }
+    
+    
     public List<PessoaJuridicaBLL> Consultar(){
         return pjDAL.Consultar();
     }
+    
+    public boolean Desativar(){
+        return pjDAL.Desativar(codigo);
+    }
 
+@Override
+
+    public boolean Atualizar(){
+        
+       super.Atualizar();
+       boolean ende = endereco.Atualizar(); System.out.println(ende);
+       return pjDAL.AtualizarDadosPJ(this);
+       
+    }
+    
     // ENCAPSULAMENTOS
     /**
      * @return the razaoSocial

@@ -96,6 +96,12 @@ public class ClienteBLL {
         
     }
     
+    
+    public boolean Atualizar(){
+        
+        return cDAL.AtualizarDados(this);
+    }
+    
     public int RecuperarUltimaChavePrimaria(){
         return cDAL.RecuperarUltimaChavePrimaria();
     }

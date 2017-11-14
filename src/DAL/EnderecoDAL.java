@@ -1,4 +1,3 @@
-
 package DAL;
 
 import BLL.EnderecoBLL;
@@ -41,6 +40,39 @@ public class EnderecoDAL {
         
         
     }
+    public boolean Atualizar(EnderecoBLL eBLL){
+        
+        //CRIANDO COMANDO SQL
+        String comandoSQL = "UPDATE ENDERECOS SET logradouro=?, numero=?, cep=?, bairro=?, CIDADE=?, ESTADO=?, PAIS=?, ativo=? where codigo=?;";
+        
+        // TRATAMENTO DE ERRO
+        try{
+            //PREPARANDO COMANDO PARA SER EXECUTADO
+            PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
+            query.setString(1,eBLL.getLogradouro());
+            query.setString(2,eBLL.getNumero());
+            query.setString(3,eBLL.getCep());
+            query.setString(4,eBLL.getBairro().getNome());
+            query.setString(5,eBLL.getBairro().getCidade().getNome());
+            query.setString(6,eBLL.getBairro().getCidade().getEstado().getNome());
+            query.setString(7,eBLL.getBairro().getCidade().getEstado().getPais().getPaisPt());
+            query.setBoolean(8,eBLL.isAtivo());
+            query.setInt(9, eBLL.getCodigo());
+            
+            // EXECUTAR COMANDO
+            query.executeUpdate();
+            
+            return true;
+        }
+        catch (SQLException erro){
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + erro);
+            return false;
+        }
+        
+        
+    }
+    
+    
     
     public int RecuperarUltimaChavePrimaria(){
         //CRIANDO COMANDO SQL
@@ -71,4 +103,6 @@ public class EnderecoDAL {
             return 0;
         }
     }
+    
+    
 }

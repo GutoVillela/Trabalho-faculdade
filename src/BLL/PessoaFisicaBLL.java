@@ -36,6 +36,14 @@ public class PessoaFisicaBLL extends ClienteBLL{
         // RETORNAR RESULTADOS DE AMBAS AS OPERAÇÕES
         return deuCertoTelefones && deuCertoPessoaFisica;
     }
+    
+    public boolean Atualizar(){
+        
+       super.Atualizar();
+       boolean ende = endereco.Atualizar(); System.out.println(ende);
+       return pfDAL.AtualizarDados(this);
+       
+    }
 
     public List<PessoaFisicaBLL> ConsultarPorNome(){
         
@@ -48,6 +56,10 @@ public class PessoaFisicaBLL extends ClienteBLL{
      */
     public List<PessoaFisicaBLL> Consultar(){
         return pfDAL.Consultar();
+    }
+    
+    public boolean Desativar(){
+        return pfDAL.Desativar(codigo);
     }
 
     /**
@@ -76,6 +88,10 @@ public class PessoaFisicaBLL extends ClienteBLL{
      */
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public int getCodigo(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 
