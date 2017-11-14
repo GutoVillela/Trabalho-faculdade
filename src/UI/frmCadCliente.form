@@ -646,11 +646,11 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
                               <Component id="btncadastro1" min="-2" pref="113" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnlimpar1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="btncancelar1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -735,11 +735,11 @@
                           <Component id="txtemail1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="74" max="32767" attributes="0"/>
+                      <EmptySpace pref="40" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btncadastro1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnlimpar1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btncancelar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnlimpar1" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btncancelar1" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   </Group>
@@ -968,7 +968,10 @@
             </Component>
             <Component class="javax.swing.JButton" name="btncadastro1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="CADASTRAR"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/IMGS/cadastrar.png"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="CADASTRAR"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btncadastro1ActionPerformed"/>
@@ -976,7 +979,10 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnlimpar1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="LIMPAR"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/IMGS/limpar.png"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="LIMPAR"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnlimpar1ActionPerformed"/>
@@ -984,7 +990,10 @@
             </Component>
             <Component class="javax.swing.JButton" name="btncancelar1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="CANCELAR"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/IMGS/cancelar.png"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="CANCELAR"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btncancelar1ActionPerformed"/>

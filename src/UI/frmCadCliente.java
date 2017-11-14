@@ -47,7 +47,7 @@ public class frmCadCliente extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        cmbLogradouro = new javax.swing.JComboBox<String>();
+        cmbLogradouro = new javax.swing.JComboBox<>();
         txtLogradouro = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtBairro = new javax.swing.JTextField();
@@ -79,7 +79,7 @@ public class frmCadCliente extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        cmbLogradouro1 = new javax.swing.JComboBox<String>();
+        cmbLogradouro1 = new javax.swing.JComboBox<>();
         txtLogradouro1 = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         txtBairro1 = new javax.swing.JTextField();
@@ -154,7 +154,7 @@ public class frmCadCliente extends javax.swing.JFrame {
 
         jLabel4.setText("Logradouro: ");
 
-        cmbLogradouro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Rua", "Av.", "Estrada", "Rodovia", "Distrito", "Parque" }));
+        cmbLogradouro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Rua", "Av.", "Estrada", "Rodovia", "Distrito", "Parque" }));
 
         jLabel5.setText("Bairro:");
 
@@ -469,7 +469,7 @@ public class frmCadCliente extends javax.swing.JFrame {
 
         jLabel18.setText("Logradouro: ");
 
-        cmbLogradouro1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Rua", "Av.", "Estrada", "Rodovia", "Distrito", "Parque" }));
+        cmbLogradouro1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Rua", "Av.", "Estrada", "Rodovia", "Distrito", "Parque" }));
 
         jLabel19.setText("Bairro:");
 
@@ -575,21 +575,24 @@ public class frmCadCliente extends javax.swing.JFrame {
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("E-MAIL");
 
-        btncadastro1.setText("CADASTRAR");
+        btncadastro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar.png"))); // NOI18N
+        btncadastro1.setToolTipText("CADASTRAR");
         btncadastro1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncadastro1ActionPerformed(evt);
             }
         });
 
-        btnlimpar1.setText("LIMPAR");
+        btnlimpar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/limpar.png"))); // NOI18N
+        btnlimpar1.setToolTipText("LIMPAR");
         btnlimpar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnlimpar1ActionPerformed(evt);
             }
         });
 
-        btncancelar1.setText("CANCELAR");
+        btncancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cancelar.png"))); // NOI18N
+        btncancelar1.setToolTipText("CANCELAR");
         btncancelar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncancelar1ActionPerformed(evt);
@@ -664,11 +667,11 @@ public class frmCadCliente extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(210, 210, 210)
+                        .addGap(169, 169, 169)
                         .addComponent(btncadastro1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnlimpar1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(26, 26, 26)
                         .addComponent(btncancelar1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
@@ -736,7 +739,7 @@ public class frmCadCliente extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtemail1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btncadastro1)
                     .addComponent(btnlimpar1)
@@ -766,41 +769,41 @@ public class frmCadCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
-       System.exit(DISPOSE_ON_CLOSE);
+        System.exit(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btncancelarActionPerformed
-    public void Limpar(){
-    txtnome.setText("");
-    txtcpf.setText("");
-    txtLogradouro.setText("");
-    txtBairro.setText("");
-    txtNumero.setText("");
-    txtCep.setText("");
-    txtCidade.setText("");
-    txtEstado.setText("");
-    txtPais.setText("");
-    txtddd.setText("");
-    txtddd2.setText("");
-    txttelefone.setText("");
-    txtcelular.setText("");
-    txtemail.setText("");
-    txtrazao.setText("");
-    txtcnpj.setText("");
-    txtLogradouro1.setText("");
-    txtBairro1.setText("");
-    txtNumero1.setText("");
-    txtcep1.setText("");
-    txtCidade1.setText("");
-    txtEstado1.setText("");
-    txtPais1.setText("");
-    txtddd1.setText("");
-    txtddd3.setText("");
-    txttelefone1.setText("");
-    txtcelular1.setText("");
-    txtemail1.setText("");
-    txtfantasia.setText("");
-    
+    public void Limpar() {
+        txtnome.setText("");
+        txtcpf.setText("");
+        txtLogradouro.setText("");
+        txtBairro.setText("");
+        txtNumero.setText("");
+        txtCep.setText("");
+        txtCidade.setText("");
+        txtEstado.setText("");
+        txtPais.setText("");
+        txtddd.setText("");
+        txtddd2.setText("");
+        txttelefone.setText("");
+        txtcelular.setText("");
+        txtemail.setText("");
+        txtrazao.setText("");
+        txtcnpj.setText("");
+        txtLogradouro1.setText("");
+        txtBairro1.setText("");
+        txtNumero1.setText("");
+        txtcep1.setText("");
+        txtCidade1.setText("");
+        txtEstado1.setText("");
+        txtPais1.setText("");
+        txtddd1.setText("");
+        txtddd3.setText("");
+        txttelefone1.setText("");
+        txtcelular1.setText("");
+        txtemail1.setText("");
+        txtfantasia.setText("");
+
     }
-    
+
     private void btncancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelar1ActionPerformed
         System.exit(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btncancelar1ActionPerformed
@@ -810,76 +813,85 @@ public class frmCadCliente extends javax.swing.JFrame {
         pbll.setNome(txtnome.getText());
         pbll.setCpf(txtcpf.getText().replace(".", "").replace("-", ""));
         pbll.getEndereco().setCep(txtCep.getText().replace("-", ""));
-        pbll.getEndereco().setLogradouro(cmbLogradouro.getSelectedItem()+" "+txtLogradouro.getText());
+        pbll.getEndereco().setLogradouro(cmbLogradouro.getSelectedItem() + " " + txtLogradouro.getText());
         pbll.getEndereco().getBairro().setNome(txtBairro.getText());
         pbll.getEndereco().setNumero(txtNumero.getText());
         pbll.getEndereco().getBairro().getCidade().setNome(txtCidade.getText());
         pbll.getEndereco().getBairro().getCidade().getEstado().setNome(txtEstado.getText());
         pbll.getEndereco().getBairro().getCidade().getEstado().getPais().setPaisPt(txtPais.getText());
-        
+
         TelefoneBLL telefone1 = new TelefoneBLL();
         telefone1.setDdd(txtddd.getText().replace("(", "").replace(")", ""));
         telefone1.setNumero(txttelefone.getText().replace("-", ""));
         telefone1.setAtivo(true);
-        
+
         TelefoneBLL celular1 = new TelefoneBLL();
         celular1.setDdd(txtddd2.getText().replace("(", "").replace(")", ""));
         celular1.setNumero(txtcelular.getText().replace("-", ""));
         celular1.setAtivo(true);
-        
+
         pbll.getTelefones().add(celular1);
         pbll.getTelefones().add(telefone1);
-        
+
         pbll.setEmail(txtemail.getText());
         pbll.setAtivo(true);
-        
-        if(pbll.Cadastrar()){
-            JOptionPane.showMessageDialog(null, "CADASTROU O CLIENTE", "Cadastro efetuado com sucesso", JOptionPane.INFORMATION_MESSAGE);
+
+        if (pbll.Cadastrar()) {
+            int escolha = JOptionPane.showConfirmDialog(null, "Cliente cadastrado com sucesso.\nDeseja cadastrar outro cliente?", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.YES_NO_OPTION);
+
+            //CASO O USUÁRIO ESCOLHA NÃO
+            if (escolha == JOptionPane.NO_OPTION) {
+                this.setVisible(false);
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "NÃO DEU CERTO :(", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Aconteceu um erro ao cadastrar cliente.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
-        
+
         Limpar();
-        
+
     }//GEN-LAST:event_btncadastroActionPerformed
 
     private void btncadastro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncadastro1ActionPerformed
         PessoaJuridicaBLL pjbll = new PessoaJuridicaBLL();
         pjbll.setRazaoSocial(txtrazao.getText());
         pjbll.setCnpj(txtcnpj.getText().replace(".", "").replace("-", "").replace("/", ""));
-        pjbll.getEndereco().setLogradouro(cmbLogradouro1.getSelectedItem()+""+txtLogradouro1.getText());
+        pjbll.getEndereco().setLogradouro(cmbLogradouro1.getSelectedItem() + "" + txtLogradouro1.getText());
         pjbll.getEndereco().setCep(txtcep1.getText().replace("-", ""));
         pjbll.getEndereco().getBairro().setNome(txtBairro1.getText());
         pjbll.getEndereco().setNumero(txtNumero1.getText());
         pjbll.getEndereco().getBairro().getCidade().setNome(txtCidade1.getText());
         pjbll.getEndereco().getBairro().getCidade().getEstado().setNome(txtEstado1.getText());
         pjbll.getEndereco().getBairro().getCidade().getEstado().getPais().setPaisPt(txtPais1.getText());
-        
-        
+
         TelefoneBLL telefone2 = new TelefoneBLL();
         telefone2.setDdd(txtddd1.getText().replace("(", "").replace(")", ""));
         telefone2.setNumero(txttelefone1.getText().replace("-", ""));
         telefone2.setAtivo(true);
-        
+
         TelefoneBLL celular2 = new TelefoneBLL();
         celular2.setDdd(txtddd3.getText().replace("(", "").replace(")", ""));
         celular2.setNumero(txtcelular1.getText().replace("-", ""));
         celular2.setAtivo(true);
-        
+
         pjbll.getTelefones().add(telefone2);
         pjbll.getTelefones().add(celular2);
-        
+
         pjbll.setEmail(txtemail1.getText());
         pjbll.setAtivo(true);
-        
-        if(pjbll.Cadastrar()){
-            JOptionPane.showMessageDialog(null, "CADASTROU O CLIENTE", "Cadastro efetuado com sucesso", JOptionPane.INFORMATION_MESSAGE);
+
+        if (pjbll.Cadastrar()) {
+            int escolha = JOptionPane.showConfirmDialog(null, "Cliente cadastrado com sucesso.\nDeseja cadastrar outro cliente?", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.YES_NO_OPTION);
+
+            //CASO O USUÁRIO ESCOLHA NÃO
+            if (escolha == JOptionPane.NO_OPTION) {
+                this.setVisible(false);
+            }
         } else {
             JOptionPane.showMessageDialog(null, "NÃO DEU CERTO :(", "Erro", JOptionPane.ERROR_MESSAGE);
         }
-        
-       Limpar();
-        
+
+        Limpar();
+
     }//GEN-LAST:event_btncadastro1ActionPerformed
 
     private void btnlimpar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpar1ActionPerformed

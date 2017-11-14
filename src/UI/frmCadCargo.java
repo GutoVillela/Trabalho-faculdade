@@ -692,9 +692,14 @@ public class frmCadCargo extends javax.swing.JFrame {
 
         //CADASTRAR CARGO
         if (cBLL.Cadastrar()) {
-            JOptionPane.showMessageDialog(null, "CADASTROU O CARGO", "Cadastro efetuado com sucesso", JOptionPane.INFORMATION_MESSAGE);
+            int escolha = JOptionPane.showConfirmDialog(null, "Cargo cadastrado com sucesso.\nDeseja cadastrar outro cargo?", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.YES_NO_OPTION);
+
+            //CASO O USUÁRIO ESCOLHA NÃO
+            if (escolha == JOptionPane.NO_OPTION) {
+                this.setVisible(false);
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "NÃO DEU CERTO :(", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Aconteceu um erro ao cadastrar o cargo.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
 
 
@@ -769,7 +774,7 @@ public class frmCadCargo extends javax.swing.JFrame {
         ckbPodeGerarRelatorio.setEnabled(true);
 
         cadastrarPermissao = true; //AGORA HABILITAR CADASTRAR PERMISSÃO
-       // btnCadPermissao.setText("CADASTRAR PERMISSÃO");
+        // btnCadPermissao.setText("CADASTRAR PERMISSÃO");
         btnCancelarCadPermissao.setVisible(true);
     }
 
@@ -835,7 +840,7 @@ public class frmCadCargo extends javax.swing.JFrame {
         ckbPodeGerarRelatorio.setEnabled(false);
 
         btnCancelarCadPermissao.setVisible(false);
-        
+
         cadastrarPermissao = false; //AGORA DESABILITAR CADASTRAR PERMISSÃO
         //btnCadPermissao.setText("OUTRA PERMISSÃO");
         btnCancelarCadPermissao.setVisible(false);
@@ -910,10 +915,10 @@ public class frmCadCargo extends javax.swing.JFrame {
             pBLL.setAtivo(true);
 
             if (pBLL.Cadastrar()) {
-                JOptionPane.showMessageDialog(null, "DEU CERTO");
+                JOptionPane.showMessageDialog(null, "Permissão ativada!", "PERMISSÃO ATIVADA", JOptionPane.INFORMATION_MESSAGE);
 
             } else {
-                JOptionPane.showMessageDialog(null, "NÃO DEU CERTO T-T");
+                JOptionPane.showMessageDialog(null, "Aconteceu um erro ao cadastrar a permissão!", "ERRO", JOptionPane.ERROR_MESSAGE);
             }
 
             DesabilitarPermissoes();

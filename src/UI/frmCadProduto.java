@@ -409,9 +409,14 @@ public class frmCadProduto extends javax.swing.JFrame {
             aBLL.setAtivo(true);
 
             if (aBLL.Cadastrar()) {
-                JOptionPane.showMessageDialog(null, "FOI MANOOO");
+                int escolha = JOptionPane.showConfirmDialog(null, "Produto cadastrado com sucesso.\nDeseja cadastrar outro produto?", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.YES_NO_OPTION);
+            
+            //CASO O USUÁRIO ESCOLHA NÃO
+            if (escolha == JOptionPane.NO_OPTION) {
+                this.setVisible(false);
+            }
             } else {
-                JOptionPane.showMessageDialog(null, "NÃO FOI DESTA VEZ QUE EU CONSEGUI :(");
+                JOptionPane.showMessageDialog(null, "Aconteceu um erro ao cadastrar o produto.", "ERRO", JOptionPane.ERROR_MESSAGE);
             }
         }
 

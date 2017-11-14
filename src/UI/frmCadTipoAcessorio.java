@@ -122,10 +122,15 @@ public class frmCadTipoAcessorio extends javax.swing.JFrame {
         taBLL.setAtivo(true);
         
         if (taBLL.Cadastrar()) {
-            JOptionPane.showMessageDialog(null, "Tipo de acessório cadastrado com sucesso!");
+            int escolha = JOptionPane.showConfirmDialog(null, "Tipo de acessório cadastrado com sucesso.\nDeseja cadastrar outro tipo?", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.YES_NO_OPTION);
+            
+            //CASO O USUÁRIO ESCOLHA NÃO
+            if (escolha == JOptionPane.NO_OPTION) {
+                this.setVisible(false);
+            }
         }
         else{
-            JOptionPane.showMessageDialog(null, "ALGO DEU ERRADO :(");
+            JOptionPane.showMessageDialog(null, "Aconteceu um erro.", "ERRO", JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_btnCadastrarActionPerformed

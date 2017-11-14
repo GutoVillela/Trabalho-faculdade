@@ -29,10 +29,9 @@ public class frmCadEquipamento extends javax.swing.JFrame {
 
     private List<TipoEquipamentoBLL> tiposDeEquipamentos;
     private TipoEquipamentoBLL teBLL = new TipoEquipamentoBLL();
-    
-    private PessoaFisicaBLL pfBLL =new PessoaFisicaBLL();
+
+    private PessoaFisicaBLL pfBLL = new PessoaFisicaBLL();
     private List<PessoaFisicaBLL> listaDePessoaFisica;
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -241,25 +240,25 @@ public class frmCadEquipamento extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         frmCadTipoEquipamento cadTipoEquipamento = new frmCadTipoEquipamento(); // INSTÂNCIA DO JFRAME QUE EU VOU COPIAR
-        
+
         JDialog dialogo = new JDialog(this, cadTipoEquipamento.getTitle(), true); // INSTÂNCIA DO JDIALOG QUE VAI RECEBER O MEU JFRAME
-        
+
         // COLOCAR TODOS OS COMPONENTES DO JFRAME DENTRO DO MEU JDIALOG
         for (int i = 0; i < cadTipoEquipamento.getComponentCount(); i++) {
-            
+
             dialogo.add(cadTipoEquipamento.getComponent(i));
-            
+
         }
-        
+
         // DEFINIR TAMANHO do JDialog IDÊNTICO AO MEU JFRAME
         dialogo.setSize(cadTipoEquipamento.getSize());
-        
+
         // DEIXAR A POSIÇÃO DO DIÁLOGO RELATIVO À ESTE FORM
         dialogo.setLocationRelativeTo(this);
-        
+
         //EXIBIR DIÁLOGO PRONTO
         dialogo.setVisible(true);
-        
+
         //DEPOIS DE EXIBIR O DIÁLOGO, CARREGAR TIPOS
         AtualizarTiposDeEquipamento();
 
@@ -274,8 +273,8 @@ public class frmCadEquipamento extends javax.swing.JFrame {
             cmbTipoEquipamento.addItem(tiposDeEquipamentos.get(i).getTipo());
         }
     }
-    
-    private void AtualizarClientes(){
+
+    private void AtualizarClientes() {
         listaDePessoaFisica = pfBLL.Consultar(); // CONSULTAR TODOS OS TIPOS DE EQUIPAMENTOS DISPONÍVEIS
 
         cmbClientes.removeAllItems();
@@ -306,7 +305,12 @@ public class frmCadEquipamento extends javax.swing.JFrame {
             emBLL.setAtivo(true);
 
             if (emBLL.Cadastrar()) {
-                JOptionPane.showMessageDialog(null, "Equipamento do cliente cadastrado com sucesso.", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.INFORMATION_MESSAGE);
+                int escolha = JOptionPane.showConfirmDialog(null, "Equipamento cadastrado com sucesso.\nDeseja cadastrar outro equipamento?", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.YES_NO_OPTION);
+
+                //CASO O USUÁRIO ESCOLHA NÃO
+                if (escolha == JOptionPane.NO_OPTION) {
+                    this.setVisible(false);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Aconteceu um erro ao cadastrar o equipamento do cliente.", "ERRO", JOptionPane.ERROR_MESSAGE);
             }
@@ -317,7 +321,7 @@ public class frmCadEquipamento extends javax.swing.JFrame {
             elBLL.setValorPorHora(Float.valueOf(txtValorPorHora.getText()));
             elBLL.setTipo(tiposDeEquipamentos.get(cmbTipoEquipamento.getSelectedIndex()));
             elBLL.setAtivo(true);
-            
+
             if (elBLL.Cadastrar()) {
                 JOptionPane.showMessageDialog(null, "Equipamento da loja cadastrado com sucesso.", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.INFORMATION_MESSAGE);
             } else {
@@ -333,8 +337,7 @@ public class frmCadEquipamento extends javax.swing.JFrame {
             txtValorPorHora.setVisible(true);
             lblCliente.setVisible(false);
             cmbClientes.setVisible(false);
-        }
-        else{
+        } else {
             lblValorPorHora.setVisible(false);
             txtValorPorHora.setVisible(false);
             lblCliente.setVisible(true);
@@ -343,14 +346,13 @@ public class frmCadEquipamento extends javax.swing.JFrame {
     }//GEN-LAST:event_rdbDaLojaActionPerformed
 
     private void rdbDoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbDoClienteActionPerformed
-        
+
         if (rdbDaLoja.isSelected()) {
             lblValorPorHora.setVisible(true);
             txtValorPorHora.setVisible(true);
             lblCliente.setVisible(false);
             cmbClientes.setVisible(false);
-        }
-        else{
+        } else {
             lblValorPorHora.setVisible(false);
             txtValorPorHora.setVisible(false);
             lblCliente.setVisible(true);

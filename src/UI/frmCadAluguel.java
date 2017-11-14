@@ -627,9 +627,14 @@ public class frmCadAluguel extends javax.swing.JFrame {
         aluguel.setEquipamentosDoAluguel(equipamentosQueSeraoAlugados);
 
         if (aluguel.Cadastrar()) {
-            JOptionPane.showConfirmDialog(null, "Deu certo, mano.", null, JOptionPane.YES_NO_OPTION);
+            int escolha = JOptionPane.showConfirmDialog(null, "Aluguel cadastrado com sucesso.\nDeseja cadastrar outro aluguel?", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.YES_NO_OPTION);
+            
+            //CASO O USUÁRIO ESCOLHA NÃO
+            if (escolha == JOptionPane.NO_OPTION) {
+                this.setVisible(false);
+            }
         } else {
-            JOptionPane.showConfirmDialog(null, "Deu tudo errado, mano.", null, JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Aconteceu um erro ao cadastrar o aluguel.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
 
 

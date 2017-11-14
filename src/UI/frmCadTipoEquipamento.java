@@ -121,9 +121,14 @@ public class frmCadTipoEquipamento extends javax.swing.JFrame {
         teBLL.setTipo(txtTipoEquipamento.getText());
         teBLL.setAtivo(true);
         if (teBLL.Cadastrar()) {
-            JOptionPane.showMessageDialog(null, "DEU CERTO :D");
+            int escolha = JOptionPane.showConfirmDialog(null, "Tipo de equipamento cadastrado com sucesso.\nDeseja cadastrar outro tipo?", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.YES_NO_OPTION);
+            
+            //CASO O USUÁRIO ESCOLHA NÃO
+            if (escolha == JOptionPane.NO_OPTION) {
+                this.setVisible(false);
+            }
         }else{
-            JOptionPane.showMessageDialog(null, "DEU NADA CERTO :(");
+            JOptionPane.showMessageDialog(null, "Aconteceu um erro!", "ERRO", JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_btnCadastrarActionPerformed

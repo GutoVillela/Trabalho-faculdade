@@ -123,10 +123,15 @@ public class frmCadPlataforma extends javax.swing.JFrame {
         pBLL.setAtivo(true);
         
         if (pBLL.Cadastrar()) {
-            JOptionPane.showMessageDialog(null, "CADASTROU");
+            int escolha = JOptionPane.showConfirmDialog(null, "Plataforma cadastrada com sucesso.\nDeseja cadastrar outra plataforma?", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.YES_NO_OPTION);
+            
+            //CASO O USUÁRIO ESCOLHA NÃO
+            if (escolha == JOptionPane.NO_OPTION) {
+                this.setVisible(false);
+            }
         }
         else
-            JOptionPane.showMessageDialog(null, "NÃO CADASTROU");
+            JOptionPane.showMessageDialog(null, "Aconteceu um erro ao cadastrar a plataforma.", "ERRO", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnCadPlataformaActionPerformed
 
     /**

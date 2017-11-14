@@ -479,6 +479,7 @@ public class frmCadFuncionario extends javax.swing.JFrame {
         //DEPOIS DE SETAR TODOS OS ATRIBUTOS, TENTAR CADASTRAR
         if (fBLL.Cadastrar()) {
             JOptionPane.showMessageDialog(null, "Funcionário cadastrado com sucesso.", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(null, "Aconteceu um erro ao cadastrar o funcionário.", "ERRO", JOptionPane.ERROR_MESSAGE);
         }

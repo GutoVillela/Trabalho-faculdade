@@ -283,10 +283,15 @@ public class frmCadJogo extends javax.swing.JFrame {
         
         // CADASTRAR
         if (cpaBLL.Cadastrar()) {
-            JOptionPane.showMessageDialog(null, "DEU CERTO");
+            int escolha = JOptionPane.showConfirmDialog(null, "Jogo cadastrado com sucesso.\nDeseja cadastrar outro jogo?", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.YES_NO_OPTION);
+            
+            //CASO O USUÁRIO ESCOLHA NÃO
+            if (escolha == JOptionPane.NO_OPTION) {
+                this.setVisible(false);
+            }
         }
         else{
-            JOptionPane.showMessageDialog(null, "DEU NADA CERTO :(");
+            JOptionPane.showMessageDialog(null, "Aconteceu um erro!", "ERRO", JOptionPane.ERROR_MESSAGE);
         }
         
         

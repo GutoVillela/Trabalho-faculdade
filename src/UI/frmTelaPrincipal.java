@@ -33,8 +33,8 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lblFundo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         btnCadJogo = new javax.swing.JMenuItem();
@@ -60,20 +60,30 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         btnLogout = new javax.swing.JMenu();
         btnSair = new javax.swing.JMenuItem();
 
+        setTitle("GENOMICS - Sistema de Gerenciamento");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/logo.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/fundo_preto_1.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2240, 1090));
+        lblFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/fundo.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblFundo)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblFundo)
+        );
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -408,6 +418,8 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setExtendedState(MAXIMIZED_BOTH); // MAXIMIZAR FORMULÁRIO ASSIM QUE ABRIR
         
+        this.lblFundo.setSize(this.getSize());
+        
         LimitarPermissoes();
     }//GEN-LAST:event_formWindowOpened
 
@@ -491,11 +503,11 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnRelatorioDeVenda;
     private javax.swing.JMenuItem btnRestaurarBackup;
     private javax.swing.JMenuItem btnSair;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblFundo;
     // End of variables declaration//GEN-END:variables
 }

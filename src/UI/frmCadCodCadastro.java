@@ -1,4 +1,3 @@
-
 package UI;
 
 import BLL.CargoBLL; // IMPORTAÇÃO DA CLASSE BLL NECESSÁRIA
@@ -14,13 +13,13 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
     // CONSTANTES DE CONTROLE
     private final int INDICE_COLUNA_COD_CADASTRO = 0; // ESTA CONSTANTE MAPEIA A POSIÇÃO DA COLUNA AONDE EXISTE O CÓDIGO DE CADASTRO NA TABELA
     private final int INDICE_COLUNA_CARGO = 1; // ESTA CONSTANTE MAPEIA A POSIÇÃO DA COLUNA AONDE EXISTE O CARGO NA TABELA
-    
+
     private CargoBLL cBLL = new CargoBLL();// INSTÂNCIA DA CLASSE DE CARGO
     private List<CargoBLL> listaDeCargos;
     private CodigoDeCadastroBLL ccBLL = new CodigoDeCadastroBLL();
     private List<CodigoDeCadastroBLL> listaDeCodigos = new LinkedList<>();
     DefaultTableModel tableModel; // MODEL DA TABELA
-    
+
     /**
      * Creates new form frmCadCodCadastro
      */
@@ -30,7 +29,6 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         tableModel = (DefaultTableModel) tblCodigosGerados.getModel(); // ASSOCIAR MODEL DA TABELA 
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -185,25 +183,25 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AtualizarCargos(){
+    private void AtualizarCargos() {
         listaDeCargos = cBLL.Consultar();
-        
+
         cmbCargos.removeAllItems();
-        
+
         for (int i = 0; i < listaDeCargos.size(); i++) {
             cmbCargos.addItem(listaDeCargos.get(i).getCargo());
         }
     }
-    
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        
+
         AtualizarCargos();// ATUALIZAR A LISTA DE CARGOS ASSIM QUE O FORMULÁRIO ABRIR
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCadCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadCargoActionPerformed
         // TODO add your handling code here:
-        
+
         frmCadCargo cadCargo = new frmCadCargo();
         cadCargo.setDefaultCloseOperation(HIDE_ON_CLOSE);
         cadCargo.setVisible(true);
@@ -212,51 +210,57 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
     private void btnGerarCodigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarCodigosActionPerformed
         // TODO add your handling code here:
         int qtdCodigos = Integer.valueOf(spnQuantidade.getValue().toString());
-        
+
         int qtdCodigosJaGeradosParaCargo = 0;
-        
+
         for (int i = 0; i < tableModel.getRowCount(); i++) {
-            
-            if(tableModel.getValueAt(i, INDICE_COLUNA_CARGO) == cmbCargos.getSelectedItem().toString()){
+
+            if (tableModel.getValueAt(i, INDICE_COLUNA_CARGO) == cmbCargos.getSelectedItem().toString()) {
                 qtdCodigosJaGeradosParaCargo++;
             }
-            
+
         }
-        
+
         CodigoDeCadastroBLL.qtdDeCodigosPreGerados = qtdCodigosJaGeradosParaCargo;
-        
-        for(int i = 0; i < qtdCodigos; i++){
+
+        for (int i = 0; i < qtdCodigos; i++) {
             int codigoDoCargo = listaDeCargos.get(cmbCargos.getSelectedIndex()).getCodigo();
             //int proximoCodigo = Integer.parseInt(ccBLL.GerarProximo(codigoDoCargo)) + qtdCodigosJaGeradosParaCargo;
-            
+
             String proximoCodigo = ccBLL.GerarProximo(codigoDoCargo);
-            
+
             CodigoDeCadastroBLL codigoParaGerar = new CodigoDeCadastroBLL();
             codigoParaGerar.setCodigoDeCadastro(proximoCodigo);
             codigoParaGerar.getCargo().setCodigo(codigoDoCargo);
             codigoParaGerar.setAtivo(true);
             codigoParaGerar.setUtilizado(false);
-            
+
             listaDeCodigos.add(codigoParaGerar);
-            tableModel.insertRow(tableModel.getRowCount(), new Object[] { proximoCodigo, cmbCargos.getSelectedItem().toString()});
+            tableModel.insertRow(tableModel.getRowCount(), new Object[]{proximoCodigo, cmbCargos.getSelectedItem().toString()});
         }
-        
+
         ccBLL.ResetarCodigos();
-        
+
     }//GEN-LAST:event_btnGerarCodigosActionPerformed
 
     private void btnCadCodigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadCodigosActionPerformed
-        
+
         if (ccBLL.Cadastrar(listaDeCodigos)) {
-            JOptionPane.showMessageDialog(null, "FOI SIM");
+            int escolha = JOptionPane.showConfirmDialog(null, "Códigos de cadastro ativados com sucesso.\nDeseja ativar mais códigos?", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.YES_NO_OPTION);
+
+            //CASO O USUÁRIO ESCOLHA NÃO
+            if (escolha == JOptionPane.NO_OPTION) {
+                this.setVisible(false);
+            }
+            else{
+                tableModel.setRowCount(0); // LIMPAR TABELA
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Aconteceu um erro ao ativar os códigos de cadastro.", "ERRO", JOptionPane.ERROR_MESSAGE);
         }
-        else
-            JOptionPane.showMessageDialog(null, "FOI NÃO :((");
-        
+
         //REMOVER TODAS AS LINHAS
-        
-        
-        
+
     }//GEN-LAST:event_btnCadCodigosActionPerformed
 
     /**

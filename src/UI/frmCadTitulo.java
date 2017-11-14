@@ -1,15 +1,14 @@
-
 package UI;
 
 import BLL.TituloBLL; // IMPORTAR BLL NECESSÁRIA AQUI
 import javax.swing.JOptionPane;
 
 public class frmCadTitulo extends javax.swing.JFrame {
-
+    
     public frmCadTitulo() {
         initComponents();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -143,17 +142,16 @@ public class frmCadTitulo extends javax.swing.JFrame {
         tBLL.setAtivo(true);
         
         if (tBLL.Cadastrar()) {
-            JOptionPane.showMessageDialog(null, "Título cadastrado com sucesso!");
+            int dialogo = JOptionPane.showConfirmDialog(null, "Cadastro efetuado com sucesso. Deseja cadastrar outro título?", "CADASTRO EFETUADO", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            
+            if (dialogo == JOptionPane.NO_OPTION) {
+                this.setVisible(false);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Aconteceu um erro!", "ERRO", JOptionPane.ERROR_MESSAGE);
         }
-        else{
-            JOptionPane.showMessageDialog(null, "ALGO DEU ERRADO :(");
-        }
-            
-            
         
-            
-        
-        
+
     }//GEN-LAST:event_btnCadTituloActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
