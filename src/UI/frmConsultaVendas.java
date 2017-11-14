@@ -102,21 +102,29 @@ public class frmConsultaVendas extends javax.swing.JFrame {
         );
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MÉTODO DE CONSULTA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MÉTODO DE CONSULTA", 0, 0, new java.awt.Font("Century Gothic", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
         btnConsultar.setBackground(new java.awt.Color(0, 0, 0));
         btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/lupa_search.png"))); // NOI18N
         btnConsultar.setToolTipText("Consultar");
 
         rdbData.setBackground(new java.awt.Color(0, 0, 0));
+        rdbData.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         rdbData.setForeground(new java.awt.Color(255, 255, 255));
         rdbData.setText("DATA");
+        rdbData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbDataActionPerformed(evt);
+            }
+        });
 
         rdbCliente.setBackground(new java.awt.Color(0, 0, 0));
+        rdbCliente.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         rdbCliente.setForeground(new java.awt.Color(255, 255, 255));
         rdbCliente.setText("CLIENTE");
 
         rdbCodigo.setBackground(new java.awt.Color(0, 0, 0));
+        rdbCodigo.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         rdbCodigo.setForeground(new java.awt.Color(255, 255, 255));
         rdbCodigo.setText("CODIGO");
 
@@ -154,16 +162,18 @@ public class frmConsultaVendas extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        tblVendas.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         tblVendas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, "hoje", "22/1/1999"},
+                {null, "amanha", null}
             },
             new String [] {
-                "CODIGO", "CLIENTE", "DATA DA VENDA", "ATIVO"
+                "CODIGO", "CLIENTE", "DATA DA VENDA"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true
+                false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -177,12 +187,15 @@ public class frmConsultaVendas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblVendas);
 
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("CONSULTA DE PRODUTOS");
 
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("PRODUTOS VENDIDOS");
 
+        tblItensDaVenda.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         tblItensDaVenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -287,6 +300,10 @@ public class frmConsultaVendas extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_tblVendasMouseClicked
+
+    private void rdbDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdbDataActionPerformed
 
     private void CarregarItensDaVenda() {
 
