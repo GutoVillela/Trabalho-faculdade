@@ -118,4 +118,36 @@ public class ClienteDAL {
 
     }
 
+    public String DescobrirNomeOuRazaoSocial(int codCliente){
+        //CRIANDO COMANDO SQL
+        String comandoSQL = "SELECT pessoa_fisica.nome, pessoa_juridica.razao_social FROM Clientes LEFT JOIN pessoa_fisica ON pessoa_fisica.codigo = Clientes.codigo LEFT JOIN pessoa_juridica ON pessoa_juridica.codigo = Clientes.codigo WHERE Clientes.codigo = ?;";
+
+        // TRATAMENTO DE ERRO
+        try {
+            //PREPARANDO COMANDO PARA SER EXECUTADO
+            PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
+            query.setInt(1, codCliente);
+
+            //RESULT SET QUE VAI GUARDAR O RESULTADO
+            ResultSet resultadoConsulta = query.executeQuery();
+
+            //RECUPERAR PRÓXIMA CONSULTA
+            resultadoConsulta.next();
+            
+            // VERIFICAR NOME OU RAZÃO SOCIAL
+            String nome = resultadoConsulta.getString(1);
+            String razaoSocial = resultadoConsulta.getString(2);
+            
+            // RETORNAR CAMPO DE NÃO VEIO NULO
+            if(nome != null)
+                return nome;
+            else
+                return razaoSocial;
+
+        } catch (SQLException erro) {
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + erro);
+            return null;
+        }
+    }
+    
 }

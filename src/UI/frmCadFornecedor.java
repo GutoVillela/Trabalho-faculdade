@@ -443,7 +443,7 @@ public class frmCadFornecedor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        System.exit(WIDTH);
+        this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**

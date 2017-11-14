@@ -18,6 +18,35 @@ public class ClienteBLL {
     }
 
     private ClienteDAL cDAL = new ClienteDAL();
+    
+    //MÉTODOS
+    public boolean Cadastrar(){
+    
+        this.endereco.Cadastrar();
+        this.endereco.setCodigo(endereco.RecuperarUltimaChavePrimaria());
+        return cDAL.Cadastrar(this);
+        
+    }
+    
+    
+    public boolean Atualizar(){
+        
+        return cDAL.AtualizarDados(this);
+    }
+    
+    public int RecuperarUltimaChavePrimaria(){
+        return cDAL.RecuperarUltimaChavePrimaria();
+    }
+    
+    protected boolean AssociarTodosTelefoneDaLista(){
+        return cDAL.AssociarTodosTelefoneDaLista(this);
+    }
+    
+    public String DescobrirNomeOuRazaoSocial(){
+        return cDAL.DescobrirNomeOuRazaoSocial(this.codigo);
+    }
+    
+    //ENCAPSULADORES
     /**
      * @return the codigo
      */
@@ -88,27 +117,7 @@ public class ClienteBLL {
         this.telefones = telefones;
     }
     
-    public boolean Cadastrar(){
     
-        this.endereco.Cadastrar();
-        this.endereco.setCodigo(endereco.RecuperarUltimaChavePrimaria());
-        return cDAL.Cadastrar(this);
-        
-    }
-    
-    
-    public boolean Atualizar(){
-        
-        return cDAL.AtualizarDados(this);
-    }
-    
-    public int RecuperarUltimaChavePrimaria(){
-        return cDAL.RecuperarUltimaChavePrimaria();
-    }
-    
-    protected boolean AssociarTodosTelefoneDaLista(){
-        return cDAL.AssociarTodosTelefoneDaLista(this);
-    }
     
     
 }

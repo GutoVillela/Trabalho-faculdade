@@ -179,7 +179,7 @@ public class PessoaJuridicaDAL {
      */
     public List<PessoaJuridicaBLL> Consultar(){
         //DEFINIR COMANDO SQL
-        String comandoSQL = "SELECT * FROM clientes LEFT JOIN pessoa_juridica ON clientes.codigo = pessoa_juridica.codigo LEFT JOIN enderecos ON Clientes.endereco = enderecos.codigo;";
+        String comandoSQL = "SELECT * FROM clientes JOIN pessoa_juridica ON clientes.codigo = pessoa_juridica.codigo LEFT JOIN enderecos ON Clientes.endereco = enderecos.codigo;";
 
         //CRIANDO LISTA QUE VAI RECEBER TODO O RESULTADO DA CONSULTA
         List<PessoaJuridicaBLL> listaDePessoasJuridicas = new ArrayList<>();

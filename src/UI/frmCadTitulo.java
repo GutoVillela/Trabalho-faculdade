@@ -145,7 +145,7 @@ public class frmCadTitulo extends javax.swing.JFrame {
             int dialogo = JOptionPane.showConfirmDialog(null, "Cadastro efetuado com sucesso. Deseja cadastrar outro título?", "CADASTRO EFETUADO", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             
             if (dialogo == JOptionPane.NO_OPTION) {
-                this.setVisible(false);
+                dispose();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Aconteceu um erro!", "ERRO", JOptionPane.ERROR_MESSAGE);

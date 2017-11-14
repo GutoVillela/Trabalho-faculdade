@@ -38,6 +38,10 @@ public class VendaBLL {
         return vDAL.Consultar();
     }
     
+    public List<VendaBLL> ConsultarPorCliente(){
+        return vDAL.ConsultarPorCliente(this.cliente.getCodigo());
+    }
+    
     public int PreverProximoCodigo(){
         return vDAL.PreverProximoCodigo();
     }

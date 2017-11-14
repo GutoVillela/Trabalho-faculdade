@@ -58,7 +58,7 @@ public class frmSplash extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/fundo4.png"))); // NOI18N
         jLabel1.setText("genomics");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 270));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 270));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

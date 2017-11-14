@@ -49,14 +49,14 @@ public class frmCadProduto extends javax.swing.JFrame {
         btnNovaPlataforma = new javax.swing.JButton();
         cmbPlataforma = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblTipoAcessorio = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         cmbTipoAcessorio = new javax.swing.JComboBox<>();
         cmbTitulo = new javax.swing.JComboBox<>();
         btnNovoTipoAcessorio = new javax.swing.JButton();
         btnNovoTitulo = new javax.swing.JButton();
         spnQuantidade = new javax.swing.JSpinner();
-        jLabel4 = new javax.swing.JLabel();
+        lblPlataforma = new javax.swing.JLabel();
         btnNovaPlataforma1 = new javax.swing.JButton();
         cmbPlataforma1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -65,7 +65,7 @@ public class frmCadProduto extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         rdbAcessorio = new javax.swing.JRadioButton();
         txtPreco = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
         btnCadJogo = new javax.swing.JButton();
         txtNomeProduto = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
@@ -90,11 +90,11 @@ public class frmCadProduto extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("TIPO DE ACESSÓRIO: ");
+        lblTipoAcessorio.setForeground(new java.awt.Color(255, 255, 255));
+        lblTipoAcessorio.setText("TIPO DE ACESSÓRIO: ");
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("TÍTULO: ");
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("TÍTULO: ");
 
         cmbTipoAcessorio.setForeground(new java.awt.Color(255, 255, 255));
         cmbTipoAcessorio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -122,8 +122,10 @@ public class frmCadProduto extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("PLATAFORMA:");
+        spnQuantidade.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        lblPlataforma.setForeground(new java.awt.Color(255, 255, 255));
+        lblPlataforma.setText("PLATAFORMA:");
 
         btnNovaPlataforma1.setBackground(new java.awt.Color(0, 0, 0));
         btnNovaPlataforma1.setForeground(new java.awt.Color(255, 255, 255));
@@ -167,8 +169,8 @@ public class frmCadProduto extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("NOME:");
+        lblNome.setForeground(new java.awt.Color(255, 255, 255));
+        lblNome.setText("NOME:");
 
         btnCadJogo.setBackground(new java.awt.Color(0, 0, 0));
         btnCadJogo.setForeground(new java.awt.Color(255, 255, 255));
@@ -225,13 +227,13 @@ public class frmCadProduto extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addGap(82, 82, 82)
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel4)
+                                                .addComponent(lblPlataforma)
                                                 .addComponent(jLabel5)
                                                 .addComponent(jLabel6)))
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addComponent(lblTitulo, javax.swing.GroupLayout.Alignment.TRAILING))
                                     .addGap(18, 18, 18))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
+                                    .addComponent(lblTipoAcessorio)
                                     .addGap(9, 9, 9)))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(cmbTitulo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -245,7 +247,7 @@ public class frmCadProduto extends javax.swing.JFrame {
                                 .addComponent(btnNovaPlataforma1)
                                 .addComponent(btnNovoTipoAcessorio, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
+                            .addComponent(lblNome)
                             .addGap(18, 18, 18)
                             .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -262,7 +264,7 @@ public class frmCadProduto extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(rdbJogo)
@@ -270,21 +272,21 @@ public class frmCadProduto extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(lblNome))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbTipoAcessorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
+                    .addComponent(lblTipoAcessorio)
                     .addComponent(btnNovoTipoAcessorio))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
+                    .addComponent(lblTitulo)
                     .addComponent(btnNovoTitulo))
                 .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbPlataforma1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
+                    .addComponent(lblPlataforma)
                     .addComponent(btnNovaPlataforma1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -328,25 +330,25 @@ public class frmCadProduto extends javax.swing.JFrame {
 
     private void btnNovoTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoTituloActionPerformed
         frmCadTitulo cadTitulo = new frmCadTitulo(); // INSTÂNCIA DO JFRAME QUE EU VOU COPIAR
-        
+
         JDialog dialogo = new JDialog(this, cadTitulo.getTitle(), true); // INSTÂNCIA DO JDIALOG QUE VAI RECEBER O MEU JFRAME
-        
+
         // COLOCAR TODOS OS COMPONENTES DO JFRAME DENTRO DO MEU JDIALOG
         for (int i = 0; i < cadTitulo.getComponentCount(); i++) {
-            
+
             dialogo.add(cadTitulo.getComponent(i));
-            
+
         }
-        
+
         // DEFINIR TAMANHO do JDialog IDÊNTICO AO MEU JFRAME
         dialogo.setSize(cadTitulo.getSize());
-        
+
         // DEIXAR A POSIÇÃO DO DIÁLOGO RELATIVO À ESTE FORM
         dialogo.setLocationRelativeTo(this);
-        
+
         //EXIBIR DIÁLOGO PRONTO
         dialogo.setVisible(true);
-        
+
         //DEPOIS DE EXIBIR O DIÁLOGO, ATUALIZAR TÍTULOS
         CarregarTitulos();
 
@@ -361,25 +363,25 @@ public class frmCadProduto extends javax.swing.JFrame {
 
     private void btnNovaPlataforma1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaPlataforma1ActionPerformed
         frmCadPlataforma cadPlataforma = new frmCadPlataforma(); // INSTÂNCIA DO JFRAME QUE EU VOU COPIAR
-        
+
         JDialog dialogo = new JDialog(this, cadPlataforma.getTitle(), true); // INSTÂNCIA DO JDIALOG QUE VAI RECEBER O MEU JFRAME
-        
+
         // COLOCAR TODOS OS COMPONENTES DO JFRAME DENTRO DO MEU JDIALOG
         for (int i = 0; i < cadPlataforma.getComponentCount(); i++) {
-            
+
             dialogo.add(cadPlataforma.getComponent(i));
-            
+
         }
-        
+
         // DEFINIR TAMANHO do JDialog IDÊNTICO AO MEU JFRAME
         dialogo.setSize(cadPlataforma.getSize());
-        
+
         // DEIXAR A POSIÇÃO DO DIÁLOGO RELATIVO À ESTE FORM
         dialogo.setLocationRelativeTo(this);
-        
+
         //EXIBIR DIÁLOGO PRONTO
         dialogo.setVisible(true);
-        
+
         //DEPOIS DE EXIBIR O DIÁLOGO, ATUALIZAR PLATAFORMAS
         CarregarPlataformas();
     }//GEN-LAST:event_btnNovaPlataforma1ActionPerformed
@@ -396,9 +398,14 @@ public class frmCadProduto extends javax.swing.JFrame {
             cpvBLL.setAtivo(true);
 
             if (cpvBLL.Cadastrar()) {
-                JOptionPane.showMessageDialog(null, "FOI MANOOO");
+                int escolha = JOptionPane.showConfirmDialog(null, "Produto cadastrado com sucesso.\nDeseja cadastrar outro produto?", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.YES_NO_OPTION);
+
+                //CASO O USUÁRIO ESCOLHA NÃO
+                if (escolha == JOptionPane.NO_OPTION) {
+                    this.setVisible(false);
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "NÃO FOI DESTA VEZ QUE EU CONSEGUI :(");
+                JOptionPane.showMessageDialog(null, "Aconteceu um erro ao cadastrar o produto.", "ERRO", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             // DEFINIR ATRIBUTOS DO ACESSÓRIO   
@@ -410,11 +417,11 @@ public class frmCadProduto extends javax.swing.JFrame {
 
             if (aBLL.Cadastrar()) {
                 int escolha = JOptionPane.showConfirmDialog(null, "Produto cadastrado com sucesso.\nDeseja cadastrar outro produto?", "CADASTRO REALIZADO COM SUCESSO", JOptionPane.YES_NO_OPTION);
-            
-            //CASO O USUÁRIO ESCOLHA NÃO
-            if (escolha == JOptionPane.NO_OPTION) {
-                this.setVisible(false);
-            }
+
+                //CASO O USUÁRIO ESCOLHA NÃO
+                if (escolha == JOptionPane.NO_OPTION) {
+                    this.setVisible(false);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Aconteceu um erro ao cadastrar o produto.", "ERRO", JOptionPane.ERROR_MESSAGE);
             }
@@ -423,52 +430,58 @@ public class frmCadProduto extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCadJogoActionPerformed
 
+    private void ReformatarCampos() {
+        if (rdbJogo.isSelected()) {
+
+            txtNomeProduto.setEnabled(false);
+            cmbTipoAcessorio.setEnabled(false);
+            btnNovoTipoAcessorio.setEnabled(false);
+            cmbTitulo.setEnabled(true);
+            cmbPlataforma1.setEnabled(true);
+            btnNovoTitulo.setEnabled(true);
+            btnNovaPlataforma1.setEnabled(true);
+            txtNomeProduto.setVisible(false);
+            cmbTipoAcessorio.setVisible(false);
+            btnNovoTipoAcessorio.setVisible(false);
+            cmbTitulo.setVisible(true);
+            cmbPlataforma1.setVisible(true);
+            btnNovoTitulo.setVisible(true);
+            btnNovaPlataforma1.setVisible(true);
+            lblNome.setVisible(false);
+            lblTipoAcessorio.setVisible(false);
+            lblTitulo.setVisible(true);
+            lblPlataforma.setVisible(true);
+
+        } else {
+            txtNomeProduto.setEnabled(true);
+            cmbTipoAcessorio.setEnabled(true);
+            btnNovoTipoAcessorio.setEnabled(true);
+            cmbTitulo.setEnabled(false);
+            cmbPlataforma1.setEnabled(false);
+            btnNovoTitulo.setEnabled(false);
+            btnNovaPlataforma1.setEnabled(false);
+            txtNomeProduto.setVisible(true);
+            cmbTipoAcessorio.setVisible(true);
+            btnNovoTipoAcessorio.setVisible(true);
+            cmbTitulo.setVisible(false);
+            cmbPlataforma1.setVisible(false);
+            btnNovoTitulo.setVisible(false);
+            btnNovaPlataforma1.setVisible(false);
+            lblNome.setVisible(true);
+            lblTipoAcessorio.setVisible(true);
+            lblTitulo.setVisible(false);
+            lblPlataforma.setVisible(false);
+        }
+    }
+
     private void rdbJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbJogoActionPerformed
         // TODO add your handling code here:
 
-        if (rdbJogo.isSelected()) {
-
-            txtNomeProduto.setEnabled(false);
-            cmbTipoAcessorio.setEnabled(false);
-            btnNovoTipoAcessorio.setEnabled(false);
-            cmbTitulo.setEnabled(true);
-            cmbPlataforma1.setEnabled(true);
-            btnNovoTitulo.setEnabled(true);
-            btnNovaPlataforma1.setEnabled(true);
-
-        } else {
-            txtNomeProduto.setEnabled(true);
-            cmbTipoAcessorio.setEnabled(true);
-            btnNovoTipoAcessorio.setEnabled(true);
-            cmbTitulo.setEnabled(false);
-            cmbPlataforma1.setEnabled(false);
-            btnNovoTitulo.setEnabled(false);
-            btnNovaPlataforma1.setEnabled(false);
-        }
+        ReformatarCampos();
     }//GEN-LAST:event_rdbJogoActionPerformed
 
     private void rdbAcessorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbAcessorioActionPerformed
-        // TODO add your handling code here:
-
-        if (rdbJogo.isSelected()) {
-
-            txtNomeProduto.setEnabled(false);
-            cmbTipoAcessorio.setEnabled(false);
-            btnNovoTipoAcessorio.setEnabled(false);
-            cmbTitulo.setEnabled(true);
-            cmbPlataforma1.setEnabled(true);
-            btnNovoTitulo.setEnabled(true);
-            btnNovaPlataforma1.setEnabled(true);
-
-        } else {
-            txtNomeProduto.setEnabled(true);
-            cmbTipoAcessorio.setEnabled(true);
-            btnNovoTipoAcessorio.setEnabled(true);
-            cmbTitulo.setEnabled(false);
-            cmbPlataforma1.setEnabled(false);
-            btnNovoTitulo.setEnabled(false);
-            btnNovaPlataforma1.setEnabled(false);
-        }
+        ReformatarCampos();
 
     }//GEN-LAST:event_rdbAcessorioActionPerformed
 
@@ -477,34 +490,34 @@ public class frmCadProduto extends javax.swing.JFrame {
         CarregarTitulos();
         CarregarPlataformas();
         AtualizarTiposDeAcessorio();
-
+        ReformatarCampos();
     }//GEN-LAST:event_formWindowOpened
 
     private void btnNovoTipoAcessorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoTipoAcessorioActionPerformed
-        
+
         frmCadTipoAcessorio cadTipoAcessorio = new frmCadTipoAcessorio(); // INSTÂNCIA DO JFRAME QUE EU VOU COPIAR
-        
+
         JDialog dialogo = new JDialog(this, cadTipoAcessorio.getTitle(), true); // INSTÂNCIA DO JDIALOG QUE VAI RECEBER O MEU JFRAME
-        
+
         // COLOCAR TODOS OS COMPONENTES DO JFRAME DENTRO DO MEU JDIALOG
         for (int i = 0; i < cadTipoAcessorio.getComponentCount(); i++) {
-            
+
             dialogo.add(cadTipoAcessorio.getComponent(i));
-            
+
         }
-        
+
         // DEFINIR TAMANHO do JDialog IDÊNTICO AO MEU JFRAME
         dialogo.setSize(cadTipoAcessorio.getSize());
-        
+
         // DEIXAR A POSIÇÃO DO DIÁLOGO RELATIVO À ESTE FORM
         dialogo.setLocationRelativeTo(this);
-        
+
         //EXIBIR DIÁLOGO PRONTO
         dialogo.setVisible(true);
-        
+
         //DEPOIS DE EXIBIR O DIÁLOGO, ATUALIZAR TIPOS
         AtualizarTiposDeAcessorio();
-        
+
     }//GEN-LAST:event_btnNovoTipoAcessorioActionPerformed
 
     private void CarregarTitulos() {
@@ -576,15 +589,15 @@ public class frmCadProduto extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbTipoAcessorio;
     private javax.swing.JComboBox<String> cmbTitulo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblPlataforma;
+    private javax.swing.JLabel lblTipoAcessorio;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JRadioButton rdbAcessorio;
     private javax.swing.JRadioButton rdbJogo;
     private javax.swing.JSpinner spnQuantidade;
