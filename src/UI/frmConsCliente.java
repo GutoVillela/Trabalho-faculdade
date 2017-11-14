@@ -461,7 +461,7 @@ public class frmConsCliente extends javax.swing.JFrame {
          if (rdPessoaFisica.isSelected()) {
             
         
-        PessoaFisicaBLL pbll = new PessoaFisicaBLL();
+        PessoaFisicaBLL pbll = listaConsulta.get(indice);
         pbll.setNome(txtNome.getText());
         pbll.setCpf(txtcpf2.getText().replace(".", "").replace("-", ""));
         pbll.getEndereco().setCodigo(listaConsulta.get(indice).getEndereco().getCodigo());
@@ -479,7 +479,7 @@ public class frmConsCliente extends javax.swing.JFrame {
         }
         else{
             
-           PessoaJuridicaBLL pjbll = new PessoaJuridicaBLL();
+           PessoaJuridicaBLL pjbll = listaConsulta2.get(indice2);
         pjbll.setRazaoSocial(txtrazao.getText());
         pjbll.setCnpj(txtcnpj.getText().replace(".", "").replace("-", "").replace("/", ""));
         pjbll.getEndereco().setCodigo(listaConsulta2.get(indice2).getEndereco().getCodigo());
