@@ -75,4 +75,8 @@ public class CredencialDeAcessoBLL {
         return cDAL.Cadastrar(this);
     }
     
+    public BLL.FuncionarioBLL ConsultarFuncionarioDonoDasCredenciais(){
+        return cDAL.ConsultarFuncionarioDonoDasCredenciais(this);
+    }
+    
 }

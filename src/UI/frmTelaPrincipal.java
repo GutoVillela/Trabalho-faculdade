@@ -5,6 +5,7 @@
  */
 package UI;
 
+import BLL.FuncionarioBLL;
 import java.awt.Toolkit;
 
 /**
@@ -13,6 +14,8 @@ import java.awt.Toolkit;
  */
 public class frmTelaPrincipal extends javax.swing.JFrame {
 
+    public static FuncionarioBLL usuarioLogado; // FUNCIONARIO LOGADO
+    
     /**
      * Creates new form frmTelaPrincipal
      */
@@ -30,6 +33,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -38,29 +42,46 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         btnFuncionario = new javax.swing.JMenuItem();
         btnCadCodCadastro = new javax.swing.JMenuItem();
         btnCadCargo = new javax.swing.JMenuItem();
-        btnCadAluguel = new javax.swing.JMenuItem();
         btnCadCliente = new javax.swing.JMenuItem();
         btnCadProduto = new javax.swing.JMenuItem();
-        frmCadAluguel = new javax.swing.JMenuItem();
+        btnCadAluguel = new javax.swing.JMenuItem();
         btnCadManutencao = new javax.swing.JMenuItem();
-        btnVenda = new javax.swing.JMenuItem();
+        btnCadVenda = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnConCliente = new javax.swing.JMenuItem();
         btnConFuncionario = new javax.swing.JMenuItem();
         btnConVendas = new javax.swing.JMenuItem();
+        btnGerenciarBackup = new javax.swing.JMenu();
+        btnGerarBackup = new javax.swing.JMenuItem();
+        btnRestaurarBackup = new javax.swing.JMenuItem();
+        btnGerenciarRelatorio = new javax.swing.JMenu();
+        btnRelatorioDeVenda = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        btnLogout = new javax.swing.JMenu();
+        btnSair = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/fundo_retro_de_bolinhas.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/logo.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/fundo_preto_1.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2240, 1090));
+
+        jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
+
+        jMenu1.setBackground(new java.awt.Color(0, 0, 0));
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar_icone.png"))); // NOI18N
         jMenu1.setText("CADASTRAR");
 
+        btnCadJogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrarjogo.png"))); // NOI18N
         btnCadJogo.setText("JOGO PARA ALUGAR");
         btnCadJogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,6 +90,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(btnCadJogo);
 
+        btnCadEquipamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/equipamento.png"))); // NOI18N
         btnCadEquipamento.setText("EQUIPAMENTO");
         btnCadEquipamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +99,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(btnCadEquipamento);
 
+        btnFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastro_funcionario.png"))); // NOI18N
         btnFuncionario.setText("FUNCIONÁRIO");
         btnFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +108,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(btnFuncionario);
 
+        btnCadCodCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/codcadastro.png"))); // NOI18N
         btnCadCodCadastro.setText("CÓDIGO DE CADASTRO");
         btnCadCodCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +117,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(btnCadCodCadastro);
 
+        btnCadCargo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrarcargo.png"))); // NOI18N
         btnCadCargo.setText("CARGO");
         btnCadCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,9 +126,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(btnCadCargo);
 
-        btnCadAluguel.setText("ALUGUEL DE EQUIPAMENTO");
-        jMenu1.add(btnCadAluguel);
-
+        btnCadCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/add_cliente.png"))); // NOI18N
         btnCadCliente.setText("CLIENTE");
         btnCadCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +135,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(btnCadCliente);
 
+        btnCadProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/CadProduto.png"))); // NOI18N
         btnCadProduto.setText("PRODUTO");
         btnCadProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,14 +144,16 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(btnCadProduto);
 
-        frmCadAluguel.setText("ALUGUEL");
-        frmCadAluguel.addActionListener(new java.awt.event.ActionListener() {
+        btnCadAluguel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar_aluguel.png"))); // NOI18N
+        btnCadAluguel.setText("ALUGUEL");
+        btnCadAluguel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                frmCadAluguelActionPerformed(evt);
+                btnCadAluguelActionPerformed(evt);
             }
         });
-        jMenu1.add(frmCadAluguel);
+        jMenu1.add(btnCadAluguel);
 
+        btnCadManutencao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar_tipo_manutencao.png"))); // NOI18N
         btnCadManutencao.setText("MANUTENÇÃO");
         btnCadManutencao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,18 +162,22 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(btnCadManutencao);
 
-        btnVenda.setText("VENDA");
-        btnVenda.addActionListener(new java.awt.event.ActionListener() {
+        btnCadVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrarvenda.png"))); // NOI18N
+        btnCadVenda.setText("VENDA");
+        btnCadVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVendaActionPerformed(evt);
+                btnCadVendaActionPerformed(evt);
             }
         });
-        jMenu1.add(btnVenda);
+        jMenu1.add(btnCadVenda);
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setBackground(new java.awt.Color(0, 0, 0));
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/consultar.png"))); // NOI18N
         jMenu2.setText("CONSULTAR");
 
+        btnConCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/consultar_cliente.png"))); // NOI18N
         btnConCliente.setText("CLIENTE");
         btnConCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,6 +186,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(btnConCliente);
 
+        btnConFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/Consulta_funcionario.png"))); // NOI18N
         btnConFuncionario.setText("FUNCIONÁRIO");
         btnConFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,6 +195,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(btnConFuncionario);
 
+        btnConVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/consultarvenda.png"))); // NOI18N
         btnConVendas.setText("VENDAS");
         btnConVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,23 +206,125 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        setJMenuBar(jMenuBar1);
+        btnGerenciarBackup.setBackground(new java.awt.Color(0, 0, 0));
+        btnGerenciarBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/gerenciar_backup.png"))); // NOI18N
+        btnGerenciarBackup.setText("GERENCIAR BACKUP");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 770, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, Short.MAX_VALUE)
-        );
+        btnGerarBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/gerar_backup.png"))); // NOI18N
+        btnGerarBackup.setText("GERAR BACKUP");
+        btnGerenciarBackup.add(btnGerarBackup);
+
+        btnRestaurarBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/restaurar_backup.png"))); // NOI18N
+        btnRestaurarBackup.setText("RESTAURAR BACKUP");
+        btnGerenciarBackup.add(btnRestaurarBackup);
+
+        jMenuBar1.add(btnGerenciarBackup);
+
+        btnGerenciarRelatorio.setBackground(new java.awt.Color(0, 0, 0));
+        btnGerenciarRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/relatorio.png"))); // NOI18N
+        btnGerenciarRelatorio.setText("RELATÓRIOS");
+
+        btnRelatorioDeVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/relatorio_vendas.png"))); // NOI18N
+        btnRelatorioDeVenda.setText("RELATÓRIO DE VENDAS");
+        btnGerenciarRelatorio.add(btnRelatorioDeVenda);
+
+        jMenuBar1.add(btnGerenciarRelatorio);
+
+        jMenu4.setBackground(new java.awt.Color(0, 0, 0));
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/configuracoes.png"))); // NOI18N
+        jMenu4.setText("CONFIGURAÇÕES");
+        jMenuBar1.add(jMenu4);
+
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/conta.png"))); // NOI18N
+        btnLogout.setText("CONTA");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/Logout.png"))); // NOI18N
+        btnSair.setText("SAIR");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+        btnLogout.add(btnSair);
+
+        jMenuBar1.add(btnLogout);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void LimitarPermissoes(){
+        if(usuarioLogado != null){
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_cadastrar_VENDA()){
+                btnCadVenda.setVisible(false);
+            }
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_cadastrar_ALUGUEL()){
+                btnCadAluguel.setVisible(false);
+            }
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_cadastrar_EQUIPAMENTO()){
+                btnCadEquipamento.setVisible(false);
+            }
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_cadastrar_COD_CADASTRO()){
+                btnCadCodCadastro.setVisible(false);
+            }
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_cadastrar_CARGO()){
+                btnCadCargo.setVisible(false);
+            }
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_cadastrar_CLIENTE()){
+                btnCadCliente.setVisible(false);
+            }
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_cadastrar_PRODUTO()){
+                btnCadProduto.setVisible(false);
+            }
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_cadastrar_MANUTENCAO()){
+                btnCadManutencao.setVisible(false);
+            }
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_consultar_CLIENTE()){
+                btnConCliente.setVisible(false);
+            }
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_consultar_FUNCIONARIO()){
+                btnConFuncionario.setVisible(false);
+            }
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_consultar_VENDA()){
+                btnConVendas.setVisible(false);
+            }
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_gerar_BACKUP()){
+                btnGerarBackup.setVisible(false);
+            }
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_restaurar_BACKUP()){
+                btnRestaurarBackup.setVisible(false);
+            }
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_gerar_BACKUP() && !usuarioLogado.getCargo().getPermissao().isPode_restaurar_BACKUP()){
+                btnGerenciarBackup.setVisible(false);
+            }
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_gerar_RELATORIO()){
+                btnGerenciarRelatorio.setVisible(false);
+            }
+        }
+    }
+    
     private void btnCadJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadJogoActionPerformed
         // TODO add your handling code here:
         frmCadJogo cadJogo = new frmCadJogo();
@@ -258,11 +392,11 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         conFuncionario.setVisible(true);
     }//GEN-LAST:event_btnConFuncionarioActionPerformed
 
-    private void frmCadAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frmCadAluguelActionPerformed
+    private void btnCadAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadAluguelActionPerformed
         frmCadAluguel cadAluguel = new frmCadAluguel();
         cadAluguel.setDefaultCloseOperation(HIDE_ON_CLOSE);
         cadAluguel.setVisible(true);
-    }//GEN-LAST:event_frmCadAluguelActionPerformed
+    }//GEN-LAST:event_btnCadAluguelActionPerformed
 
     private void btnCadManutencaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadManutencaoActionPerformed
         // TODO add your handling code here:
@@ -273,19 +407,33 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setExtendedState(MAXIMIZED_BOTH); // MAXIMIZAR FORMULÁRIO ASSIM QUE ABRIR
+        
+        LimitarPermissoes();
     }//GEN-LAST:event_formWindowOpened
 
-    private void btnVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaActionPerformed
+    private void btnCadVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadVendaActionPerformed
         frmCadVenda cadVenda = new frmCadVenda();
         cadVenda.setDefaultCloseOperation(HIDE_ON_CLOSE);
         cadVenda.setVisible(true);
-    }//GEN-LAST:event_btnVendaActionPerformed
+    }//GEN-LAST:event_btnCadVendaActionPerformed
 
     private void btnConVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConVendasActionPerformed
         frmConsultaVendas conVenda = new frmConsultaVendas();
         conVenda.setDefaultCloseOperation(HIDE_ON_CLOSE);
         conVenda.setVisible(true);
     }//GEN-LAST:event_btnConVendasActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+       
+        
+        
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        this.setVisible(false);
+        frmLogin login = new frmLogin();
+        login.setVisible(true);
+    }//GEN-LAST:event_btnSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,15 +479,23 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnCadJogo;
     private javax.swing.JMenuItem btnCadManutencao;
     private javax.swing.JMenuItem btnCadProduto;
+    private javax.swing.JMenuItem btnCadVenda;
     private javax.swing.JMenuItem btnConCliente;
     private javax.swing.JMenuItem btnConFuncionario;
     private javax.swing.JMenuItem btnConVendas;
     private javax.swing.JMenuItem btnFuncionario;
-    private javax.swing.JMenuItem btnVenda;
-    private javax.swing.JMenuItem frmCadAluguel;
+    private javax.swing.JMenuItem btnGerarBackup;
+    private javax.swing.JMenu btnGerenciarBackup;
+    private javax.swing.JMenu btnGerenciarRelatorio;
+    private javax.swing.JMenu btnLogout;
+    private javax.swing.JMenuItem btnRelatorioDeVenda;
+    private javax.swing.JMenuItem btnRestaurarBackup;
+    private javax.swing.JMenuItem btnSair;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

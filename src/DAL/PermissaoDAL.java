@@ -281,5 +281,101 @@ public class PermissaoDAL {
             return 0;
         }
     }
+    
+    public List<PermissaoBLL> ConsultarPermissaoDeUmCargo(int codCargo) {
+        //DEFINIR COMANDO SQL
+        String comandoSQL = "SELECT * FROM Permissoes JOIN Cargos on permissoes.codigo = cargos.permissao WHERE cargos.codigo = ?;";
+
+        //CRIANDO LISTA QUE VAI RECEBER TODO O RESULTADO DA CONSULTA
+        List<PermissaoBLL> listaPermissoes = new LinkedList<>();
+
+        try {
+            //PREPARANDO COMANDO PARA SER EXECUTADO
+            PreparedStatement query = con.Conectar().prepareStatement(comandoSQL);
+            query.setInt(1, codCargo);
+            
+            //RESULT SET QUE VAI GUARDAR O RESULTADO
+            ResultSet resultadoConsulta = query.executeQuery();
+
+            while (resultadoConsulta.next()) {
+                //PREENCHER ITEM
+                PermissaoBLL pBLL = new PermissaoBLL();
+                
+                pBLL.setCodigo(resultadoConsulta.getInt("codigo"));
+                
+                pBLL.setPode_cadastrar_FORNECEDOR(resultadoConsulta.getBoolean("Pode_cadastrar_FORNECEDOR"));
+                pBLL.setPode_consultar_FORNECEDOR(resultadoConsulta.getBoolean("Pode_consultar_FORNECEDOR"));
+                pBLL.setPode_alterar_FORNECEDOR(resultadoConsulta.getBoolean("Pode_alterar_FORNECEDOR"));
+                pBLL.setPode_desligar_FORNECEDOR(resultadoConsulta.getBoolean("Pode_desligar_FORNECEDOR"));
+
+                pBLL.setPode_cadastrar_CLIENTE(resultadoConsulta.getBoolean("Pode_cadastrar_CLIENTE"));
+                pBLL.setPode_consultar_CLIENTE(resultadoConsulta.getBoolean("Pode_consultar_CLIENTE"));
+                pBLL.setPode_alterar_CLIENTE(resultadoConsulta.getBoolean("Pode_alterar_CLIENTE"));
+                pBLL.setPode_desligar_CLIENTE(resultadoConsulta.getBoolean("Pode_desligar_CLIENTE"));
+
+                pBLL.setPode_cadastrar_COD_CADASTRO(resultadoConsulta.getBoolean("Pode_cadastrar_COD_CADASTRO"));
+                pBLL.setPode_consultar_COD_CADASTRO(resultadoConsulta.getBoolean("Pode_consultar_COD_CADASTRO"));
+                pBLL.setPode_alterar_COD_CADASTRO(resultadoConsulta.getBoolean("Pode_alterar_COD_CADASTRO"));
+                pBLL.setPode_desligar_COD_CADASTRO(resultadoConsulta.getBoolean("Pode_desligar_COD_CADASTRO"));
+
+                pBLL.setPode_cadastrar_VENDA(resultadoConsulta.getBoolean("Pode_cadastrar_VENDA"));
+                pBLL.setPode_consultar_VENDA(resultadoConsulta.getBoolean("Pode_consultar_VENDA"));
+                pBLL.setPode_alterar_VENDA(resultadoConsulta.getBoolean("Pode_alterar_VENDA"));
+                pBLL.setPode_desligar_VENDA(resultadoConsulta.getBoolean("Pode_desligar_VENDA"));
+
+                pBLL.setPode_cadastrar_PROMOCAO(resultadoConsulta.getBoolean("Pode_cadastrar_PROMOCAO"));
+                pBLL.setPode_consultar_PROMOCAO(resultadoConsulta.getBoolean("Pode_consultar_PROMOCAO"));
+                pBLL.setPode_alterar_PROMOCAO(resultadoConsulta.getBoolean("Pode_alterar_PROMOCAO"));
+                pBLL.setPode_desligar_PROMOCAO(resultadoConsulta.getBoolean("Pode_cadastrar_ALUGUEL"));
+
+                pBLL.setPode_cadastrar_ALUGUEL(resultadoConsulta.getBoolean("Pode_cadastrar_ALUGUEL"));
+                pBLL.setPode_consultar_ALUGUEL(resultadoConsulta.getBoolean("Pode_consultar_ALUGUEL"));
+                pBLL.setPode_alterar_ALUGUEL(resultadoConsulta.getBoolean("Pode_alterar_ALUGUEL"));
+                pBLL.setPode_desligar_ALUGUEL(resultadoConsulta.getBoolean("Pode_desligar_ALUGUEL"));
+
+                pBLL.setPode_cadastrar_PRODUTO(resultadoConsulta.getBoolean("Pode_cadastrar_PRODUTO"));
+                pBLL.setPode_consultar_PRODUTO(resultadoConsulta.getBoolean("Pode_consultar_PRODUTO"));
+                pBLL.setPode_alterar_PRODUTO(resultadoConsulta.getBoolean("Pode_alterar_PRODUTO"));
+                pBLL.setPode_desligar_PRODUTO(resultadoConsulta.getBoolean("Pode_desligar_PRODUTO"));
+
+                pBLL.setPode_cadastrar_EQUIPAMENTO(resultadoConsulta.getBoolean("Pode_cadastrar_EQUIPAMENTO"));
+                pBLL.setPode_consultar_EQUIPAMENTO(resultadoConsulta.getBoolean("Pode_consultar_EQUIPAMENTO"));
+                pBLL.setPode_alterar_EQUIPAMENTO(resultadoConsulta.getBoolean("Pode_alterar_EQUIPAMENTO"));
+                pBLL.setPode_desligar_EQUIPAMENTO(resultadoConsulta.getBoolean("Pode_desligar_EQUIPAMENTO"));
+
+                pBLL.setPode_cadastrar_MANUTENCAO(resultadoConsulta.getBoolean("Pode_cadastrar_MANUTENCAO"));
+                pBLL.setPode_consultar_MANUTENCAO(resultadoConsulta.getBoolean("Pode_consultar_MANUTENCAO"));
+                pBLL.setPode_alterar_MANUTENCAO(resultadoConsulta.getBoolean("Pode_alterar_MANUTENCAO"));
+                pBLL.setPode_desligar_MANUTENCAO(resultadoConsulta.getBoolean("Pode_desligar_MANUTENCAO"));
+
+                pBLL.setPode_cadastrar_CARGO(resultadoConsulta.getBoolean("Pode_cadastrar_CARGO"));
+                pBLL.setPode_consultar_CARGO(resultadoConsulta.getBoolean("Pode_consultar_CARGO"));
+                pBLL.setPode_alterar_CARGO(resultadoConsulta.getBoolean("Pode_alterar_CARGO"));
+                pBLL.setPode_desligar_CARGO(resultadoConsulta.getBoolean("Pode_desligar_CARGO"));
+
+                pBLL.setPode_cadastrar_FUNCIONARIO(resultadoConsulta.getBoolean("Pode_cadastrar_FUNCIONARIO"));
+                pBLL.setPode_consultar_FUNCIONARIO(resultadoConsulta.getBoolean("Pode_consultar_FUNCIONARIO"));
+                pBLL.setPode_alterar_FUNCIONARIO(resultadoConsulta.getBoolean("Pode_alterar_FUNCIONARIO"));
+                pBLL.setPode_desligar_FUNCIONARIO(resultadoConsulta.getBoolean("Pode_desligar_FUNCIONARIO"));
+
+                pBLL.setPode_gerar_BACKUP(resultadoConsulta.getBoolean("pode_gerar_BACKUP"));
+                pBLL.setPode_restaurar_BACKUP(resultadoConsulta.getBoolean("Pode_restaurar_BACKUP"));
+
+                pBLL.setPode_gerar_RELATORIO(resultadoConsulta.getBoolean("Pode_gerar_RELATORIO"));
+
+                pBLL.setAtivo(resultadoConsulta.getBoolean("ATIVO"));
+
+                //ADICIONAR NOVO TÍTULO PREENCHIDO À COMBOBOX
+                listaPermissoes.add(pBLL);
+            }
+
+            // RETORNAR LISTA PREENCHIDA
+            return listaPermissoes;
+
+        } catch (Exception e) {
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + e);
+            return null;
+        }
+    }
 
 }

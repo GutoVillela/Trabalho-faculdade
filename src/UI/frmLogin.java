@@ -195,6 +195,9 @@ public class frmLogin extends javax.swing.JFrame {
 
         if (cBLL.Validar()) {
 
+            //DEFINIR FUNCIONÁRIO LOGADO
+            frmTelaPrincipal.usuarioLogado = cBLL.ConsultarFuncionarioDonoDasCredenciais();
+            
             // INSTANCIAR E EXIBIR TELA PRINCIPAL
             frmTelaPrincipal telaPrincipal = new frmTelaPrincipal();
             telaPrincipal.setVisible(true);

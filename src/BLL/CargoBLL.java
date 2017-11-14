@@ -102,7 +102,7 @@ public class CargoBLL {
      * @return A PermissaoBLL referente ao cargo desta instância (pelo código).
      */
     public PermissaoBLL ConsultarPermissao(){
-        return null;
+        return cDAL.ConsultarPermissao(this);
     }
     
 }
