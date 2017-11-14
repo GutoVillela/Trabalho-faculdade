@@ -47,6 +47,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         btnConCliente = new javax.swing.JMenuItem();
         btnConFuncionario = new javax.swing.JMenuItem();
+        btnConVendas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -163,6 +164,14 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(btnConFuncionario);
 
+        btnConVendas.setText("VENDAS");
+        btnConVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConVendasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnConVendas);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -272,6 +281,12 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         cadVenda.setVisible(true);
     }//GEN-LAST:event_btnVendaActionPerformed
 
+    private void btnConVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConVendasActionPerformed
+        frmConsultaVendas conVenda = new frmConsultaVendas();
+        conVenda.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        conVenda.setVisible(true);
+    }//GEN-LAST:event_btnConVendasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -318,6 +333,7 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnCadProduto;
     private javax.swing.JMenuItem btnConCliente;
     private javax.swing.JMenuItem btnConFuncionario;
+    private javax.swing.JMenuItem btnConVendas;
     private javax.swing.JMenuItem btnFuncionario;
     private javax.swing.JMenuItem btnVenda;
     private javax.swing.JMenuItem frmCadAluguel;

@@ -5,6 +5,13 @@
  */
 package UI;
 
+import BLL.ProdutoBLL;
+import BLL.VendaBLL;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Uny
@@ -16,7 +23,20 @@ public class frmConsultaVendas extends javax.swing.JFrame {
      */
     public frmConsultaVendas() {
         initComponents();
+        
+        // ASSOCIAR MODELS DAS TABELAS
+        modelTabelaVendas = (DefaultTableModel) tblVendas.getModel();
+        modelTabelaItensDaVenda = (DefaultTableModel) tblItensDaVenda.getModel();
     }
+    
+    // OBJETOS PARA ADMINISTRAR AS TABELAS
+    DefaultTableModel modelTabelaVendas;
+    DefaultTableModel modelTabelaItensDaVenda;
+    
+    //OBJETOS PARA TRABALHAR COM AS VENDAS
+    private VendaBLL vBLL = new VendaBLL();
+    private List<VendaBLL> listaDeVendas = new ArrayList<>();
+    private List<ProdutoBLL> itensDaVenda = new ArrayList<>();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,22 +52,27 @@ public class frmConsultaVendas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtConsulta = new javax.swing.JTextField();
+        btnConsultar = new javax.swing.JButton();
         rdbData = new javax.swing.JRadioButton();
         rdbCliente = new javax.swing.JRadioButton();
         rdbCodigo = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblVendas = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        tblItensDaVenda = new javax.swing.JTable();
+        btnExcluir = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -79,16 +104,19 @@ public class frmConsultaVendas extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MÉTODO DE CONSULTA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/lupa_search.png"))); // NOI18N
-        jButton1.setToolTipText("Consultar");
+        btnConsultar.setBackground(new java.awt.Color(0, 0, 0));
+        btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/lupa_search.png"))); // NOI18N
+        btnConsultar.setToolTipText("Consultar");
 
+        rdbData.setBackground(new java.awt.Color(0, 0, 0));
         rdbData.setForeground(new java.awt.Color(255, 255, 255));
         rdbData.setText("DATA");
 
+        rdbCliente.setBackground(new java.awt.Color(0, 0, 0));
         rdbCliente.setForeground(new java.awt.Color(255, 255, 255));
         rdbCliente.setText("CLIENTE");
 
+        rdbCodigo.setBackground(new java.awt.Color(0, 0, 0));
         rdbCodigo.setForeground(new java.awt.Color(255, 255, 255));
         rdbCodigo.setText("CODIGO");
 
@@ -105,9 +133,9 @@ public class frmConsultaVendas extends javax.swing.JFrame {
                 .addComponent(rdbCodigo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                .addComponent(btnConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
         jPanel3Layout.setVerticalGroup(
@@ -116,8 +144,8 @@ public class frmConsultaVendas extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rdbData)
@@ -126,15 +154,28 @@ public class frmConsultaVendas extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblVendas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
                 "CODIGO", "CLIENTE", "DATA DA VENDA", "ATIVO"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblVendas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblVendasMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblVendas);
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("CONSULTA DE PRODUTOS");
@@ -142,7 +183,7 @@ public class frmConsultaVendas extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("PRODUTOS VENDIDOS");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblItensDaVenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -150,17 +191,17 @@ public class frmConsultaVendas extends javax.swing.JFrame {
                 "CODIGO", "NOME", "QUANTIDADE", "PREÇO"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblItensDaVenda);
 
-        jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/excluir.png"))); // NOI18N
-        jButton4.setToolTipText("Excluir");
+        btnExcluir.setBackground(new java.awt.Color(0, 0, 0));
+        btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/excluir.png"))); // NOI18N
+        btnExcluir.setToolTipText("Excluir");
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/alterar.png"))); // NOI18N
-        jButton3.setToolTipText("Alterar");
+        btnAlterar.setBackground(new java.awt.Color(0, 0, 0));
+        btnAlterar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/alterar.png"))); // NOI18N
+        btnAlterar.setToolTipText("Alterar");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -175,9 +216,9 @@ public class frmConsultaVendas extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel3)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
@@ -207,8 +248,8 @@ public class frmConsultaVendas extends javax.swing.JFrame {
                                 .addGap(3, 3, 3)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(296, 296, 296)
                         .addComponent(jLabel2)))
@@ -229,6 +270,64 @@ public class frmConsultaVendas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        // CONSULTAR TODAS AS VENDAS E CARREGÁ-LAS NA TABELA
+        listaDeVendas = vBLL.Consultar();
+        CarregarVendas();
+        
+    }//GEN-LAST:event_formWindowOpened
+
+    private void tblVendasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVendasMouseClicked
+        
+        // SE O CLIQUE FOI AO MENOS DUPLO
+        if(evt.getClickCount() == 2){
+            itensDaVenda = listaDeVendas.get(tblVendas.getSelectedRow()).getItensDaVenda();
+            CarregarItensDaVenda();
+        }
+        
+    }//GEN-LAST:event_tblVendasMouseClicked
+
+    private void CarregarItensDaVenda() {
+
+        modelTabelaItensDaVenda.setRowCount(0); // LIMPAR TABELA
+        
+        for (int i = 0; i < itensDaVenda.size(); i++) {
+
+            // DEFINIR OS ATRIBUTOS DE FUNCIONÁRIO EM VARIÁVEIS
+            int codigo = itensDaVenda.get(i).getCodigo();
+            String nome = itensDaVenda.get(i).getNome();
+            int quantidade_a_comprar = itensDaVenda.get(i).getQuantidade();
+            float preco_a_ser_cobrado = itensDaVenda.get(i).getPreco();
+            boolean ativo = itensDaVenda.get(i).isAtivo();
+            float total = quantidade_a_comprar * preco_a_ser_cobrado;
+
+            modelTabelaItensDaVenda.insertRow(modelTabelaItensDaVenda.getRowCount(), new Object[]{codigo, nome, quantidade_a_comprar, "R$" + preco_a_ser_cobrado});
+
+        }
+
+        tblItensDaVenda.setModel(modelTabelaItensDaVenda);
+    }
+    
+    private void CarregarVendas() {
+
+        modelTabelaVendas.setRowCount(0); // LIMPAR TABELA
+
+        for (int i = 0; i < listaDeVendas.size(); i++) {
+
+            // DEFINIR OS ATRIBUTOS DE FUNCIONÁRIO EM VARIÁVEIS
+            int codigo = listaDeVendas.get(i).getCodigo();
+            String cliente = "AINDA NÃO IMPLEMENTADO";
+            String dataDaVenda = listaDeVendas.get(i).getDataDaVenda();
+            boolean ativo = listaDeVendas.get(i).isAtivo();
+
+            modelTabelaVendas.insertRow(modelTabelaVendas.getRowCount(), new Object[]{codigo, cliente, dataDaVenda, ativo});
+
+        }
+
+        tblVendas.setModel(modelTabelaVendas);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -266,9 +365,9 @@ public class frmConsultaVendas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btgMetodoDePesquisa;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -278,11 +377,11 @@ public class frmConsultaVendas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JRadioButton rdbCliente;
     private javax.swing.JRadioButton rdbCodigo;
     private javax.swing.JRadioButton rdbData;
+    private javax.swing.JTable tblItensDaVenda;
+    private javax.swing.JTable tblVendas;
+    private javax.swing.JTextField txtConsulta;
     // End of variables declaration//GEN-END:variables
 }

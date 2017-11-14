@@ -12,8 +12,9 @@ public class Conexao {
     //CONEXAO
     private Connection conexao;
     private String erro;
-    private final String mensagemDeErroCriacaoBanco = "BANCO NÃO FOI GERADO!";
-    private final String mensagemDeErroCriacaoTabelas = "BANCO CRIADO MAS TABELAS NÃO CONSEGUIRAM SER GERADAS!";
+    public final static String mensagemDeErroCriacaoBanco = "BANCO NÃO FOI GERADO!";
+    public final static String mensagemDeErroCriacaoTabelas = "BANCO CRIADO MAS TABELAS NÃO CONSEGUIRAM SER GERADAS!";
+    public final static String mensagemDeErroConexaoComServidor = "ERRO AO SE CONECTAR COM O SERVIDOR!";
 
     //ATRIBUTOS PARA CONEXÃO
     private String driver = "com.mysql.jdbc.Driver"; // ESTA LINHA CHAMA O DRIVER
@@ -43,7 +44,7 @@ public class Conexao {
 
             Class.forName(driver);
 
-            url = "jdbc:mysql://localhost:3306";
+            this.url = "jdbc:mysql://localhost:3306";
             conexao = DriverManager.getConnection(url, user, password); // RETORNAR CONEXÃO USANDO ENDERECO DO BANCO, USUARIO E SENHA
             System.out.println("CONEXÃO BEM SUCEDIDA COM O SERVIDOR");
             return conexao; // RETORNAR A CONEXAO PREENCHIDA
@@ -51,6 +52,7 @@ public class Conexao {
         } catch (ClassNotFoundException | SQLException erro) {
 
             System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + erro);
+            this.erro = mensagemDeErroConexaoComServidor;
             return null;
         }
     }
@@ -62,27 +64,35 @@ public class Conexao {
             String comandoSQL = "CREATE DATABASE BD_LJ;";
 
             //PREPARAR COMANDO PARA EXECUÇÃO
-            Statement query = ConectarComServidor().prepareStatement(comandoSQL);
+            Connection conexaoComServidor = ConectarComServidor();
 
-            //EXECUTAR COMANDO
-            query.executeUpdate(comandoSQL);
+            // PROSSEGUIR SOMENTE SE CONEXÃO NÃO FOR NULA
+            if (conexaoComServidor != null) {
+                Statement query = conexaoComServidor.prepareStatement(comandoSQL);
 
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+                //EXECUTAR COMANDO
+                query.executeUpdate(comandoSQL);
+
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                //CRIAR PROCEDURE
+                CriarDeclararProcedureQueCriaTabelas();
+
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                return ChamarProcedure();
             }
-
-            //CRIAR PROCEDURE
-            CriarDeclararProcedureQueCriaTabelas();
-
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+            else{
+                return false;
             }
-
-            return ChamarProcedure();
 
         } catch (SQLException erro) {
             System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + "\n" + erro);
@@ -667,5 +677,47 @@ public class Conexao {
      */
     public void setErro(String erro) {
         this.erro = erro;
+    }
+
+    /**
+     * @return the url
+     */
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+     * @param url the url to set
+     */
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    /**
+     * @return the user
+     */
+    public String getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

@@ -6,11 +6,9 @@ import BLL.CopiaParaAlugarBLL;
 import BLL.EquipamentoDaLojaBLL;
 import BLL.PessoaFisicaBLL;
 import BLL.PessoaJuridicaBLL;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
@@ -126,6 +124,7 @@ public class frmCadAluguel extends javax.swing.JFrame {
         rdbPessoaFisica.setBackground(new java.awt.Color(0, 0, 0));
         btgTipoCliente.add(rdbPessoaFisica);
         rdbPessoaFisica.setForeground(new java.awt.Color(255, 255, 255));
+        rdbPessoaFisica.setSelected(true);
         rdbPessoaFisica.setText("Pessoa Física");
         rdbPessoaFisica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +142,7 @@ public class frmCadAluguel extends javax.swing.JFrame {
             }
         });
 
+        btnBuscar.setBackground(new java.awt.Color(0, 0, 0));
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/lupa_search.png"))); // NOI18N
         btnBuscar.setToolTipText("Consultar");
 

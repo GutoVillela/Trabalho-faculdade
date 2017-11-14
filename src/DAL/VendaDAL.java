@@ -68,7 +68,7 @@ public class VendaDAL {
     
     public  boolean CadastrarItensDaVenda(VendaBLL vBLL){
         //CRIANDO COMANDO SQL
-        String comandoSQL = "INSERT INTO itens_da_venda (venda, produto, preco) VALUES (?, ?, ?);";
+        String comandoSQL = "INSERT INTO itens_da_venda (venda, produto, preco_cobrado, quantidade_comprada) VALUES (?, ?, ?, ?);";
         
         // TRATAMENTO DE ERRO
         try{
@@ -80,6 +80,7 @@ public class VendaDAL {
                 query.setInt(1, vBLL.getCodigo());
                 query.setInt(2, vBLL.getItensDaVenda().get(i).getCodigo());
                 query.setFloat(3, vBLL.getItensDaVenda().get(i).getPreco());
+                query.setInt(4, vBLL.getItensDaVenda().get(i).getQuantidade());
                 
                 // EXECUTAR COMANDO
                 query.executeUpdate();
@@ -90,7 +91,7 @@ public class VendaDAL {
             return true;
         }
         catch (SQLException erro){
-            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + " no método 'CadastrarListaDeEquipamentos'\n" + erro);
+            System.out.println("DEU ERRO EM " + this.getClass().getCanonicalName() + " no método 'CadastrarItensDaVenda'\n" + erro);
             return false;
         }
     }
@@ -135,7 +136,7 @@ public class VendaDAL {
     
     public List<BLL.ProdutoBLL> ConsultarItensDaVenda(int codVenda){
         //DEFINIR COMANDO SQL
-        String comandoSQL = "SELECT * FROM itens_da_venda LEFT JOIN produtos ON itens_da_venda.produto = produtos.codigo WHERE itens_da_venda.venda = 1;";
+        String comandoSQL = "SELECT * FROM itens_da_venda LEFT JOIN produtos ON itens_da_venda.produto = produtos.codigo WHERE itens_da_venda.venda = ?;";
         
         //CRIANDO LISTA QUE VAI RECEBER TODO O RESULTADO DA CONSULTA
         List<BLL.ProdutoBLL> listaItensDaVenda = new ArrayList<>();
@@ -168,5 +169,9 @@ public class VendaDAL {
         } catch (Exception e) {
             return null;
         }
+    }
+    
+    public int PreverProximoCodigo(){
+        return RecuperarUltimaChavePrimaria() + 1;
     }
 }

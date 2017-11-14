@@ -38,6 +38,13 @@ public class VendaBLL {
         return vDAL.Consultar();
     }
     
+    public int PreverProximoCodigo(){
+        return vDAL.PreverProximoCodigo();
+    }
+    
+    public List<BLL.ProdutoBLL> ConsultarItensDaVenda(){
+        return vDAL.ConsultarItensDaVenda(this.codigo);
+    }
     //ENCAPSULADORES
 
     /**

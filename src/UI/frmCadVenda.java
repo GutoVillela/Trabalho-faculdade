@@ -6,10 +6,12 @@
 package UI;
 
 import BLL.AcessorioBLL;
+import BLL.ClienteBLL;
 import BLL.PessoaFisicaBLL;
 import BLL.PessoaJuridicaBLL;
 import BLL.ProdutoBLL;
 import BLL.VendaBLL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -82,17 +84,16 @@ public class frmCadVenda extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblItensDaVenda = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         txtTotalVenda = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtData = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtCodVenda = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnCadVenda = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -210,11 +211,12 @@ public class frmCadVenda extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblItensDaVenda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblItensDaVendaMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblItensDaVenda);
-
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("ADICIONAR ITEM");
 
         txtTotalVenda.setEditable(false);
         txtTotalVenda.addActionListener(new java.awt.event.ActionListener() {
@@ -232,25 +234,28 @@ public class frmCadVenda extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("DATA");
 
+        txtCodVenda.setEditable(false);
+
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("COD.");
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar.png"))); // NOI18N
-        jButton2.setToolTipText("Salvar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnCadVenda.setBackground(new java.awt.Color(0, 0, 0));
+        btnCadVenda.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/if_Tick_Mark_1398911.png"))); // NOI18N
+        btnCadVenda.setToolTipText("Fechar venda");
+        btnCadVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnCadVendaActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("FECHAR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setBackground(new java.awt.Color(0, 0, 0));
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cancelarpermissao.png"))); // NOI18N
+        btnCancelar.setToolTipText("Cancelar venda");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -264,16 +269,6 @@ public class frmCadVenda extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtTotalVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -289,25 +284,34 @@ public class frmCadVenda extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel6)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtData)
+                        .addComponent(txtData, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(570, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton3))
+                        .addComponent(txtCodVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jScrollPane1)))
+                        .addComponent(jScrollPane1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtTotalVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCadVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -320,7 +324,7 @@ public class frmCadVenda extends javax.swing.JFrame {
                     .addComponent(cmbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -337,16 +341,17 @@ public class frmCadVenda extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
                     .addComponent(txtTotalVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnCancelar)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btnCadVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -357,10 +362,13 @@ public class frmCadVenda extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 31, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void AtualizarTotal(){
@@ -417,6 +425,8 @@ public class frmCadVenda extends javax.swing.JFrame {
         }
 
         tblItensDaVenda.setModel(modelTabelaItensDaVenda);
+        
+        AtualizarTotal(); // ATUALIZAR TOTAL DA VENDA
     }
 
     private void CarregarClientes() {
@@ -454,16 +464,60 @@ public class frmCadVenda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTotalVendaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void FecharVenda(){
+        
+        // DEFINIR CLIENTE
+        if(rdbPessoaFisica.isSelected())
+            vBLL.setCliente(listaDeClientesFisicos.get(cmbCliente.getSelectedIndex()));
+        else if(rdbPessoaJuridica.isSelected())
+            vBLL.setCliente(listaDeClientesJuridicos.get(cmbCliente.getSelectedIndex()));
+            
+        
+        // DEFINIR DATA DA VENDA
+        vBLL.setDataDaVenda(ano + "-" + mes + "-" + dia + " " + hora + ":" + minuto + ":00");
+        
+        //ATIVAR VENDA
+        vBLL.setAtivo(true);
+        
+        //SETAR LISTA DOS PRODUTOS
+        vBLL.setItensDaVenda(itensDaVenda);
+        
+        if(vBLL.Cadastrar()){
+            int dialogo = JOptionPane.showConfirmDialog(null, "Venda fechada com sucesso. Deseja efetuar outra venda?", "VENDA FECHADA", JOptionPane.YES_NO_OPTION);
+            
+            if(dialogo == JOptionPane.YES_OPTION){
+                this.dispose();
+            }
+            else{
+                this.setVisible(false);
+            }
+            
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Erro ao fechar venda! Por favor, tente novamente. Se o erro persistir, contate a Assistência Técnica.", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }
+    
+    private void btnCadVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadVendaActionPerformed
+        
+        int dialogo = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja fechar a venda?", "FECHAR VENDA", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        
+        if(dialogo == JOptionPane.YES_OPTION){
+            FecharVenda();
+        }
+        
+    }//GEN-LAST:event_btnCadVendaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
+        //DEFINIR CÓDIGO DA VENDA
+        txtCodVenda.setText(String.valueOf(vBLL.PreverProximoCodigo()));
+        
         //INICIAR DATA
         GregorianCalendar calendario = new GregorianCalendar();
         dia = calendario.get(Calendar.DAY_OF_MONTH);
@@ -489,6 +543,7 @@ public class frmCadVenda extends javax.swing.JFrame {
     }//GEN-LAST:event_rdbPessoaJuridicaActionPerformed
 
     private void AdicionarProdutoAoCarrinho() {
+        
         boolean naoRepetido = true;
         int indice = tblProdCadastrados.getSelectedRow();
         int indiceDoItemRepetido = 0;
@@ -553,6 +608,48 @@ public class frmCadVenda extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tblProdCadastradosMouseClicked
 
+    private void RemoverProdutoDoCarrinho(){
+        
+        int indice = tblItensDaVenda.getSelectedRow(); // ÍNDICE DO PRODUTO NA LISTA
+        
+        int quantidadeNoCarrinho = itensDaVenda.get(indice).getQuantidade(); // VERIFICAR QUANTIDADE DO PRODUTO NO CARRINHO
+        
+        //REINCREMENTAR UNIDADE REMOVIDA À LISTA DE PRODUTOS DISPONÍVEIS
+        for (int i = 0; i < listaDeProdutosCadastrados.size(); i++) {
+            
+            if(itensDaVenda.get(indice).getCodigo() == listaDeProdutosCadastrados.get(i).getCodigo())
+            {
+                int quantidadeAtual = listaDeProdutosCadastrados.get(i).getQuantidade() + 1;
+                listaDeProdutosCadastrados.get(i).setQuantidade(quantidadeAtual);
+            }
+            
+        }
+        
+        // SE TIVER MAIS DO QUE UM DESSE PRODUTO, APENAS SUBTRAIR UM
+        if(quantidadeNoCarrinho > 1){
+            itensDaVenda.get(indice).setQuantidade(quantidadeNoCarrinho - 1);
+        }
+        // SENÃO, QUANDO REMOVÊ-LO HAVERÁ 0 UNIDADES. PORTANTO, RETIRÁ-LO DO CARRINHO
+        else{
+            itensDaVenda.remove(indice);
+        }
+        
+        
+        
+        //AO FINAL DE TUDO ATUALIZAR TABELAS
+        CarregarProdutos();
+        CarregarItensDaVenda();
+    }
+    
+    private void tblItensDaVendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblItensDaVendaMouseClicked
+
+        // VERIFICAR CLIQUE DUPLO
+        if(evt.getClickCount() >= 2){
+            RemoverProdutoDoCarrinho();
+        }
+        
+    }//GEN-LAST:event_tblItensDaVendaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -590,10 +687,9 @@ public class frmCadVenda extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btgCadVenda;
+    private javax.swing.JButton btnCadVenda;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cmbCliente;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -607,12 +703,12 @@ public class frmCadVenda extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JRadioButton rdbClienteNaoCadastrado;
     private javax.swing.JRadioButton rdbPessoaFisica;
     private javax.swing.JRadioButton rdbPessoaJuridica;
     private javax.swing.JTable tblItensDaVenda;
     private javax.swing.JTable tblProdCadastrados;
+    private javax.swing.JTextField txtCodVenda;
     private javax.swing.JTextField txtData;
     private javax.swing.JTextField txtTotalVenda;
     // End of variables declaration//GEN-END:variables

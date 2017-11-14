@@ -26,7 +26,7 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnMinimizar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
-        btnCriarBD = new javax.swing.JButton();
+        lblErroLogin = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,12 +105,9 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
 
-        btnCriarBD.setText("CRIAR BD");
-        btnCriarBD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCriarBDActionPerformed(evt);
-            }
-        });
+        lblErroLogin.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblErroLogin.setForeground(new java.awt.Color(255, 51, 102));
+        lblErroLogin.setText("Usuário e/ou senha inválido(s)");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -125,9 +122,11 @@ public class frmLogin extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtUsuario)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblErroLogin)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtUsuario)
+                                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -136,17 +135,12 @@ public class frmLogin extends javax.swing.JFrame {
                     .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(163, 163, 163))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 105, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(btnMinimizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnFechar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCriarBD)))
+                .addGap(99, 99, 99)
+                .addComponent(btnMinimizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnFechar)
                 .addGap(2, 2, 2))
         );
         jPanel1Layout.setVerticalGroup(
@@ -155,15 +149,14 @@ public class frmLogin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnFechar)
                             .addComponent(btnMinimizar))
-                        .addGap(11, 11, 11)
-                        .addComponent(btnCriarBD)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblErroLogin)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -193,13 +186,14 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        
+        lblErroLogin.setVisible(false);
 
         CredencialDeAcessoBLL cBLL = new CredencialDeAcessoBLL();
         cBLL.setUsuario(txtUsuario.getText());
         cBLL.setSenha(String.valueOf(txtSenha.getPassword()));
 
         if (cBLL.Validar()) {
-            JOptionPane.showMessageDialog(null, "ENTROU :D");
 
             // INSTANCIAR E EXIBIR TELA PRINCIPAL
             frmTelaPrincipal telaPrincipal = new frmTelaPrincipal();
@@ -207,13 +201,14 @@ public class frmLogin extends javax.swing.JFrame {
 
             this.setVisible(false); // ESCONDER TELA DE LOGIN
         } else {
-            JOptionPane.showMessageDialog(null, "NÃO ENTROU :[");
+            lblErroLogin.setVisible(true);
         }
 
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        lblErroLogin.setVisible(false);
         this.setSize(500, 350);
         this.setLocationRelativeTo(null); // GERAR FORM CENTRALIZADO
         
@@ -239,14 +234,6 @@ public class frmLogin extends javax.swing.JFrame {
 
         this.setExtendedState(JFrame.ICONIFIED); // MINIMIZAR
     }//GEN-LAST:event_btnMinimizarActionPerformed
-
-    private void btnCriarBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarBDActionPerformed
-
-        // TODO add your handling code here:
-        DAL.Conexao con = new Conexao();
-        con.GerarBanco();
-        
-    }//GEN-LAST:event_btnCriarBDActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -282,7 +269,6 @@ public class frmLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadFuncionario;
-    private javax.swing.JButton btnCriarBD;
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnMinimizar;
@@ -292,6 +278,7 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblErroLogin;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
