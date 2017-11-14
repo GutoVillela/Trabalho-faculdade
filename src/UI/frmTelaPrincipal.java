@@ -47,10 +47,13 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         btnCadAluguel = new javax.swing.JMenuItem();
         btnCadManutencao = new javax.swing.JMenuItem();
         btnCadVenda = new javax.swing.JMenuItem();
+        btnCadFornecedor = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnConCliente = new javax.swing.JMenuItem();
         btnConFuncionario = new javax.swing.JMenuItem();
         btnConVendas = new javax.swing.JMenuItem();
+        btnConFornecedor = new javax.swing.JMenuItem();
+        btnConProduto = new javax.swing.JMenuItem();
         btnGerenciarBackup = new javax.swing.JMenu();
         btnGerarBackup = new javax.swing.JMenuItem();
         btnRestaurarBackup = new javax.swing.JMenuItem();
@@ -181,6 +184,15 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(btnCadVenda);
 
+        btnCadFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar_fornecedor.png"))); // NOI18N
+        btnCadFornecedor.setText("FORNECEDOR");
+        btnCadFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadFornecedorActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnCadFornecedor);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setBackground(new java.awt.Color(0, 0, 0));
@@ -213,6 +225,24 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu2.add(btnConVendas);
+
+        btnConFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/consultar_fornecedor.png"))); // NOI18N
+        btnConFornecedor.setText("FORNECEDOR");
+        btnConFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConFornecedorActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnConFornecedor);
+
+        btnConProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/consultar_produto.png"))); // NOI18N
+        btnConProduto.setText("PRODUTO");
+        btnConProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConProdutoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnConProduto);
 
         jMenuBar1.add(jMenu2);
 
@@ -332,6 +362,18 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
             if(!usuarioLogado.getCargo().getPermissao().isPode_gerar_RELATORIO()){
                 btnGerenciarRelatorio.setVisible(false);
             }
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_cadastrar_FORNECEDOR()){
+                btnCadFornecedor.setVisible(false);
+            }
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_consultar_FORNECEDOR()){
+                btnConFornecedor.setVisible(false);
+            }
+            
+            if(!usuarioLogado.getCargo().getPermissao().isPode_consultar_PRODUTO()){
+                btnConProduto.setVisible(false);
+            }
         }
     }
     
@@ -447,6 +489,24 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
         login.setVisible(true);
     }//GEN-LAST:event_btnSairActionPerformed
 
+    private void btnConProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConProdutoActionPerformed
+        frmConProduto conProduto = new frmConProduto();
+        conProduto.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        conProduto.setVisible(true);
+    }//GEN-LAST:event_btnConProdutoActionPerformed
+
+    private void btnConFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConFornecedorActionPerformed
+        frmConFornecedor conFornecedor = new frmConFornecedor();
+        conFornecedor.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        conFornecedor.setVisible(true);
+    }//GEN-LAST:event_btnConFornecedorActionPerformed
+
+    private void btnCadFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadFornecedorActionPerformed
+        frmCadFornecedor cadFornecedor = new frmCadFornecedor();
+        cadFornecedor.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        cadFornecedor.setVisible(true);
+    }//GEN-LAST:event_btnCadFornecedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -488,12 +548,15 @@ public class frmTelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnCadCliente;
     private javax.swing.JMenuItem btnCadCodCadastro;
     private javax.swing.JMenuItem btnCadEquipamento;
+    private javax.swing.JMenuItem btnCadFornecedor;
     private javax.swing.JMenuItem btnCadJogo;
     private javax.swing.JMenuItem btnCadManutencao;
     private javax.swing.JMenuItem btnCadProduto;
     private javax.swing.JMenuItem btnCadVenda;
     private javax.swing.JMenuItem btnConCliente;
+    private javax.swing.JMenuItem btnConFornecedor;
     private javax.swing.JMenuItem btnConFuncionario;
+    private javax.swing.JMenuItem btnConProduto;
     private javax.swing.JMenuItem btnConVendas;
     private javax.swing.JMenuItem btnFuncionario;
     private javax.swing.JMenuItem btnGerarBackup;
