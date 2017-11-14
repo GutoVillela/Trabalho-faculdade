@@ -3,6 +3,7 @@ package BLL;
 
 import java.util.LinkedList;
 import java.util.List;
+import DAL.FornecedorDAL;
 
 public class FornecedorBLL {
     
@@ -18,10 +19,12 @@ public class FornecedorBLL {
         this.telefones = new LinkedList<>();
         this.endereco = new EnderecoBLL();
     }
-
+    
+    private FornecedorDAL fDAL = new FornecedorDAL();
     /**
      * @return the codigo
      */
+    
     public int getCodigo() {
         return codigo;
     }
@@ -116,4 +119,61 @@ public class FornecedorBLL {
     public void setTelefones(List<TelefoneBLL> telefones) {
         this.telefones = telefones;
     }
+    
+    public boolean Cadastrar(){
+    
+        this.endereco.Cadastrar();
+        
+        this.endereco.setCodigo(endereco.RecuperarUltimaChavePrimaria());
+        
+        boolean deuCertoCadastrar = this.fDAL.Cadastrar(this);
+        
+        this.codigo= fDAL.RecuperarUltimaChavePrimaria();
+        
+        for(int i = 0; i < telefones.size(); i++){
+            telefones.get(i).Cadastrar();
+            telefones.get(i).setCodigo(telefones.get(i).RecuperarUltimaChavePrimaria());
+        }
+         
+        boolean deuCertoTelefones = fDAL.AssociarTodosTelefoneDaLista(this);
+       
+       return deuCertoCadastrar && deuCertoTelefones; // SE TUDO DEU CERTO VAI RETORNAR TRUE AQUI NESSA BAGAÇA
+   
+    }
+    
+    public List<FornecedorBLL> ConsultarPorNome(){
+        
+        return fDAL.ConsultarPorNome(this.getRazaoSocial());
+    }
+    
+    /**
+     * @return Retorna uma lista com todas as pessoas físicas cadastradas.
+     * Retorna inclusive endereço completo.
+     */
+    public List<FornecedorBLL> Consultar(){
+        return fDAL.Consultar();
+        
+    }
+    
+    public boolean Atualizar(){
+        
+      
+       boolean ende = endereco.Atualizar(); System.out.println(ende);
+       return fDAL.AtualizarDados(this);
+       
+    }
+    
+    
+    public boolean Desativar(){
+        return fDAL.Desativar(codigo);
+    }
+    
+    public int RecuperarUltimaChavePrimaria(){
+        return fDAL.RecuperarUltimaChavePrimaria();
+    }
+    
+    protected boolean AssociarTodosTelefoneDaLista(){
+        return fDAL.AssociarTodosTelefoneDaLista(this);
+    }
+    
 }
