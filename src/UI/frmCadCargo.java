@@ -127,12 +127,15 @@ public class frmCadCargo extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("NOME DO CARGO: ");
 
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("SALÁRIO: ");
 
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("PERMISSÃO: ");
 
@@ -152,7 +155,9 @@ public class frmCadCargo extends javax.swing.JFrame {
             }
         });
 
+        btnCancelarCadPermissao.setBackground(new java.awt.Color(0, 0, 0));
         btnCancelarCadPermissao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cancelarpermissao.png"))); // NOI18N
+        btnCancelarCadPermissao.setToolTipText("Cancelar");
         btnCancelarCadPermissao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarCadPermissaoActionPerformed(evt);
@@ -160,7 +165,7 @@ public class frmCadCargo extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PERMISSÕES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PERMISSÕES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         ckbPodeCadFornecedor.setForeground(new java.awt.Color(255, 255, 255));
         ckbPodeCadFornecedor.setText("Pode CADASTRAR FORNECEDOR");
@@ -423,7 +428,6 @@ public class frmCadCargo extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(ckbPodeCadFornecedor)
@@ -551,7 +555,9 @@ public class frmCadCargo extends javax.swing.JFrame {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
+        btnCadPermissao.setBackground(new java.awt.Color(0, 0, 0));
         btnCadPermissao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/outra.png"))); // NOI18N
+        btnCadPermissao.setToolTipText("Adicionar");
         btnCadPermissao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadPermissaoActionPerformed(evt);
@@ -616,7 +622,7 @@ public class frmCadCargo extends javax.swing.JFrame {
                     .addComponent(btnCancelarCadPermissao, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(73, 73, 73))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -627,7 +633,7 @@ public class frmCadCargo extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 664, Short.MAX_VALUE)
         );
 
         pack();

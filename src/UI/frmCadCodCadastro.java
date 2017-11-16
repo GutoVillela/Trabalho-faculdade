@@ -38,6 +38,7 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCodigosGerados = new javax.swing.JTable();
@@ -48,6 +49,8 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         btnCadCargo = new javax.swing.JButton();
         btnGerarCodigos = new javax.swing.JButton();
         btnCadCodigos = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -73,11 +76,11 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblCodigosGerados);
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("GERAR CÓDIGO PARA O CARGO: ");
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("QUANTOS CÓDIGOS:");
 
@@ -89,7 +92,7 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         cmbCargos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnCadCargo.setBackground(new java.awt.Color(0, 0, 0));
-        btnCadCargo.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnCadCargo.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnCadCargo.setForeground(new java.awt.Color(255, 255, 255));
         btnCadCargo.setText("OUTRO");
         btnCadCargo.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +112,7 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         });
 
         btnCadCodigos.setBackground(new java.awt.Color(0, 0, 0));
-        btnCadCodigos.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnCadCodigos.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnCadCodigos.setForeground(new java.awt.Color(255, 255, 255));
         btnCadCodigos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/codcadastro.png"))); // NOI18N
         btnCadCodigos.setText("ATIVAR CÓDIGOS GERADOS");
@@ -129,7 +132,7 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(jScrollPane1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(61, Short.MAX_VALUE)
+                        .addContainerGap(99, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -161,9 +164,9 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
                     .addComponent(spnQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCadCodigos)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -174,10 +177,7 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -304,6 +304,7 @@ public class frmCadCodCadastro extends javax.swing.JFrame {
     private javax.swing.JButton btnCadCodigos;
     private javax.swing.JButton btnGerarCodigos;
     private javax.swing.JComboBox<String> cmbCargos;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

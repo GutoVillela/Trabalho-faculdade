@@ -71,11 +71,12 @@ public class frmConFuncionario extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MÉTODO DE CONSULTA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MÉTODO DE CONSULTA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         rdbNome.setBackground(new java.awt.Color(0, 0, 0));
         btgMetodosDePesquisa.add(rdbNome);
+        rdbNome.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         rdbNome.setForeground(new java.awt.Color(255, 255, 255));
         rdbNome.setSelected(true);
         rdbNome.setText("NOME");
@@ -87,6 +88,7 @@ public class frmConFuncionario extends javax.swing.JFrame {
 
         rdbCpf.setBackground(new java.awt.Color(0, 0, 0));
         btgMetodosDePesquisa.add(rdbCpf);
+        rdbCpf.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         rdbCpf.setForeground(new java.awt.Color(255, 255, 255));
         rdbCpf.setText("CPF");
         rdbCpf.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -102,6 +104,7 @@ public class frmConFuncionario extends javax.swing.JFrame {
 
         rdbEmail.setBackground(new java.awt.Color(0, 0, 0));
         btgMetodosDePesquisa.add(rdbEmail);
+        rdbEmail.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         rdbEmail.setForeground(new java.awt.Color(255, 255, 255));
         rdbEmail.setText("EMAIL");
         rdbEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +115,7 @@ public class frmConFuncionario extends javax.swing.JFrame {
 
         rdbCargo.setBackground(new java.awt.Color(0, 0, 0));
         btgMetodosDePesquisa.add(rdbCargo);
+        rdbCargo.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         rdbCargo.setForeground(new java.awt.Color(255, 255, 255));
         rdbCargo.setText("CARGO");
         rdbCargo.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -132,6 +136,7 @@ public class frmConFuncionario extends javax.swing.JFrame {
 
         rdbUsuario.setBackground(new java.awt.Color(0, 0, 0));
         btgMetodosDePesquisa.add(rdbUsuario);
+        rdbUsuario.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         rdbUsuario.setForeground(new java.awt.Color(255, 255, 255));
         rdbUsuario.setText("USUÁRIO");
         rdbUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -150,6 +155,7 @@ public class frmConFuncionario extends javax.swing.JFrame {
             }
         });
 
+        cmbCargos.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         cmbCargos.setForeground(new java.awt.Color(255, 255, 255));
         cmbCargos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbCargos.setEnabled(false);
@@ -265,7 +271,7 @@ public class frmConFuncionario extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(77, 77, 77)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,7 +279,7 @@ public class frmConFuncionario extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 

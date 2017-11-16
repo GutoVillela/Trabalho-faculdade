@@ -34,6 +34,7 @@ public class frmCadPlataforma extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("NOME DA PLATAFORMA: ");
 
@@ -85,7 +86,7 @@ public class frmCadPlataforma extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(178, 178, 178)
                         .addComponent(btnCadPlataforma)))
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(

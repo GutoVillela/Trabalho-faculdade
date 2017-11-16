@@ -90,9 +90,11 @@ public class frmCadProduto extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
+        lblTipoAcessorio.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         lblTipoAcessorio.setForeground(new java.awt.Color(255, 255, 255));
         lblTipoAcessorio.setText("TIPO DE ACESSÓRIO: ");
 
+        lblTitulo.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
         lblTitulo.setText("TÍTULO: ");
 
@@ -124,6 +126,7 @@ public class frmCadProduto extends javax.swing.JFrame {
 
         spnQuantidade.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
+        lblPlataforma.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         lblPlataforma.setForeground(new java.awt.Color(255, 255, 255));
         lblPlataforma.setText("PLATAFORMA:");
 
@@ -139,14 +142,17 @@ public class frmCadProduto extends javax.swing.JFrame {
         cmbPlataforma1.setForeground(new java.awt.Color(255, 255, 255));
         cmbPlataforma1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Tipo de produto: ");
+        jLabel1.setText("TIPO DE PRODUTO");
 
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("QUANTIDADE: ");
 
         rdbJogo.setBackground(new java.awt.Color(0, 0, 0));
         btgTipoProduto.add(rdbJogo);
+        rdbJogo.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         rdbJogo.setForeground(new java.awt.Color(255, 255, 255));
         rdbJogo.setSelected(true);
         rdbJogo.setText("JOGO");
@@ -156,11 +162,13 @@ public class frmCadProduto extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("PREÇO: ");
 
         rdbAcessorio.setBackground(new java.awt.Color(0, 0, 0));
         btgTipoProduto.add(rdbAcessorio);
+        rdbAcessorio.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         rdbAcessorio.setForeground(new java.awt.Color(255, 255, 255));
         rdbAcessorio.setText("ACESSÓRIO");
         rdbAcessorio.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +177,7 @@ public class frmCadProduto extends javax.swing.JFrame {
             }
         });
 
+        lblNome.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         lblNome.setForeground(new java.awt.Color(255, 255, 255));
         lblNome.setText("NOME:");
 
@@ -257,7 +266,7 @@ public class frmCadProduto extends javax.swing.JFrame {
                         .addComponent(rdbJogo)
                         .addGap(41, 41, 41)
                         .addComponent(rdbAcessorio)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(

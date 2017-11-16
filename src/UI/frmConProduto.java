@@ -77,11 +77,14 @@ public class frmConProduto extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/alterar.png"))); // NOI18N
+        jButton2.setToolTipText("Alterar");
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/excluir.png"))); // NOI18N
+        jButton3.setToolTipText("Excluir");
 
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("SINOPSE");
 
@@ -95,11 +98,12 @@ public class frmConProduto extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("ACESSÓRIOS");
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MÉTODO DE CONSULTA", 0, 0, new java.awt.Font("Century Gothic", 3, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MÉTODO DE CONSULTA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 3, 14), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
@@ -108,18 +112,22 @@ public class frmConProduto extends javax.swing.JFrame {
         jButton1.setToolTipText("Consultar");
 
         jRadioButton3.setBackground(new java.awt.Color(0, 0, 0));
+        jRadioButton3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton3.setText("NOME");
 
         jRadioButton4.setBackground(new java.awt.Color(0, 0, 0));
+        jRadioButton4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jRadioButton4.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton4.setText("CODIGO");
 
         jRadioButton5.setBackground(new java.awt.Color(0, 0, 0));
+        jRadioButton5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jRadioButton5.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton5.setText("PLATAFORMA");
 
         jRadioButton6.setBackground(new java.awt.Color(0, 0, 0));
+        jRadioButton6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jRadioButton6.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton6.setText("TIPO");
 
@@ -162,6 +170,7 @@ public class frmConProduto extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("JOGOS");
 
@@ -202,10 +211,12 @@ public class frmConProduto extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cancelar.png"))); // NOI18N
+        jButton4.setToolTipText("Cancelar");
 
         jButton5.setBackground(new java.awt.Color(0, 0, 0));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar.png"))); // NOI18N
+        jButton5.setToolTipText("Salvar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

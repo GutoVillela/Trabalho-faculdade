@@ -90,17 +90,21 @@ public class frmCadEquipamento extends javax.swing.JFrame {
             }
         });
 
+        lblValorPorHora.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         lblValorPorHora.setForeground(new java.awt.Color(255, 255, 255));
         lblValorPorHora.setText("VALOR POR HORA: ");
 
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("EQUIPAMENTO: ");
 
+        lblCliente.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         lblCliente.setForeground(new java.awt.Color(255, 255, 255));
         lblCliente.setText("A QUEM PERTENCE?");
 
         rdbDaLoja.setBackground(new java.awt.Color(0, 0, 0));
         btgDaLojaOuNao.add(rdbDaLoja);
+        rdbDaLoja.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         rdbDaLoja.setForeground(new java.awt.Color(255, 255, 255));
         rdbDaLoja.setText("DA LOJA");
         rdbDaLoja.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +117,7 @@ public class frmCadEquipamento extends javax.swing.JFrame {
 
         rdbDoCliente.setBackground(new java.awt.Color(0, 0, 0));
         btgDaLojaOuNao.add(rdbDoCliente);
+        rdbDoCliente.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         rdbDoCliente.setForeground(new java.awt.Color(255, 255, 255));
         rdbDoCliente.setSelected(true);
         rdbDoCliente.setText("DO CLIENTE");
@@ -122,11 +127,13 @@ public class frmCadEquipamento extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("TIPO: ");
 
         cmbTipoEquipamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("QUAL EQUIPAMENTO? ");
 

@@ -129,6 +129,7 @@ public class frmCadVenda extends javax.swing.JFrame {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("CLIENTE");
 
@@ -136,6 +137,7 @@ public class frmCadVenda extends javax.swing.JFrame {
 
         rdbPessoaFisica.setBackground(new java.awt.Color(0, 0, 0));
         btgCadVenda.add(rdbPessoaFisica);
+        rdbPessoaFisica.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         rdbPessoaFisica.setForeground(new java.awt.Color(255, 255, 255));
         rdbPessoaFisica.setText("PESSOA FISICA");
         rdbPessoaFisica.addActionListener(new java.awt.event.ActionListener() {
@@ -146,6 +148,7 @@ public class frmCadVenda extends javax.swing.JFrame {
 
         rdbPessoaJuridica.setBackground(new java.awt.Color(0, 0, 0));
         btgCadVenda.add(rdbPessoaJuridica);
+        rdbPessoaJuridica.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         rdbPessoaJuridica.setForeground(new java.awt.Color(255, 255, 255));
         rdbPessoaJuridica.setText("PESSOA JURIDICA");
         rdbPessoaJuridica.addActionListener(new java.awt.event.ActionListener() {
@@ -156,6 +159,7 @@ public class frmCadVenda extends javax.swing.JFrame {
 
         rdbClienteNaoCadastrado.setBackground(new java.awt.Color(0, 0, 0));
         btgCadVenda.add(rdbClienteNaoCadastrado);
+        rdbClienteNaoCadastrado.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         rdbClienteNaoCadastrado.setForeground(new java.awt.Color(255, 255, 255));
         rdbClienteNaoCadastrado.setText("CLIENTE NÃO CADASTRADO");
         rdbClienteNaoCadastrado.addActionListener(new java.awt.event.ActionListener() {
@@ -165,6 +169,7 @@ public class frmCadVenda extends javax.swing.JFrame {
         });
 
         tblProdCadastrados.setBackground(new java.awt.Color(0, 0, 0));
+        tblProdCadastrados.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         tblProdCadastrados.setForeground(new java.awt.Color(255, 255, 255));
         tblProdCadastrados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -189,12 +194,15 @@ public class frmCadVenda extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblProdCadastrados);
 
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("PRODUTOS CADASTRADOS");
 
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("ITENS DA VENDA");
 
+        tblItensDaVenda.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         tblItensDaVenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -225,17 +233,21 @@ public class frmCadVenda extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("TOTAL");
 
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("DESCONTO");
 
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("DATA");
 
         txtCodVenda.setEditable(false);
 
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("COD.");
 
@@ -284,7 +296,7 @@ public class frmCadVenda extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel6)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtData, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                        .addComponent(txtData, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)

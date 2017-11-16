@@ -115,12 +115,15 @@ public class frmCadCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTabbedPane1.setBackground(new java.awt.Color(0, 0, 0));
+
         lblValidacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/carregando_3.png"))); // NOI18N
 
         jPanel7.setBackground(new java.awt.Color(0, 0, 0));
         jPanel7.setForeground(new java.awt.Color(255, 255, 255));
         jPanel7.setToolTipText("Cancelar");
 
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("NOME:");
 
@@ -135,9 +138,11 @@ public class frmCadCliente extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("CPF:");
 
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("SEXO:");
 
@@ -149,23 +154,44 @@ public class frmCadCliente extends javax.swing.JFrame {
         jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton2.setText("Masculino");
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("ENDEREÇO"));
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ENDEREÇO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Logradouro: ");
 
         cmbLogradouro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Rua", "Av.", "Estrada", "Rodovia", "Distrito", "Parque" }));
 
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Bairro:");
 
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("N°: ");
 
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("CEP: ");
 
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Cidade:");
 
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("ESTADO: ");
 
+        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("PAÍS: ");
 
         try {
@@ -250,6 +276,7 @@ public class frmCadCliente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("TELEFONE");
 
@@ -268,6 +295,7 @@ public class frmCadCliente extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("-");
 
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("CELULAR");
 
@@ -283,6 +311,7 @@ public class frmCadCliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("E-MAIL");
 
@@ -309,6 +338,7 @@ public class frmCadCliente extends javax.swing.JFrame {
         btncancelar.setBackground(new java.awt.Color(0, 0, 0));
         btncancelar.setForeground(new java.awt.Color(255, 255, 255));
         btncancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cancelar.png"))); // NOI18N
+        btncancelar.setToolTipText("Cancelar");
         btncancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncancelarActionPerformed(evt);
@@ -448,7 +478,7 @@ public class frmCadCliente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(331, 331, 331)
                 .addComponent(lblValidacao)
-                .addContainerGap(348, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -464,23 +494,38 @@ public class frmCadCliente extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("ENDEREÇO"));
+        jPanel4.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ENDEREÇO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel4.setForeground(new java.awt.Color(255, 255, 255));
 
+        jLabel18.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Logradouro: ");
 
         cmbLogradouro1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Rua", "Av.", "Estrada", "Rodovia", "Distrito", "Parque" }));
 
+        jLabel19.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Bairro:");
 
+        jLabel20.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("N°: ");
 
+        jLabel21.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("CEP: ");
 
+        jLabel22.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Cidade:");
 
+        jLabel23.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("ESTADO: ");
 
+        jLabel24.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("PAÍS: ");
 
         try {
@@ -563,36 +608,43 @@ public class frmCadCliente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel28.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("RAZÃO SOCIAL:");
 
+        jLabel32.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(255, 255, 255));
         jLabel32.setText("CNPJ:");
 
+        jLabel33.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(255, 255, 255));
         jLabel33.setText("NOME FANTASIA");
 
+        jLabel25.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("E-MAIL");
 
+        btncadastro1.setBackground(new java.awt.Color(0, 0, 0));
         btncadastro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cadastrar.png"))); // NOI18N
-        btncadastro1.setToolTipText("CADASTRAR");
+        btncadastro1.setToolTipText("Cadastrar");
         btncadastro1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncadastro1ActionPerformed(evt);
             }
         });
 
+        btnlimpar1.setBackground(new java.awt.Color(0, 0, 0));
         btnlimpar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/limpar.png"))); // NOI18N
-        btnlimpar1.setToolTipText("LIMPAR");
+        btnlimpar1.setToolTipText("Limpar");
         btnlimpar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnlimpar1ActionPerformed(evt);
             }
         });
 
+        btncancelar1.setBackground(new java.awt.Color(0, 0, 0));
         btncancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cancelar.png"))); // NOI18N
-        btncancelar1.setToolTipText("CANCELAR");
+        btncancelar1.setToolTipText("Cancelar");
         btncancelar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncancelar1ActionPerformed(evt);
@@ -602,6 +654,7 @@ public class frmCadCliente extends javax.swing.JFrame {
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setText("TELEFONE");
 
+        jLabel37.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
         jLabel37.setText("CELULAR");
 
@@ -709,7 +762,7 @@ public class frmCadCliente extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -739,11 +792,11 @@ public class frmCadCliente extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtemail1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btncadastro1)
-                    .addComponent(btnlimpar1)
-                    .addComponent(btncancelar1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnlimpar1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btncancelar1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btncadastro1))
                 .addGap(42, 42, 42))
         );
 
